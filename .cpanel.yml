@@ -1,4 +1,4 @@
-----
+---
 deployment:
 	tasks:
 		- export DEPLOYPATH=/home2/yaca/cdc-bintan.yacanet.com/
