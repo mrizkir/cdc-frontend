@@ -1,0 +1,8 @@
+----
+deployment:
+	tasks:
+		- export DEPLOYPATH=/home2/yaca/cdc-bintan.yacanet.com/
+		- /bin/cp -R build/* $DEPLOYPATH
+		- /bin/cp -R dist/.htaccess $DEPLOYPATH
+		- /usr/bin/git push origin master -u
+  
