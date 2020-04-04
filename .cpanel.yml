@@ -2,5 +2,5 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home2/yaca/cdc-bintan.yacanet.com/
-    - /bin/cp -R dist/* $DEPLOYPATH
+    - /bin/cp -R build/* $DEPLOYPATH
     - /usr/bin/git push origin master -u
