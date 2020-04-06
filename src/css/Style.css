@@ -100,7 +100,7 @@
 
  .list-group-item {
    padding: 3px 20px;
-   
+   background-color: rgb(223, 223, 223);
  }
 
  .list-group-item h5
