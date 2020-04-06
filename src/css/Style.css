@@ -1,0 +1,192 @@
+ *{
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+ }
+ 
+.Header{
+  width: 100%;
+  background-color:rgb(42, 41, 41);
+  padding: 7px 0;
+  border-bottom: solid 1px white;
+}
+
+.Header img{
+  margin-left:10px;
+}
+
+.total{
+  color:yellow;
+  text-align: center;
+}
+.total h2{
+  font-size: 17px;
+}
+
+.total p{
+  margin:0;
+}
+
+.Header .sub{
+  color:rgb(184, 183, 183);
+  margin:0;
+  font-size: 15px;
+}
+
+.Header h2{
+  color:#fff;
+  margin:0;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.footer{
+   background-color:rgb(42, 41, 41);
+  padding: 7px 10px;
+   color:rgb(184, 183, 183);
+   font-size: 13px;
+   text-align: center;
+}
+
+.legenda{
+  padding: 5px 5px 3px 5px;
+  width: 100%;
+  background-color: rgb(42, 41, 41);
+  color:white;
+  font-size: 13px;
+}
+
+.legenda img{
+  margin-left:15px;
+  margin-bottom:3px;
+}
+
+.legenda .legenda-title{
+  background:url('../img/legendb.png');
+  background-size: cover;
+  color:black;
+  padding: 3px 50px 4px 10px;
+  margin:0;
+  border-left: solid 2px red;
+}
+
+.widget{
+  width:100%;
+  
+  background-color:rgb(68, 66, 66);
+   border: solid 1px rgb(151, 149, 149);
+   padding:10px;
+  
+}
+
+.widget-body{
+   overflow-y: scroll;
+   height:150px;
+}
+
+.widget h4{
+  background-color: rgb(99, 95, 95);
+  font-size: 17px;
+  padding: 5px 0;
+ color:white;
+}
+
+ .row{
+   margin:0;
+    
+ }
+
+ [class*="col-"]{   
+   padding: 0;
+ }
+
+ .list-group-item {
+   padding: 3px 20px;
+   
+ }
+
+ .list-group-item h5
+ {
+   margin: 0;
+   font-size: 15px;
+  
+ }
+
+ .list-group-item span {
+font-size: 12px;
+margin: 0;
+font-family: 'Times New Roman', Times, serif;
+ }
+
+  .list-group-item p{
+font-size: 13px;
+margin: 0;
+ text-transform: uppercase;
+ font-weight: bold;
+ }
+
+
+ /* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+
+
+marquee {
+	margin-top: 5px;
+	width: 100%;
+}
+
+.runtext-container {
+
+width: 100%;
+overflow-x: hidden;
+overflow-y: visible;
+ 
+padding:0 3px 0 3px;
+}
+
+.main-runtext {margin: 0 auto;
+overflow: visible;
+position: relative;
+height: 35px;
+}
+
+.runtext-container .holder {
+position: relative;
+overflow: visible;
+display:inline;
+ 
+
+}
+
+.runtext-container .holder .text-container {
+	display:inline;
+}
+
+.runtext-container .holder a{
+	text-decoration: none;
+	font-weight: bold;
+	color:#4e4747;
+	text-shadow:0 -1px 0 rgba(0,0,0,0.25);
+	line-height: -0.5em;
+	font-size:16px;
+}
+
+.runtext-container .holder a:hover{
+	text-decoration: none;
+	color:#6600ff;
+}
