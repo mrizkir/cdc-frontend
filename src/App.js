@@ -3,8 +3,7 @@ import Map from './components/Map'
 import Chart from './components/Chart'
 
 import './css/Style.css'
-import logo from './img/logobintan.png'
-import garuda from './img/garuda.png'
+
 
 
 export class App extends Component {
@@ -13,14 +12,14 @@ export class App extends Component {
       <div className="App" >
         <div className="Header row ">
           <div className="col-md-3 col-sm-12">
-            <img src={logo} width="60px" />
+
           </div>
           <div className="col-md-6 col-sm-12 text-center">
-            <h2>Corona Data Center Bintan</h2>
+            <h2>Corona Data Center Kabupaten Bintan</h2>
             <p className="sub">Data Kasus Penyebaran Virus Corona di Kabupaten Bintan</p>
           </div>
           <div className="col-md-3 col-sm-12 text-right ">
-            <img src={garuda} width="130px" />
+
           </div>
         </div>
         <div className="row">
