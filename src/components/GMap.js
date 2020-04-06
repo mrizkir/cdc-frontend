@@ -58,7 +58,7 @@ const GMap = () => {
 
     return <div
         ref={googleMapRef}
-        style={{ width: '100%', height: 550 }}
+        style={{ width: '100%', height: 600 }}
     />
 }
 
