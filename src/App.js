@@ -1,19 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import MapContainer from './components/Map'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <h1>HALLO There....!!!</h1>
-      </header>
-    </div>
-  );
+
+export class App extends Component {
+  render() {
+    return (
+      <div>
+        <MapContainer />
+
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App
