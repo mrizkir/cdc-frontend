@@ -1,13 +1,17 @@
 import React, { useEffect, useRef } from 'react';
 
+
+
 import cblue from '../img/cir-blue.png';
 import cred from '../img/cir-red.png';
 import cgreen from '../img/cir-green.png';
 import cgrey from '../img/cir-grey.png';
 
-const GMap = () => {
+const GMap = ({ koordinat }) => {
     const googleMapRef = useRef(null);
     let googleMap = null;
+
+
 
     // list of icons
     const iconList = {
@@ -18,13 +22,21 @@ const GMap = () => {
     }
 
     // list of the marker object along with icon
-    const markerList = [
-        { lat: 1.014682, lng: 104.469791, icon: iconList.icon1 },
-        { lat: 1.134982, lng: 104.369481, icon: iconList.icon2 },
-        { lat: 1.114582, lng: 104.569081, icon: iconList.icon3 },
-        { lat: 1.134622, lng: 104.519771, icon: iconList.icon4 },
+    // const markerList = [
+    //     { lat: 1.014682, lng: 104.469791, icon: iconList.icon1 },
+    //     { lat: 1.134982, lng: 104.369481, icon: iconList.icon2 },
+    //     { lat: 1.114582, lng: 104.569081, icon: iconList.icon3 },
+    //     { lat: 1.134622, lng: 104.519771, icon: iconList.icon4 },
 
-    ]
+    // ]
+
+
+    const markerList = koordinat.map(koor => ({
+        lat: koor.lat, lng: koor.lng
+    }))
+
+
+
 
     useEffect(() => {
         googleMap = initGoogleMap();

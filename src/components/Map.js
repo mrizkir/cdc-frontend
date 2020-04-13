@@ -24,7 +24,7 @@ const loadGoogleMapScript = (callback) => {
     }
 }
 
-const App = () => {
+const App = ({ koordinat }) => {
     const [loadMap, setLoadMap] = useState(false);
 
     useEffect(() => {
@@ -33,10 +33,13 @@ const App = () => {
         });
     }, []);
 
+    if (!koordinat) return <div>Loading Map..</div>
+
     return (
 
         <>
-            {!loadMap ? <div>Loading...</div> : <GMap />}
+
+            {!loadMap ? <div>LoadingMap...</div> : <GMap koordinat={koordinat} />}
             <div className="legenda">
                 <span className="legenda-title">Legenda</span>
                 <img src={cred} className="App-logo" alt="logo" width="20px" /> Positif

@@ -14,7 +14,7 @@ export class Contentslide extends Component {
                                 <article className="blog-card">
                                     <div className="blog-card__background">
                                         <div className="card__background--wrapper">
-                                            <div className="card__background--main" style={{ 'background-image': 'url("https://akcdn.detik.net.id/community/media/visual/2020/04/01/32b2103b-723c-4d20-b7f7-88b0cb99d3ca.jpeg?w=700&q=90")' }}>
+                                            <div className="card__background--main" style={{ 'backgroundImage': 'url("https://akcdn.detik.net.id/community/media/visual/2020/04/01/32b2103b-723c-4d20-b7f7-88b0cb99d3ca.jpeg?w=700&q=90")' }}>
                                                 <div className="card__background--layer"></div>
                                             </div>
                                         </div>
@@ -44,7 +44,7 @@ export class Contentslide extends Component {
                                 <article className="blog-card">
                                     <div className="blog-card__background">
                                         <div className="card__background--wrapper">
-                                            <div className="card__background--main" style={{ 'background-image': 'url("https://akcdn.detik.net.id/community/media/visual/2020/04/03/d89e201e-3b95-4e37-b514-561f6c333ed8_169.jpeg?w=700&q=80")' }}>
+                                            <div className="card__background--main" style={{ 'backgroundImage': 'url("https://akcdn.detik.net.id/community/media/visual/2020/04/03/d89e201e-3b95-4e37-b514-561f6c333ed8_169.jpeg?w=700&q=80")' }}>
                                                 <div className="card__background--layer"></div>
                                             </div>
                                         </div>
@@ -74,7 +74,7 @@ export class Contentslide extends Component {
                                 <article className="blog-card">
                                     <div className="blog-card__background">
                                         <div className="card__background--wrapper">
-                                            <div className="card__background--main" style={{ 'background-image': 'url("https://akcdn.detik.net.id/community/media/visual/2020/04/06/fab9def3-6be3-43b3-8c82-bdec31b44c37.jpeg?w=700&q=90")' }}>
+                                            <div className="card__background--main" style={{ 'backgroundImage': 'url("https://akcdn.detik.net.id/community/media/visual/2020/04/06/fab9def3-6be3-43b3-8c82-bdec31b44c37.jpeg?w=700&q=90")' }}>
                                                 <div className="card__background--layer"></div>
                                             </div>
                                         </div>
@@ -104,7 +104,7 @@ export class Contentslide extends Component {
                                 <article className="blog-card">
                                     <div className="blog-card__background">
                                         <div className="card__background--wrapper">
-                                            <div className="card__background--main" style={{ 'background-image': 'url("https://akcdn.detik.net.id/community/media/visual/2020/04/06/b424a157-2af2-480c-8c29-9fe1024901ac.jpeg?w=700&q=90")' }}>
+                                            <div className="card__background--main" style={{ 'backgroundImage': 'url("https://akcdn.detik.net.id/community/media/visual/2020/04/06/b424a157-2af2-480c-8c29-9fe1024901ac.jpeg?w=700&q=90")' }}>
                                                 <div className="card__background--layer"></div>
                                             </div>
                                         </div>
@@ -134,7 +134,7 @@ export class Contentslide extends Component {
                                 <article className="blog-card">
                                     <div className="blog-card__background">
                                         <div className="card__background--wrapper">
-                                            <div className="card__background--main" style={{ 'background-image': 'url("https://akcdn.detik.net.id/community/media/visual/2020/04/06/31b31b84-cf68-43d3-8ffa-d0318a40a7d0_169.jpeg?w=700&q=90")' }}>
+                                            <div className="card__background--main" style={{ 'backgroundImage': 'url("https://akcdn.detik.net.id/community/media/visual/2020/04/06/31b31b84-cf68-43d3-8ffa-d0318a40a7d0_169.jpeg?w=700&q=90")' }}>
                                                 <div className="card__background--layer"></div>
                                             </div>
                                         </div>
@@ -164,7 +164,7 @@ export class Contentslide extends Component {
                                 <article className="blog-card">
                                     <div className="blog-card__background">
                                         <div className="card__background--wrapper">
-                                            <div className="card__background--main" style={{ 'background-image': 'url("https://akcdn.detik.net.id/community/media/visual/2020/04/06/97860eaf-bdcf-4f0c-b34d-a1fb0e217e5f_169.jpeg?w=700&q=90")' }}>
+                                            <div className="card__background--main" style={{ 'backgroundImage': 'url("https://akcdn.detik.net.id/community/media/visual/2020/04/06/97860eaf-bdcf-4f0c-b34d-a1fb0e217e5f_169.jpeg?w=700&q=90")' }}>
                                                 <div className="card__background--layer"></div>
                                             </div>
                                         </div>

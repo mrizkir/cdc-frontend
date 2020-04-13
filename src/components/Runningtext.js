@@ -8,7 +8,7 @@ export class Runningtext extends Component {
             <>
                 <div className="runtext-container">
                     <div className="main-runtext">
-                        <marquee onmouseover="this.stop();" onmouseout="this.start();">
+                        <marquee >
 
                             <div className="holder">
 
