@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export class Contentslide extends Component {
     render() {
@@ -28,11 +29,11 @@ export class Contentslide extends Component {
                                     <div className="blog-card__info">
                                         <h5>Darurat Corona, Desa di Jabar Bahu-membahu Tangani Covid-19</h5>
                                         <p>
-                                            <a href="#" className="icon-link mr-3"><i className="fa fa-pencil-square-o"></i> Tony Jahson</a>
-                                            <a href="#" className="icon-link"><i className="fa fa-comments-o"></i> 150</a>
+                                            <Link to="/" className="icon-link mr-3"><i className="fa fa-pencil-square-o"></i> Tony Jahson</Link>
+                                            <Link to="/" className="icon-link"><i className="fa fa-comments-o"></i> 150</Link>
                                         </p>
                                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.  que, blanditiis doloribus at sunt quas, repellendus vel?  </p>
-                                        <a href="#" className="btn btn--with-icon"><i className="btn-icon fa fa-long-arrow-right"></i>Baca Selengkapnya</a>
+                                        <Link to="/" className="btn btn--with-icon"><i className="btn-icon fa fa-long-arrow-right"></i>Baca Selengkapnya</Link>
                                     </div>
                                 </article>
                             </div>
@@ -58,11 +59,11 @@ export class Contentslide extends Component {
                                     <div className="blog-card__info">
                                         <h5>Nggak Nurut soal Protokol Kesehatan, Perusahaan Bisa Disanksi</h5>
                                         <p>
-                                            <a href="#" className="icon-link mr-3"><i className="fa fa-pencil-square-o"></i> Tony Jahson</a>
-                                            <a href="#" className="icon-link"><i className="fa fa-comments-o"></i> 150</a>
+                                            <Link to="/" className="icon-link mr-3"><i className="fa fa-pencil-square-o"></i> Tony Jahson</Link>
+                                            <Link to="/" className="icon-link"><i className="fa fa-comments-o"></i> 150</Link>
                                         </p>
                                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque vero libero voluptatibus earum? </p>
-                                        <a href="#" className="btn btn--with-icon"><i className="btn-icon fa fa-long-arrow-right"></i>Baca Selengkapnya</a>
+                                        <Link to="/" className="btn btn--with-icon"><i className="btn-icon fa fa-long-arrow-right"></i>Baca Selengkapnya</Link>
                                     </div>
                                 </article>
                             </div>
@@ -88,11 +89,11 @@ export class Contentslide extends Component {
                                     <div className="blog-card__info">
                                         <h5>Saat Jas Hujan Plastik jadi APD Tenaga Medis</h5>
                                         <p>
-                                            <a href="#" className="icon-link mr-3"><i className="fa fa-pencil-square-o"></i> Tony Jahson</a>
-                                            <a href="#" className="icon-link"><i className="fa fa-comments-o"></i> 150</a>
+                                            <Link to="/" className="icon-link mr-3"><i className="fa fa-pencil-square-o"></i> Tony Jahson</Link>
+                                            <Link to="/" className="icon-link"><i className="fa fa-comments-o"></i> 150</Link>
                                         </p>
                                         <p>Alias dignissimos quo cum, nulla esse facere atque, blanditiis doloribus at sunt quas, repellendus vel? Et, hic!</p>
-                                        <a href="#" className="btn btn--with-icon"><i className="btn-icon fa fa-long-arrow-right"></i>Baca Selengkapnya</a>
+                                        <Link to="/" className="btn btn--with-icon"><i className="btn-icon fa fa-long-arrow-right"></i>Baca Selengkapnya</Link>
                                     </div>
                                 </article>
                             </div>
@@ -118,11 +119,11 @@ export class Contentslide extends Component {
                                     <div className="blog-card__info">
                                         <h5>Update Corona di Jatim: 189 Positif, 985 PDP, 10.929 ODP</h5>
                                         <p>
-                                            <a href="#" className="icon-link mr-3"><i className="fa fa-pencil-square-o"></i> Tony Jahson</a>
-                                            <a href="#" className="icon-link"><i className="fa fa-comments-o"></i> 150</a>
+                                            <Link to="/" className="icon-link mr-3"><i className="fa fa-pencil-square-o"></i> Tony Jahson</Link>
+                                            <Link to="/" className="icon-link"><i className="fa fa-comments-o"></i> 150</Link>
                                         </p>
                                         <p>Alias dignissimos quo cum, nulla esse facere atque, blanditiis doloribus at sunt quas, repellendus vel? Et, hic!</p>
-                                        <a href="#" className="btn btn--with-icon"><i className="btn-icon fa fa-long-arrow-right"></i>Baca Selengkapnya</a>
+                                        <Link to="/" className="btn btn--with-icon"><i className="btn-icon fa fa-long-arrow-right"></i>Baca Selengkapnya</Link>
                                     </div>
                                 </article>
                             </div>
@@ -148,11 +149,11 @@ export class Contentslide extends Component {
                                     <div className="blog-card__info">
                                         <h5>Pemkab Banyuwangi Wajibkan Warga yang Keluar Rumah Pakai Masker</h5>
                                         <p>
-                                            <a href="#" className="icon-link mr-3"><i className="fa fa-pencil-square-o"></i> Tony Jahson</a>
-                                            <a href="#" className="icon-link"><i className="fa fa-comments-o"></i> 150</a>
+                                            <Link to="/" className="icon-link mr-3"><i className="fa fa-pencil-square-o"></i> Tony Jahson</Link>
+                                            <Link to="/" className="icon-link"><i className="fa fa-comments-o"></i> 150</Link>
                                         </p>
                                         <p>Alias dignissimos quo cum, nulla esse facere atque, blanditiis doloribus at sunt quas, repellendus vel? Et, hic!</p>
-                                        <a href="#" className="btn btn--with-icon"><i className="btn-icon fa fa-long-arrow-right"></i>Baca Selengkapnya</a>
+                                        <Link to="/" className="btn btn--with-icon"><i className="btn-icon fa fa-long-arrow-right"></i>Baca Selengkapnya</Link>
                                     </div>
                                 </article>
                             </div>
@@ -178,11 +179,11 @@ export class Contentslide extends Component {
                                     <div className="blog-card__info">
                                         <h5>51 PDP Corona di Jawa Timur Meninggal Dunia</h5>
                                         <p>
-                                            <a href="#" className="icon-link mr-3"><i className="fa fa-pencil-square-o"></i> Tony Jahson</a>
-                                            <a href="#" className="icon-link"><i className="fa fa-comments-o"></i> 150</a>
+                                            <Link to="/" className="icon-link mr-3"><i className="fa fa-pencil-square-o"></i> Tony Jahson</Link>
+                                            <Link to="/" className="icon-link"><i className="fa fa-comments-o"></i> 150</Link>
                                         </p>
                                         <p>Alias dignissimos quo cum, nulla esse facere atque, blanditiis doloribus at sunt quas, repellendus vel? Et, hic!</p>
-                                        <a href="#" className="btn btn--with-icon"><i className="btn-icon fa fa-long-arrow-right"></i>Baca Selengkapnya</a>
+                                        <Link to="/" className="btn btn--with-icon"><i className="btn-icon fa fa-long-arrow-right"></i>Baca Selengkapnya</Link>
                                     </div>
                                 </article>
                             </div>

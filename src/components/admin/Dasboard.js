@@ -1,27 +1,29 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import Master from './template/Master'
 
 export class Dasboard extends Component {
+
+
+
+
     render() {
-        return (
-            <div className="container-fluid">
-                <h2>Admin Dashboard</h2>
-                <div className="row">
-                    <div className="col-md-3">
-                        <ul className="list-group">
-                            <li className="list-group-item">
-                                <Link to="/adduser">Users</Link>
-                            </li>
 
-                        </ul>
-                    </div>
-                    <div className="col-md-9">
 
-                    </div>
-                </div>
+        const contentRender = (
+            <div>
+                <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
+
             </div>
+        )
+
+        return (
+            <Master contentRender={contentRender} />
         )
     }
 }
 
-export default Dasboard
+
+
+export default connect(null)(Dasboard)

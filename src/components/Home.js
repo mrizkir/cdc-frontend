@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 // import Chart from './Chart'
 import Sidebar from './Sidebar'
-import Runningtext from './Runningtext'
+// import Runningtext from './Runningtext'
 import Content from './Contentslide'
 import Map from './Map'
 
 import { connect } from 'react-redux'
 import { getKoordinat } from '../actions'
+import Navbar from './Navbar'
 
 export class Home extends Component {
 
@@ -27,6 +28,7 @@ export class Home extends Component {
 
         return (
             <>
+                <Navbar />
                 <div className="Header row ">
                     <div className="col-md-3 col-sm-12">
 
@@ -49,7 +51,7 @@ export class Home extends Component {
 
                     <div className="col-md-9 col-sm-12">
                         <Map koordinat={this.props.ListKoordinat.data} />
-                        <Runningtext />
+                        {/* <Runningtext /> */}
                         {/* <Chart /> */}
 
                     </div>

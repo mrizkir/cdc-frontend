@@ -1,18 +1,29 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm, clearSubmitErrors } from 'redux-form'
+import { Redirect } from 'react-router-dom'
 
-import { login } from '../../actions'
+import { login, getUser } from '../../actions'
+
+
+import '../../assets/login/css/style.css'
+
+
 
 
 
 export class Login extends Component {
 
+    componentDidMount() {
+        this.props.getUser()
+    }
+
     renderInput = ({ input, label, type, meta }) => {
         return (
             <div className="form-group">
-                <label htmlFor="" type={type}>{label}</label>
-                <input className="form-control" {...input} type={type} autoComplete='off' />
+                <label   >{label}</label><br />
+                <input   {...input} type={type} autoComplete='off' placeholder={label} />
+                <br />
                 {this.renderError(meta)}
             </div>
         )
@@ -22,6 +33,7 @@ export class Login extends Component {
         if (touched && error) {
             return (
                 <small className="text-danger">{error}</small>
+                // <span className="focus-input100" data-placeholder="&#xe82a;">{error}</span>
             )
         }
     }
@@ -30,15 +42,42 @@ export class Login extends Component {
         this.props.login(formValues)
     }
 
+    renderRedirect = () => {
+
+        if (this.props.user) {
+            if (this.props.user) {
+                return <Redirect to='/admin/dasboard' />
+            }
+        }
+    }
+
     render() {
+
+        console.log(this.props.user)
         return (
             <div>
-                <h2>Login</h2>
-                <form onSubmit={this.props.handleSubmit(this.onSubmit)} className>
+
+                <form onSubmit={this.props.handleSubmit(this.onSubmit)} >
+                    <div className="body" ></div>
+                    <div className="grad"></div>
+                    <div className="header">
+                        <div>CDC<span>Bintan</span></div>
+                    </div>
+                    <br />
+                    <div className="login">
+                        <Field name="username" component={this.renderInput} label="Username" type="text" /><br />
+                        <Field name="password" component={this.renderInput} label="Password" type="password" /><br />
+                        <button style={{ width: '150px' }}> Login</button>
+                    </div>
+                </form>
+
+                {this.renderRedirect()}
+                {/* <h2>Login</h2>
+                <form onSubmit={this.props.handleSubmit(this.onSubmit)} >
                     <Field name="username" component={this.renderInput} label="Username" type="text" />
                     <Field name="password" component={this.renderInput} label="Password" type="password" />
                     <button className="btn btn-primary" style={{ width: '150px' }}> Login</button>
-                </form>
+                </form> */}
             </div>
         )
     }
@@ -58,9 +97,14 @@ const validate = (formValue) => {
 
 }
 
+const stateToProps = state => {
+    return { user: state.user }
+}
+
 const formWrap = reduxForm({
     form: 'loginForm',
-    validate
+    validate,
+
 })(Login)
 
-export default connect(null, { login })(formWrap)
+export default connect(stateToProps, { login, getUser })(formWrap)

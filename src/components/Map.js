@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import GMap from './GMap';
 
-import cblue from '../img/cir-blue.png';
-import cred from '../img/cir-red.png';
-import cgreen from '../img/cir-green.png';
-import cgrey from '../img/cir-grey.png';
+import cblue from '../assets/img/cir-blue.png';
+import cred from '../assets/img/cir-red.png';
+import cgreen from '../assets/img/cir-green.png';
+import cgrey from '../assets/img/cir-grey.png';
 
 
 

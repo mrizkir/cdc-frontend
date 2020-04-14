@@ -2,10 +2,10 @@ import React, { useEffect, useRef } from 'react';
 
 
 
-import cblue from '../img/cir-blue.png';
-import cred from '../img/cir-red.png';
-import cgreen from '../img/cir-green.png';
-import cgrey from '../img/cir-grey.png';
+import cblue from '../assets/img/cir-blue.png';
+import cred from '../assets/img/red.gif';
+import cgreen from '../assets/img/cir-green.png';
+import cgrey from '../assets/img/cir-grey.png';
 
 const GMap = ({ koordinat }) => {
     const googleMapRef = useRef(null);
@@ -13,13 +13,7 @@ const GMap = ({ koordinat }) => {
 
 
 
-    // list of icons
-    const iconList = {
-        icon1: cgreen,
-        icon2: cblue,
-        icon3: cred,
-        icon4: cgrey
-    }
+
 
     // list of the marker object along with icon
     // const markerList = [
@@ -30,9 +24,24 @@ const GMap = ({ koordinat }) => {
 
     // ]
 
+    const pilihIcon = (i) => {
+        if (i === "Positif") {
+            return cred
+        } else if (i === "PDP") {
+            return cblue
+        } else if (i === "ODP") {
+            return cgreen
+        } else {
+            return cgrey
+        }
+
+    }
+
 
     const markerList = koordinat.map(koor => ({
-        lat: koor.lat, lng: koor.lng
+
+        lat: koor.lat, lng: koor.lng, icon: pilihIcon(koor.status)
+
     }))
 
 

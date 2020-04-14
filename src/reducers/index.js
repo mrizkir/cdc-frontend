@@ -10,7 +10,32 @@ const getKoordinatReducers = (state = [], action) => {
     return state
 }
 
+
+
+const getUser = (state = null, action) => {
+    if (action.type === "GET_USER") {
+
+        return action.data
+    }
+
+    return state
+}
+
+
+// const loginReducer = (state = false, action) => {
+//     if (action.type === "LOGIN") {
+//         if (action.data.access_token) {
+//             return true
+//         }
+
+//     }
+
+//     return state
+// }
+
 export default combineReducers({
     ListKoordinat: getKoordinatReducers,
-    form: formReducer
+    form: formReducer,
+    // statusLogin: loginReducer,
+    user: getUser
 })
