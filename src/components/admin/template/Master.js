@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-import { Link } from 'react-router-dom'
 
+import { Link, Redirect } from 'react-router-dom'
+
+import { getUser } from '../../../actions'
 import '../../../assets/admin/css/sb-admin-2.min.css'
 import '../../../assets/admin/vendor/fontawesome-free/css/all.min.css'
 
@@ -11,13 +14,17 @@ import '../../../assets/admin/vendor/fontawesome-free/css/all.min.css'
 
 export class Master extends Component {
 
-    render() {
 
-        console.log(this.props.contentRender)
-        return (
-            <body id="page-top">
+    componentDidMount() {
 
+        this.props.getUser()
+    }
 
+    renderContent = () => {
+        if (!this.props.user) {
+            return <Redirect to='/' />
+        } else {
+            return (
                 <div id="wrapper">
 
 
@@ -172,7 +179,7 @@ export class Master extends Component {
 
                                     <li className="nav-item dropdown no-arrow">
                                         <a className="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span className="mr-2 d-none d-lg-inline text-gray-600 small">Admin Admin</span>
+                                            <span className="mr-2 d-none d-lg-inline text-gray-600 small">{this.namaUser()}</span>
                                             <img className="img-profile rounded-circle" src="https://upload.wikimedia.org/wikipedia/commons/d/d3/User_Circle.png" />
                                         </a>
 
@@ -190,10 +197,10 @@ export class Master extends Component {
                   Activity Log
                 </a>
                                             <div className="dropdown-divider"></div>
-                                            <a className="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                            <Link className="dropdown-item" to="/logout" >
                                                 <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
-                </a>
+                </Link>
                                         </div>
                                     </li>
 
@@ -238,6 +245,25 @@ export class Master extends Component {
 
                     </div></div>
 
+            )
+        }
+    }
+
+    namaUser() {
+
+        if (this.props.user) {
+            return this.props.user.name
+        }
+    }
+
+    render() {
+
+
+        return (
+            <body id="page-top">
+
+                {this.renderContent()}
+
 
 
 
@@ -247,4 +273,11 @@ export class Master extends Component {
     }
 }
 
-export default Master
+const stateToProps = state => {
+
+    return {
+        user: state.user
+    }
+}
+
+export default connect(stateToProps, { getUser })(Master)

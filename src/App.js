@@ -11,26 +11,33 @@ import Home from './components/Home'
 import Dasboard from './components/admin/Dasboard'
 import AddUser from './components/admin/AddUser'
 import DaftarUser from './components/admin/DaftarUser'
+import { Logout } from './components/auth/Logout'
 
 
 
 
 export class App extends Component {
 
+
+
   render() {
     return (
+
       <BrowserRouter>
         <div className="App" >
 
           <Route path="/" exact component={Home} />
           <Route path="/login" component={Login} />
+          <Route path="/logout" component={Logout} />
           <Route path="/admin/dasboard" component={Dasboard} />
           <Route path="/admin/daftaruser" component={DaftarUser} />
           <Route path="/admin/adduser" component={AddUser} />
 
         </div>
       </BrowserRouter>
+
     )
+
   }
 }
 

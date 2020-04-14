@@ -20,9 +20,9 @@ body{
 	width: auto;
 	height: auto;
 	 
-	background-image: url(https://bintankab.go.id/master/wp-content/uploads/2014/01/Peta-Bintan.jpg);
+	background-image:  linear-gradient(to right, rgb(5, 44, 11) , rgb(66, 66, 6));
 	background-size: cover;
-	-webkit-filter: blur(1px);
+	/* -webkit-filter: blur(1px); */
 	z-index: 0;
 }
 

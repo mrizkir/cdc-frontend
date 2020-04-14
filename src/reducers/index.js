@@ -18,24 +18,33 @@ const getUser = (state = null, action) => {
         return action.data
     }
 
+    const user = localStorage.user
+
+    if (user) {
+        return user
+    }
+
     return state
 }
 
 
-// const loginReducer = (state = false, action) => {
-//     if (action.type === "LOGIN") {
-//         if (action.data.access_token) {
-//             return true
-//         }
+const loginReducer = (state = "Belum Login", action) => {
 
-//     }
+    if (action.type === "LOGIN") {
 
-//     return state
-// }
+        if (action.data) {
+
+            return action.data
+        }
+        return "Salah"
+    }
+
+    return state
+}
 
 export default combineReducers({
     ListKoordinat: getKoordinatReducers,
     form: formReducer,
-    // statusLogin: loginReducer,
+    statusLogin: loginReducer,
     user: getUser
 })

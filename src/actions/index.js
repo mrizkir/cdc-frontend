@@ -1,7 +1,7 @@
 import Api from '../axios/Api'
 
 export const getKoordinat = () => async dispatch => {
-    const data = await Api.get('/koordinat.json')
+    const data = await Api.get('/koordinat')
 
     dispatch({
         type: "GET_KOORDINAT",
@@ -10,14 +10,17 @@ export const getKoordinat = () => async dispatch => {
 }
 export const getUser = () => async dispatch => {
 
-    const token = localStorage.token;
-    const data = null;
+    const token = 'Bearer ' + localStorage.token;
+
+    var data = null;
     if (token) {
-        data = await Api.get('/auth/me', {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-            'Authorization': `Bearer ${token}`
+        await Api.get('/auth/me', { headers: { Authorization: token } }).then(response => {
+            data = response.data;
+            localStorage.setItem("user", response.data)
         })
+            .catch((error) => {
+                console.log('error 3 ' + error);
+            });
     }
 
 
@@ -27,19 +30,37 @@ export const getUser = () => async dispatch => {
     })
 }
 
+
+
 export const login = (formValues) => async dispatch => {
-    const response = await Api.post('/auth/login', formValues)
+    await Api.post('/auth/login', formValues)
+        .then(
+            (res) => {
+                if (res.data.access_token) {
 
-    if (response.data.access_token) {
-        localStorage.setItem("token", response.data.access_token)
-    } else {
-        localStorage.removeItem("token")
-    }
+                    localStorage.setItem("token", res.data.access_token)
+                    dispatch({
+                        type: "LOGIN",
+                        data: "Berhasil"
+                    })
+                    dispatch(getUser())
+                }
 
-    // dispatch({
-    //     type: "LOGIN",
-    //     data: response.data
-    // })
+
+
+            },
+            (error) => {
+
+                localStorage.removeItem("token")
+                dispatch({
+                    type: "LOGIN",
+                    data: "Gagal"
+                })
+
+            }
+        );
+
+
 
 }
 
