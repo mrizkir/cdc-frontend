@@ -15,6 +15,14 @@ export class UbahPasien extends Component {
     }
 
     render() {
+        console.log(this.props.pasien)
+
+        if (this.props.pasien === null) {
+            return <div></div>
+        }
+
+        const pasien = this.props.pasien.user
+
         const contentRender = (
             <div>
 
@@ -45,36 +53,33 @@ export class UbahPasien extends Component {
                                                         <tbody>
                                                             <tr>
                                                                 <td>NIK</td>
-                                                                <td></td>
+                                                                <td> {pasien.username}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Nama </td>
-                                                                <td></td>
+                                                                <td>{pasien.name}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Nomor HP</td>
-                                                                <td></td>
+                                                                <td>{pasien.nomor_hp}</td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>Email</td>
-                                                                <td></td>
-                                                            </tr>
+
                                                             <tr>
                                                                 <td>Alamat</td>
-                                                                <td></td>
+                                                                <td>{pasien.alamat}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Desa</td>
-                                                                <td></td>
+                                                                <td>{pasien.Nm_Desa}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Kecamatan</td>
-                                                                <td></td>
+                                                                <td>{pasien.Nm_Kecamatan}</td>
                                                             </tr>
 
                                                             <tr>
                                                                 <td>Status Pasien</td>
-                                                                <td></td>
+                                                                <td>{pasien.nama_status}</td>
                                                             </tr>
 
                                                         </tbody>
@@ -108,9 +113,9 @@ export class UbahPasien extends Component {
 }
 
 const stateToProps = state => {
-
+    console.log(state)
     return {
-        pasien: { state: state.detailPasien }
+        pasien: state.detailPasien
     }
 }
 

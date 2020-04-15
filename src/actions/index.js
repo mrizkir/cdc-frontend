@@ -62,7 +62,7 @@ export const getDetailPasien = (id) => async dispatch => {
 
         })
             .catch((error) => {
-                console.log('error' + error);
+                console.log('error ini' + error);
             });
     }
 
