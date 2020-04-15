@@ -5,7 +5,11 @@ export class Navbar extends Component {
 
     renderLinkLogin() {
         if (localStorage.statusLogin) {
-            return <Link className="nav-link  " to="/admin/dasboard">Admin Dashboard</Link>
+            if (localStorage.statusLogin === "Berhasil") {
+                return <Link className="nav-link  " to="/admin/dasboard">Admin Dashboard</Link>
+            } else {
+                return <Link className="nav-link  " to="/login">Login</Link>
+            }
         } else {
             return <Link className="nav-link  " to="/login">Login</Link>
 

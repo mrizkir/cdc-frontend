@@ -51,6 +51,28 @@ export const getPasien = () => async dispatch => {
     })
 }
 
+export const getDetailPasien = (id) => async dispatch => {
+
+    const token = 'Bearer ' + localStorage.token;
+
+    var data = null;
+    if (token) {
+        await Api.get(`/setting/userspasien/${id}`, { headers: { Authorization: token } }).then(response => {
+            data = response.data;
+
+        })
+            .catch((error) => {
+                console.log('error' + error);
+            });
+    }
+
+
+    dispatch({
+        type: "GET_DETAIL_PASIEN",
+        data: data
+    })
+}
+
 
 
 export const login = (formValues) => async dispatch => {
@@ -60,7 +82,7 @@ export const login = (formValues) => async dispatch => {
                 if (res.data.access_token) {
 
                     localStorage.setItem("token", res.data.access_token)
-                    localStorage.setItem("statusLogin", res.data.access_token)
+                    localStorage.setItem("statusLogin", "Berhasil")
                     dispatch({
                         type: "LOGIN",
                         data: "Berhasil"

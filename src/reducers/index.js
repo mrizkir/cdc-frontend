@@ -36,6 +36,15 @@ const getPasien = (state = [], action) => {
 
     return state
 }
+const getDetailPasien = (state = null, action) => {
+    if (action.type === "GET_DETAIL_PASIEN") {
+
+        return action.data
+    }
+
+
+    return state
+}
 
 
 const loginReducer = (state = "Belum Login", action) => {
@@ -46,8 +55,19 @@ const loginReducer = (state = "Belum Login", action) => {
 
             return action.data
         }
+
+
         return "Salah"
     }
+
+    const status = localStorage.statusLogin
+
+    if (status) {
+        return status
+    } else {
+        localStorage.setItem("statusLogin", 'false')
+    }
+
 
     return state
 }
@@ -57,5 +77,6 @@ export default combineReducers({
     form: formReducer,
     statusLogin: loginReducer,
     user: getUser,
-    pasien: getPasien
+    pasien: getPasien,
+    detailPasien: getDetailPasien
 })

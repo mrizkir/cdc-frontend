@@ -21,7 +21,7 @@ export class Master extends Component {
     }
 
     renderContent = () => {
-        if (!this.props.user) {
+        if (localStorage.statusLogin !== "Berhasil") {
             return <Redirect to='/' />
         } else {
             return (
@@ -78,10 +78,10 @@ export class Master extends Component {
 
                         <hr className="sidebar-divider" />
 
-                        {/* 
+
                         <div className="sidebar-heading">
                             Addons
-      </div> */}
+      </div>
                         <li className="nav-item">
                             <Link className="nav-link" to="/admin/pasien">
                                 <i className="fas fa-fw fa-users"></i>

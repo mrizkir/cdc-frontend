@@ -4,7 +4,7 @@ import Master from './template/Master'
 import bg from '../../assets/img/bg-doctor.jpg'
 // import { Link } from 'react-router-dom'
 
-export class TambahPasien extends Component {
+export class UbahPasien extends Component {
     render() {
         const contentRender = (
             <div>
@@ -90,4 +90,4 @@ export class TambahPasien extends Component {
 
 }
 
-export default TambahPasien
+export default UbahPasien
