@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 
 
 
-import cblue from '../assets/img/cir-blue.png';
+import cblue from '../assets/img/blue.gif';
 import cred from '../assets/img/red.gif';
 import cgreen from '../assets/img/cir-green.png';
 import cgrey from '../assets/img/cir-grey.png';
@@ -73,7 +73,7 @@ const GMap = ({ koordinat }) => {
         icon: {
             url: markerObj.icon,
             // set marker width and height
-            scaledSize: new window.google.maps.Size(50, 50)
+            scaledSize: new window.google.maps.Size(30, 30)
         }
     });
 

@@ -27,6 +27,16 @@ const getUser = (state = null, action) => {
     return state
 }
 
+const getPasien = (state = [], action) => {
+    if (action.type === "GET_PASIEN") {
+
+        return action.data
+    }
+
+
+    return state
+}
+
 
 const loginReducer = (state = "Belum Login", action) => {
 
@@ -46,5 +56,6 @@ export default combineReducers({
     ListKoordinat: getKoordinatReducers,
     form: formReducer,
     statusLogin: loginReducer,
-    user: getUser
+    user: getUser,
+    pasien: getPasien
 })

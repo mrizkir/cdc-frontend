@@ -19,13 +19,34 @@ export const getUser = () => async dispatch => {
             localStorage.setItem("user", response.data)
         })
             .catch((error) => {
-                console.log('error 3 ' + error);
+                console.log('error' + error);
             });
     }
 
 
     dispatch({
         type: "GET_USER",
+        data: data
+    })
+}
+export const getPasien = () => async dispatch => {
+
+    const token = 'Bearer ' + localStorage.token;
+
+    var data = null;
+    if (token) {
+        await Api.get('/setting/userspasien', { headers: { Authorization: token } }).then(response => {
+            data = response.data;
+
+        })
+            .catch((error) => {
+                console.log('error' + error);
+            });
+    }
+
+
+    dispatch({
+        type: "GET_PASIEN",
         data: data
     })
 }
@@ -39,6 +60,7 @@ export const login = (formValues) => async dispatch => {
                 if (res.data.access_token) {
 
                     localStorage.setItem("token", res.data.access_token)
+                    localStorage.setItem("statusLogin", res.data.access_token)
                     dispatch({
                         type: "LOGIN",
                         data: "Berhasil"
@@ -52,6 +74,7 @@ export const login = (formValues) => async dispatch => {
             (error) => {
 
                 localStorage.removeItem("token")
+                localStorage.removeItem("statusLogin")
                 dispatch({
                     type: "LOGIN",
                     data: "Gagal"

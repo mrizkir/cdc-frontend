@@ -78,11 +78,15 @@ export class Master extends Component {
 
                         <hr className="sidebar-divider" />
 
-
+                        {/* 
                         <div className="sidebar-heading">
                             Addons
-      </div>
-
+      </div> */}
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/admin/pasien">
+                                <i className="fas fa-fw fa-users"></i>
+                                <span>Passien</span></Link>
+                        </li>
 
                         <li className="nav-item">
                             <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">

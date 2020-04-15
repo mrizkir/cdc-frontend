@@ -8,7 +8,7 @@ export class Logout extends Component {
     componentDidMount() {
         localStorage.removeItem("token")
         localStorage.removeItem("user")
-
+        localStorage.removeItem("statusLogin")
     }
 
     renderRedirect = () => {

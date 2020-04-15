@@ -58,7 +58,7 @@ export class Login extends Component {
     renderContent = () => {
 
 
-        if (this.props.user) {
+        if (localStorage.statusLogin) {
             return <Redirect to='/admin/dasboard' />
         } else {
             return (

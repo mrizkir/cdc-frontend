@@ -2,6 +2,16 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 export class Navbar extends Component {
+
+    renderLinkLogin() {
+        if (localStorage.statusLogin) {
+            return <Link className="nav-link  " to="/admin/dasboard">Admin Dashboard</Link>
+        } else {
+            return <Link className="nav-link  " to="/login">Login</Link>
+
+        }
+    }
+
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -20,7 +30,7 @@ export class Navbar extends Component {
                         </li>
 
                         <li className="nav-item">
-                            <Link className="nav-link  " to="/login">Login</Link>
+                            {this.renderLinkLogin()}
                         </li>
                     </ul>
 
