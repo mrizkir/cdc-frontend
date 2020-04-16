@@ -1,17 +1,68 @@
 import React, { Component } from 'react'
 import Master from './template/Master'
 
-import bg from '../../assets/img/bg-doctor.jpg'
-// import { Link } from 'react-router-dom'
+import { BASE_URL } from '../constant'
+import { Link } from 'react-router-dom'
+import { Field, reduxForm } from 'redux-form'
+import { connect } from 'react-redux'
+import { getDetailPasien } from '../../actions'
+import noImage from '../../assets/img/no_photo.jpg'
+
 
 export class UbahPasien extends Component {
+
+
+
+    componentDidMount() {
+        this.props.getDetailPasien(this.props.match.params.id)
+    }
+
+    renderInput = ({ input, label, type, meta, dataAwal }) => {
+        return (
+
+            <div className="form-group">
+                <label htmlFor={label}>{label}</label>
+                <input className="form-control form-control-user" id={label}  {...input} type={type} autoComplete='off' placeholder={label} value={dataAwal} />
+
+                {this.renderError(meta)}
+            </div>
+        )
+    }
+
+    renderError({ error, touched }) {
+        if (touched && error) {
+            return (
+                <small className="text-danger">{error}</small>
+                // <span className="focus-input100" data-placeholder="&#xe82a;">{error}</span>
+            )
+        }
+    }
+
+    onSubmit = (formValues) => {
+
+
+    }
+
+
+
     render() {
+        if (this.props.pasien === null) {
+            return <div></div>
+        }
+
+        const pasien = this.props.pasien.user
+        var foto = ''
+        if (pasien.foto === "storage/images/users/no_photo.png") {
+            foto = noImage
+        } else {
+            foto = `${BASE_URL}/${pasien.foto}`
+        }
         const contentRender = (
             <div>
 
                 <div className="card shadow mb-4">
                     <div className="card-header py-3">
-                        <h6 className="m-0 font-weight-bold text-primary">Tambah Pasien</h6>
+                        <h6 className="m-0 font-weight-bold text-primary">Ubah Pasien</h6>
                     </div>
                     <div className="card-body">
 
@@ -21,52 +72,23 @@ export class UbahPasien extends Component {
                                 <div className="card-body p-0">
 
                                     <div className="row">
-                                        <div className="col-lg-5 d-none d-lg-block " style={{ 'overflow': 'hidden' }} >
-                                            <img alt="bg" src={bg} style={{ 'height': '100vh' }} />
+                                        <div className="col-lg-5 d-none d-lg-block pr-0 " style={{ 'background': '#dddddd' }} >
+                                            <img alt="bg" src={foto} style={{ 'width': '100%' }} />
                                         </div>
                                         <div className="col-lg-7">
                                             <div className="p-5">
                                                 <div className="text-center">
-                                                    <h1 className="h4 text-gray-900 mb-4">Data Pasien Baru</h1>
+                                                    <h1 className="h4 text-gray-900 mb-4">Data Pasien </h1>
                                                 </div>
                                                 <form className="user">
-                                                    <div className="form-group row">
-                                                        <div className="col-sm-6 mb-3 mb-sm-0">
-                                                            <input type="text" className="form-control form-control-user" id="exampleFirstName" placeholder="First Name" />
-                                                        </div>
-                                                        <div className="col-sm-6">
-                                                            <input type="text" className="form-control form-control-user" id="exampleLastName" placeholder="Last Name" />
-                                                        </div>
-                                                    </div>
-                                                    <div className="form-group">
-                                                        <input type="email" className="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address" />
-                                                    </div>
-                                                    <div className="form-group row">
-                                                        <div className="col-sm-6 mb-3 mb-sm-0">
-                                                            <input type="password" className="form-control form-control-user" id="exampleInputPassword" placeholder="Password" />
-                                                        </div>
-                                                        <div className="col-sm-6">
-                                                            <input type="password" className="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password" />
-                                                        </div>
-                                                    </div>
-                                                    <a href="login.html" className="btn btn-primary btn-user btn-block">
-                                                        Register Account
-                </a>
+
+                                                    <Field name="username" component={this.renderInput} label="NIK" type="text" dataAwal={pasien.username} />
+
                                                     <hr />
-                                                    <a href="index.html" className="btn btn-google btn-user btn-block">
-                                                        <i className="fab fa-google fa-fw"></i> Register with Google
-                </a>
-                                                    <a href="index.html" className="btn btn-facebook btn-user btn-block">
-                                                        <i className="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                </a>
+
                                                 </form>
                                                 <hr />
-                                                <div className="text-center">
-                                                    <a className="small" href="forgot-password.html">Forgot Password?</a>
-                                                </div>
-                                                <div className="text-center">
-                                                    <a className="small" href="login.html">Already have an account? Login!</a>
-                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -90,4 +112,31 @@ export class UbahPasien extends Component {
 
 }
 
-export default UbahPasien
+
+const validate = (formValue) => {
+    const errors = {}
+    if (!formValue.username) {
+        errors.username = "NIK Harus diisi"
+    }
+    if (!formValue.password) {
+        errors.password = "Password Harus diisi"
+    }
+
+    return errors;
+
+}
+
+const stateToProps = state => {
+    return {
+        pasien: state.detailPasien
+    }
+}
+
+
+const formWrap = reduxForm({
+    form: 'formUbahPasien',
+    validate,
+
+})(UbahPasien)
+
+export default connect(stateToProps, { getDetailPasien })(formWrap)

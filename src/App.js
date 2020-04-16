@@ -36,7 +36,7 @@ export class App extends Component {
           <Route path="/admin/daftaruser" component={DaftarUser} />
           <Route path="/admin/adduser" component={AddUser} />
           <Route path="/admin/pasien" component={Pasien} />
-          <Route path="/admin/ubahpasien" component={UbahPasien} />
+          <Route path="/admin/ubahpasien/:id" component={UbahPasien} />
           <Route path="/admin/detailpasien/:id" component={DetailPasien} />
 
         </div>

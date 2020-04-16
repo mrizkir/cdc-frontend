@@ -27,7 +27,7 @@ export class Pasien extends Component {
                     <td>{pasien.Nm_Kecamatan}</td>
                     <td>{pasien.nama_status}</td>
                     <td>
-                        <Link to="/admin/ubahpasien" class="btn btn-warning mr-2"><i class="fas fa-edit"></i></Link>
+                        <Link to={`/admin/ubahpasien/${pasien.id}`} class="btn btn-warning mr-2"><i class="fas fa-edit"></i></Link>
                         <Link to={`/admin/detailpasien/${pasien.id}`} class="btn btn-info"><i class="far fa-eye"></i></Link>
                     </td>
                 </tr>

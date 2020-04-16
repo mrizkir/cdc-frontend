@@ -2,10 +2,13 @@
 import React, { Component } from 'react'
 import Master from './template/Master'
 import { connect } from 'react-redux'
+import { BASE_URL } from '../constant'
+
+import noImage from '../../assets/img/no_photo.jpg'
 
 
 import { getDetailPasien } from '../../actions'
-import bg from '../../assets/img/bg-doctor.jpg'
+
 // import { Link } from 'react-router-dom'
 
 export class UbahPasien extends Component {
@@ -15,13 +18,21 @@ export class UbahPasien extends Component {
     }
 
     render() {
-        console.log(this.props.pasien)
+
 
         if (this.props.pasien === null) {
             return <div></div>
         }
 
         const pasien = this.props.pasien.user
+        var foto = ''
+        if (pasien.foto === "storage/images/users/no_photo.png") {
+            foto = noImage
+        } else {
+            foto = `${BASE_URL}/${pasien.foto}`
+        }
+
+
 
         const contentRender = (
             <div>
@@ -38,8 +49,8 @@ export class UbahPasien extends Component {
                                 <div className="card-body p-0">
 
                                     <div className="row">
-                                        <div className="col-lg-5 d-none d-lg-block " style={{ 'overflow': 'hidden' }} >
-                                            <img alt="bg" src={bg} style={{ 'height': '100%' }} />
+                                        <div className="col-lg-5 d-none d-lg-block pr-0 " style={{ 'background': '#dddddd' }} >
+                                            <img alt="bg" src={foto} style={{ 'width': '100%' }} />
                                         </div>
                                         <div className="col-lg-7">
                                             <div className="p-5">
