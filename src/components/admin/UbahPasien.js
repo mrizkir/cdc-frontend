@@ -49,7 +49,7 @@ export class UbahPasien extends Component {
 
     render() {
         if (this.props.initialValues === null) {
-            return <div>Loading..</div>
+            return <div>Loading...</div>
         }
 
         const pasien = this.props.initialValues
