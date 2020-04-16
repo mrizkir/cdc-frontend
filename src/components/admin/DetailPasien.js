@@ -33,7 +33,7 @@ export class UbahPasien extends Component {
         }
 
 
-
+        console.log(pasien)
         const contentRender = (
             <div>
 
@@ -73,6 +73,10 @@ export class UbahPasien extends Component {
                                                             <tr>
                                                                 <td>Nomor HP</td>
                                                                 <td>{pasien.nomor_hp}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Tempat, Tanggal Lahir</td>
+                                                                <td>{pasien.tempat_lahir}, {pasien.tanggal_lahir}</td>
                                                             </tr>
 
                                                             <tr>

@@ -14,6 +14,11 @@ const GMap = ({ koordinat }) => {
 
     var marker = []
 
+    marker.push(
+        { lat: 1.071355, lng: 104.216962, icon: cpin },
+        { lat: 1.052278, lng: 104.675537, icon: cpin }
+    )
+
 
     const pilihIcon = (i) => {
         switch (i) {
@@ -32,20 +37,17 @@ const GMap = ({ koordinat }) => {
 
 
 
-    console.log("dr if")
-    for (var i = 0; i < koordinat.length; i++) {
-        marker.push(
-            { lat: parseInt(`${koordinat[i].lat}`), lng: parseInt(`${koordinat[i].lng}`), icon: pilihIcon(koordinat[i].status_pasien) }
-        )
+    if (koordinat.length > 0) {
+        console.log("dr if")
+        for (var i = 0; i < koordinat.length; i++) {
+            marker.push(
+                { lat: parseInt(`${koordinat[i].lat}`), lng: parseInt(`${koordinat[i].lng}`), icon: pilihIcon(koordinat[i].status_pasien) }
+            )
+        }
+
     }
-    marker.push(
-        { lat: 1.071355, lng: 104.216962, icon: cpin },
-        { lat: 1.052278, lng: 104.675537, icon: cpin }
-    )
 
-
-
-
+    console.log(`isi marker: ${marker}`)
     const markerList = marker
 
     useEffect(() => {
@@ -58,6 +60,15 @@ const GMap = ({ koordinat }) => {
         googleMap.fitBounds(bounds); // the map to contain all markers
     }, []);
 
+
+    // initialize the google map
+    const initGoogleMap = () => {
+        return new window.google.maps.Map(googleMapRef.current, {
+            // center: { lat: 1.014682, lng: 104.469781 },
+            zoom: 10
+        });
+    }
+
     // create marker on google map
     const createMarker = (markerObj) => new window.google.maps.Marker({
         position: { lat: markerObj.lat, lng: markerObj.lng },
@@ -68,16 +79,6 @@ const GMap = ({ koordinat }) => {
             scaledSize: new window.google.maps.Size(30, 30)
         }
     });
-
-    // initialize the google map
-    const initGoogleMap = () => {
-        return new window.google.maps.Map(googleMapRef.current, {
-            // center: { lat: 1.014682, lng: 104.469781 },
-            zoom: 10
-        });
-    }
-
-
 
     return <div
         ref={googleMapRef}

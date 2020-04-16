@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Master from './template/Master'
 
 import { BASE_URL } from '../constant'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { getDetailPasien, ubahPasien } from '../../actions'
@@ -42,7 +42,7 @@ export class UbahPasien extends Component {
     onSubmit = (formValues) => {
 
         this.props.ubahPasien(this.props.match.params.id, formValues)
-
+        this.props.history.push('/admin/pasien')
     }
 
 
@@ -92,7 +92,9 @@ export class UbahPasien extends Component {
                                                     <Field name="Nm_Desa" component={this.renderInput} label="Nama Desa" type="text" />
                                                     <Field name="Nm_Kecamatan" component={this.renderInput} label="Nama Kecamatan" type="text" />
                                                     <Field name="nama_status" component={this.renderInput} label="Status Pasien" type="text" />
-                                                    <Field name="_method" dvalue="PUT" component={this.renderInput} type="hidden" />
+                                                    <Field name="tanggal_lahir" component={this.renderInput} type="hidden" />
+                                                    <Field name="tempat_lahir" component={this.renderInput} type="hidden" />
+
                                                     <hr />
 
                                                     <div className="row">
@@ -147,6 +149,7 @@ const validate = (formValue) => {
 }
 
 const stateToProps = state => {
+    console.log(state)
     return {
         initialValues: state.detailPasien
     }

@@ -13,7 +13,7 @@ const getKoordinatReducers = (state = [], action) => {
 const ubahPasien = (state = "", action) => {
 
     if (action.type === "UBAH_PASIEN") {
-        console.log(action.data)
+
         return action.data
     }
 
@@ -28,11 +28,6 @@ const getUser = (state = null, action) => {
         return action.data
     }
 
-    const user = localStorage.user
-
-    if (user) {
-        return user
-    }
 
     return state
 }
@@ -67,15 +62,13 @@ const loginReducer = (state = "Belum Login", action) => {
         }
 
 
-        return "Salah"
+        return state
     }
 
     const status = localStorage.statusLogin
 
     if (status) {
         return status
-    } else {
-        localStorage.setItem("statusLogin", 'false')
     }
 
 

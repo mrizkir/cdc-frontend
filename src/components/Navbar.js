@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 export class Navbar extends Component {
 
     renderLinkLogin() {
-        if (localStorage.statusLogin) {
-            if (localStorage.statusLogin === "Berhasil") {
-                return <Link className="nav-link  " to="/admin/dasboard">Admin Dashboard</Link>
-            } else {
-                return <Link className="nav-link  " to="/login">Login</Link>
-            }
+        if (this.props.statusLogin === "Berhasil") {
+
+            return <Link className="nav-link  " to="/admin/dasboard">Admin Dashboard</Link>
+
         } else {
             return <Link className="nav-link  " to="/login">Login</Link>
 
@@ -44,4 +43,10 @@ export class Navbar extends Component {
     }
 }
 
-export default Navbar
+const stateToProps = state => {
+    return {
+        statusLogin: state.statusLogin
+    }
+}
+
+export default connect(stateToProps)(Navbar)

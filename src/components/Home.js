@@ -6,7 +6,7 @@ import Content from './Contentslide'
 import Map from './Map'
 
 import { connect } from 'react-redux'
-import { getKoordinat } from '../actions'
+import { getKoordinat, getUser } from '../actions'
 import Navbar from './Navbar'
 
 export class Home extends Component {
@@ -16,6 +16,7 @@ export class Home extends Component {
     componentDidMount = async () => {
 
         this.props.getKoordinat()
+        this.props.getUser()
 
 
     }
@@ -50,7 +51,7 @@ export class Home extends Component {
                     </div>
 
                     <div className="col-md-9 col-sm-12">
-                        <Map koordinat={this.props.ListKoordinat.data} />
+                        <Map koordinat={this.props.ListKoordinat} />
                         {/* <Runningtext /> */}
                         {/* <Chart /> */}
 
@@ -70,8 +71,8 @@ export class Home extends Component {
 }
 
 const stateToProps = state => {
-
+    console.log(state)
     return { ListKoordinat: state.ListKoordinat }
 }
 
-export default connect(stateToProps, { getKoordinat })(Home)
+export default connect(stateToProps, { getKoordinat, getUser })(Home)

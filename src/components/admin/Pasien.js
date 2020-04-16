@@ -14,9 +14,14 @@ export class Pasien extends Component {
 
 
     renderPasien() {
-        if (this.props.pasiens.length === 0) {
-            return <div>Loading Pasien...</div>
+        if (!this.props.pasiens) {
+
+            return <div>Loading..</div>
         }
+        if (this.props.pasiens.length === 0) {
+            return <div>Tidak ada data pasien.</div>
+        }
+
 
         return this.props.pasiens.userspasien.map(pasien => {
             return (
@@ -84,7 +89,7 @@ export class Pasien extends Component {
 }
 
 const stateToProps = state => {
-
+    console.log(state)
 
     return {
         pasiens: state.pasien

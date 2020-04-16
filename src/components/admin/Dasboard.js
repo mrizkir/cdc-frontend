@@ -3,27 +3,46 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Master from './template/Master'
 
+import Map from '../Map'
+import { getKoordinat } from '../../actions'
+
 export class Dasboard extends Component {
 
+    componentDidMount() {
+        this.props.getKoordinat()
+    }
 
-
-
-    render() {
-
-
-        const contentRender = (
+    renderContent = () => {
+        // if (this.props.koordinat.length === 0) {
+        //     return (<div>Loading</div>)
+        // } else {
+        var contentRender = (
             <div>
-                <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
-
+                <Map koordinat={this.props.koordinat} />
             </div>
         )
-
         return (
             <Master contentRender={contentRender} />
         )
     }
+    // }
+
+    render() {
+
+
+        return (
+            <>
+                {this.renderContent()}
+            </>
+        )
+    }
 }
 
+const stateToProps = state => {
+    console.log(state)
+    return {
+        koordinat: state.ListKoordinat
+    }
+}
 
-
-export default connect(null)(Dasboard)
+export default connect(stateToProps, { getKoordinat })(Dasboard)
