@@ -24,7 +24,7 @@ export class UbahPasien extends Component {
             return <div></div>
         }
 
-        const pasien = this.props.pasien.user
+        const pasien = this.props.pasien
         var foto = ''
         if (pasien.foto === "storage/images/users/no_photo.png") {
             foto = noImage

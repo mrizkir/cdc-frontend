@@ -10,6 +10,16 @@ const getKoordinatReducers = (state = [], action) => {
     return state
 }
 
+const ubahPasien = (state = "", action) => {
+
+    if (action.type === "UBAH_PASIEN") {
+        console.log(action.data)
+        return action.data
+    }
+
+    return state
+}
+
 
 
 const getUser = (state = null, action) => {
@@ -39,7 +49,7 @@ const getPasien = (state = [], action) => {
 const getDetailPasien = (state = null, action) => {
     if (action.type === "GET_DETAIL_PASIEN") {
 
-        return action.data
+        return action.data.user
     }
 
 

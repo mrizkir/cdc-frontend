@@ -5,7 +5,7 @@ import { BASE_URL } from '../constant'
 import { Link } from 'react-router-dom'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import { getDetailPasien } from '../../actions'
+import { getDetailPasien, ubahPasien } from '../../actions'
 import noImage from '../../assets/img/no_photo.jpg'
 
 
@@ -17,17 +17,18 @@ export class UbahPasien extends Component {
         this.props.getDetailPasien(this.props.match.params.id)
     }
 
-    renderInput = ({ input, label, type, meta, dataAwal }) => {
-        return (
+    renderInput = ({ input, label, type, meta }) => {
 
+        return (
             <div className="form-group">
                 <label htmlFor={label}>{label}</label>
-                <input className="form-control form-control-user" id={label}  {...input} type={type} autoComplete='off' placeholder={label} value={dataAwal} />
-
+                <input className="form-control form-control-user" id={label}  {...input} type={type} autoComplete='off' placeholder={label} />
                 {this.renderError(meta)}
             </div>
         )
+
     }
+
 
     renderError({ error, touched }) {
         if (touched && error) {
@@ -40,17 +41,18 @@ export class UbahPasien extends Component {
 
     onSubmit = (formValues) => {
 
+        this.props.ubahPasien(this.props.match.params.id, formValues)
 
     }
 
 
 
     render() {
-        if (this.props.pasien === null) {
-            return <div></div>
+        if (this.props.initialValues === null) {
+            return <div>Loading..</div>
         }
 
-        const pasien = this.props.pasien.user
+        const pasien = this.props.initialValues
         var foto = ''
         if (pasien.foto === "storage/images/users/no_photo.png") {
             foto = noImage
@@ -72,25 +74,43 @@ export class UbahPasien extends Component {
                                 <div className="card-body p-0">
 
                                     <div className="row">
+
                                         <div className="col-lg-5 d-none d-lg-block pr-0 " style={{ 'background': '#dddddd' }} >
                                             <img alt="bg" src={foto} style={{ 'width': '100%' }} />
                                         </div>
                                         <div className="col-lg-7">
                                             <div className="p-5">
                                                 <div className="text-center">
-                                                    <h1 className="h4 text-gray-900 mb-4">Data Pasien </h1>
+                                                    <h1 className="h4 text-gray-900 mb-4">Ubah Data Pasien </h1>
                                                 </div>
-                                                <form className="user">
+                                                <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="user" >
 
-                                                    <Field name="username" component={this.renderInput} label="NIK" type="text" dataAwal={pasien.username} />
-
+                                                    <Field name="username" component={this.renderInput} label="NIK" type="text" />
+                                                    <Field name="name" component={this.renderInput} label="Nama" type="text" />
+                                                    <Field name="nomor_hp" component={this.renderInput} label="Nomor HP" type="text" />
+                                                    <Field name="alamat" component={this.renderInput} label="Alamat" type="text" />
+                                                    <Field name="Nm_Desa" component={this.renderInput} label="Nama Desa" type="text" />
+                                                    <Field name="Nm_Kecamatan" component={this.renderInput} label="Nama Kecamatan" type="text" />
+                                                    <Field name="nama_status" component={this.renderInput} label="Status Pasien" type="text" />
+                                                    <Field name="_method" dvalue="PUT" component={this.renderInput} type="hidden" />
                                                     <hr />
 
+                                                    <div className="row">
+                                                        <div className="col-6">
+                                                            <button className="btn btn-primary" style={{ width: '100%' }}> Ubah</button>
+
+                                                        </div>
+                                                        <div className="col-6">
+                                                            <Link to='/admin/pasien' className="btn btn-secondary" style={{ width: '100%' }}> Batal</Link>
+
+                                                        </div>
+                                                    </div>
                                                 </form>
-                                                <hr />
+
 
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -118,8 +138,8 @@ const validate = (formValue) => {
     if (!formValue.username) {
         errors.username = "NIK Harus diisi"
     }
-    if (!formValue.password) {
-        errors.password = "Password Harus diisi"
+    if (!formValue.alamat) {
+        errors.alamat = "Alamat Harus diisi"
     }
 
     return errors;
@@ -128,7 +148,7 @@ const validate = (formValue) => {
 
 const stateToProps = state => {
     return {
-        pasien: state.detailPasien
+        initialValues: state.detailPasien
     }
 }
 
@@ -139,4 +159,8 @@ const formWrap = reduxForm({
 
 })(UbahPasien)
 
-export default connect(stateToProps, { getDetailPasien })(formWrap)
+export default connect(
+    stateToProps,
+
+
+    { getDetailPasien, ubahPasien })(formWrap)

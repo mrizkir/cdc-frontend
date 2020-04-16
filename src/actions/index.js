@@ -1,4 +1,5 @@
 import Api from '../axios/Api'
+import { Children } from 'react'
 
 export const getKoordinat = () => async dispatch => {
     const data = await Api.get('/koordinat')
@@ -106,6 +107,33 @@ export const login = (formValues) => async dispatch => {
         );
 
 
+
+}
+
+
+export const ubahPasien = (id, formValues) => async dispatch => {
+    console.log({ _method: 'PUT', ...formValues })
+
+    const token = 'Bearer ' + localStorage.token;
+
+    if (token) {
+        await Api.post(`/setting/userspasien/${id}`, { headers: { Authorization: token }, data: { _method: 'PUT', ...formValues } })
+            .then(
+                (res) => {
+                    console.log("berhasil")
+                    console.log(res)
+                },
+                (error) => {
+                    console.log('error ini' + error);
+                    dispatch({
+                        type: "UBAH_PASIEN",
+                        data: "Gagal"
+                    })
+
+                }
+            );
+
+    }
 
 }
 

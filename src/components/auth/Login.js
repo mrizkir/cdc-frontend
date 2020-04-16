@@ -45,7 +45,7 @@ export class Login extends Component {
 
     renderSalah = () => {
 
-        if (this.props.statusLogin == "Salah") {
+        if (this.props.statusLogin === "Salah") {
             return (
                 <>
                     <br />
