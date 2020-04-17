@@ -103,6 +103,28 @@ export const getDetailPasien = (id) => async dispatch => {
 
 }
 
+export const getStatusPasien = (id) => async dispatch => {
+
+    const token = 'Bearer ' + localStorage.token;
+
+    var data = null;
+    if (token) {
+        await Api.get(`/setting/userspasien/${id}`, { headers: { Authorization: token } }).then(response => {
+            data = response.data;
+            dispatch({
+                type: "GET_DETAIL_PASIEN",
+                data: data
+            })
+        })
+            .catch((error) => {
+                console.log('error ini' + error);
+            });
+    }
+
+
+
+}
+
 
 
 export const login = (formValues) => async dispatch => {
@@ -163,13 +185,25 @@ export const ubahPasien = (id, formValues) => async dispatch => {
 
 }
 
-export const ceklogin = () => async dispatch => {
-    const response = await Api.post('/login.php')
+export const ubahStatusPasien = (id, formValues) => async dispatch => {
 
-    dispatch({
-        type: "LOGIN",
-        data: response.data
-    })
+
+    const token = 'Bearer ' + localStorage.token;
+
+    if (token) {
+        await Api.post(`/setting/userspasien/updatestatus/${id}`, { _method: 'PUT', ...formValues }, { headers: { Authorization: token } })
+            .then(
+                (res) => {
+
+                },
+                (error) => {
+                    console.log('gagal update status pasien' + error);
+
+                }
+            );
+
+    }
 
 }
+
 

@@ -76,6 +76,8 @@ export class Pasien extends Component {
                     </div>
                 </div>
 
+
+
             </div>
         )
 

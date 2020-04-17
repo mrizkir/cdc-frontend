@@ -2,23 +2,45 @@ import React, { Component } from 'react'
 import Master from './template/Master'
 
 import { BASE_URL } from '../constant'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { getDetailPasien, ubahPasien } from '../../actions'
 import noImage from '../../assets/img/no_photo.jpg'
+import ModalUbahPasien from './ModalUbahPasien'
 
 
 export class UbahPasien extends Component {
 
+    state = {
+        show: "modal fade"
+    }
 
+    // hideModal = () => {
+    //     console.log("hideeen")
+    //     document.getElementById('exampleModal').classList.remove('show');
+    //     document.getElementById('exampleModal').style.display = "none";
+
+    //     document.getElementById('exampleModal').setAttribute("aria-hidden", "true");
+    //     document.getElementById('exampleModal').removeAttribute("aria-modal");
+    //     document.getElementById('exampleModal').removeAttribute("style");
+
+    //     document.getElementById('body').removeAttribute("class");
+    //     document.getElementById('body').removeAttribute("style");
+    // }
 
     componentDidMount() {
         this.props.getDetailPasien(this.props.match.params.id)
     }
 
-    renderInput = ({ input, label, type, meta }) => {
-
+    renderInput = ({ input, label, type, meta, dataToggle, dataTarget }) => {
+        if (dataToggle) {
+            return <div className="form-group">
+                <label htmlFor={label}>{label}</label>
+                <input className="form-control form-control-user" id={label}  {...input} type={type} autoComplete='off' placeholder={label} data-toggle="modal" data-target="#exampleModal" />
+                {this.renderError(meta)}
+            </div>
+        }
         return (
             <div className="form-group">
                 <label htmlFor={label}>{label}</label>
@@ -28,6 +50,7 @@ export class UbahPasien extends Component {
         )
 
     }
+
 
 
     renderError({ error, touched }) {
@@ -91,7 +114,7 @@ export class UbahPasien extends Component {
                                                     <Field name="alamat" component={this.renderInput} label="Alamat" type="text" />
                                                     <Field name="Nm_Desa" component={this.renderInput} label="Nama Desa" type="text" />
                                                     <Field name="Nm_Kecamatan" component={this.renderInput} label="Nama Kecamatan" type="text" />
-                                                    <Field name="nama_status" component={this.renderInput} label="Status Pasien" type="text" />
+                                                    <Field name="nama_status" component={this.renderInput} label="Status Pasien" type="text" dataToggle="modal" dataTarget="#exampleModal" />
                                                     <Field name="tanggal_lahir" component={this.renderInput} type="hidden" />
                                                     <Field name="tempat_lahir" component={this.renderInput} type="hidden" />
 
@@ -122,7 +145,13 @@ export class UbahPasien extends Component {
                     </div>
                 </div>
 
-            </div>
+
+                <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    {/* <ModalUbahPasien pasien={pasien} hideModal={() => this.hideModal()} /> */}
+                    <ModalUbahPasien pasien={pasien} />
+                </div>
+
+            </div >
         )
 
         return (
@@ -149,7 +178,7 @@ const validate = (formValue) => {
 }
 
 const stateToProps = state => {
-    console.log(state)
+
     return {
         initialValues: state.detailPasien
     }
@@ -164,6 +193,4 @@ const formWrap = reduxForm({
 
 export default connect(
     stateToProps,
-
-
     { getDetailPasien, ubahPasien })(formWrap)
