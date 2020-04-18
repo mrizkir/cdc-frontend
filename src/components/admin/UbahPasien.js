@@ -123,7 +123,7 @@ export class UbahPasien extends Component {
 
                                                     <div className="row">
                                                         <div className="col-6">
-                                                            <button className="btn btn-primary" style={{ width: '100%' }}> Ubah</button>
+                                                            <button className="btn btn-primary" style={{ width: '100%' }}> OK</button>
 
                                                         </div>
                                                         <div className="col-6">

@@ -13,6 +13,7 @@ export class Pasien extends Component {
     }
 
 
+
     renderPasien() {
         if (!this.props.pasiens) {
 
@@ -91,6 +92,7 @@ export class Pasien extends Component {
 }
 
 const stateToProps = state => {
+
     console.log(state)
 
     return {

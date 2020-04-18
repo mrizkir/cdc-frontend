@@ -8,12 +8,25 @@ import { ubahStatusPasien } from '../../actions'
 
 export class ModalUbahPasien extends Component {
 
+    // state = {
+    //     submit: 0
+    // }
+
     onSubmit = async (formValues) => {
 
         await this.props.ubahStatusPasien(this.props.pasien.id, formValues)
         window.location.reload();
+        // this.setState({
+        //     submit: 1
+        // })
 
     }
+
+    // renderRedirect() {
+    //     if (this.state.submit === 1) {
+    //         return <Redirect to='/admin/pasien' />
+    //     }
+    // }
 
 
     renderInput = ({ input, label, avalue, statusnya }) => {

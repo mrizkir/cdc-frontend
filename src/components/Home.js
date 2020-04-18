@@ -71,7 +71,7 @@ export class Home extends Component {
 }
 
 const stateToProps = state => {
-    console.log(state)
+
     return { ListKoordinat: state.ListKoordinat }
 }
 

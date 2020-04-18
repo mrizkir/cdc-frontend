@@ -8,14 +8,24 @@ import { getKoordinat } from '../../actions'
 
 export class Dasboard extends Component {
 
-    componentDidMount() {
-        this.props.getKoordinat()
+    async componentDidMount() {
+        await this.props.getKoordinat()
     }
 
+
+
     renderContent = () => {
-        // if (this.props.koordinat.length === 0) {
-        //     return (<div>Loading</div>)
-        // } else {
+
+        if (this.props.koordinat) {
+            if (this.props.koordinat.length === 0) {
+                return <Map koordinat={this.props.koordinat} />
+            }
+
+        } else {
+            return <div>Masih undifind</div>
+        }
+
+
         var contentRender = (
             <div>
                 <Map koordinat={this.props.koordinat} />
@@ -39,7 +49,7 @@ export class Dasboard extends Component {
 }
 
 const stateToProps = state => {
-    console.log(state)
+
     return {
         koordinat: state.ListKoordinat
     }

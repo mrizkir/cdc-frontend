@@ -33,7 +33,7 @@ export class UbahPasien extends Component {
         }
 
 
-        console.log(pasien)
+
         const contentRender = (
             <div>
 

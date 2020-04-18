@@ -18,7 +18,10 @@ export class Master extends Component {
     componentDidMount() {
 
         this.props.getUser()
+
     }
+
+
 
     renderContent = () => {
         if (this.props.statusLogin !== "Berhasil") {
