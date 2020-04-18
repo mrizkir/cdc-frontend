@@ -6,6 +6,7 @@ import Master from './template/Master'
 import Map from '../Map'
 import { getKoordinat } from '../../actions'
 
+
 export class Dasboard extends Component {
 
     async componentDidMount() {
@@ -22,7 +23,12 @@ export class Dasboard extends Component {
             }
 
         } else {
-            return <div>Loading</div>
+            return <div><div class="spinner-border spinner-border-sm" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+                <div class="spinner-grow spinner-grow-sm" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div></div>
         }
 
         contentRenderNull = (

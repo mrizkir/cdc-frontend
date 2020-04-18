@@ -7,6 +7,7 @@ import { Link, Redirect } from 'react-router-dom'
 import { getUser } from '../../../actions'
 import '../../../assets/admin/css/sb-admin-2.min.css'
 import '../../../assets/admin/vendor/fontawesome-free/css/all.min.css'
+import { Sidebar } from '../../Sidebar'
 
 
 
@@ -21,6 +22,26 @@ export class Master extends Component {
 
     }
 
+    // sidebarRender = () => {
+    //     if (!this.props.sidebarRender) {
+    //         return (
+    //             <div className="text-center">
+    //                 <div className="spinner-border spinner-border-sm" role="status">
+    //                     <span className="sr-only">Loading...</span>
+    //                 </div>
+    //                 <div className="spinner-grow spinner-grow-sm" role="status">
+    //                     <span className="sr-only">Loading...</span>
+    //                 </div>
+    //                 <br></br>
+    //                 <br></br>
+    //             </div>
+    //         )
+    //     }
+
+
+
+    //     return <Sidebar />
+    // }
 
 
     renderContent = () => {
@@ -51,7 +72,8 @@ export class Master extends Component {
                                 <span>Dashboard</span></Link>
                         </li>
 
-
+                        {/* {this.sidebarRender()} */}
+                        {/* <Sidebar /> */}
                         <hr className="sidebar-divider" />
 
 

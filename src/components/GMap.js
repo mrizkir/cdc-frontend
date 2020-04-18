@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 
 
 
-import cblue from '../assets/img/blue.gif';
+import cblue from '../assets/img/cir-blue.png';
 import cred from '../assets/img/red.gif';
 import cgreen from '../assets/img/cir-green.png';
 import cgrey from '../assets/img/cir-grey.png';

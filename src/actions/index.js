@@ -6,15 +6,17 @@ export const getKoordinat = () => async dispatch => {
 
     var data = null;
     if (token) {
-        await Api.post('/pasien/lokasiterakhir', { mode: 'all', id: 'all' }, { headers: { Authorization: token } }).then(response => {
+        await Api.post('/pasien/lokasiterakhir', { mode: 'all', id: 'all' }, { headers: { Authorization: token } }).then(async response => {
 
             data = response.data;
 
 
-            dispatch({
+            await dispatch({
                 type: "GET_KOORDINAT",
                 data: data.lokasiterakhir
             })
+
+            dispatch(hitungJumlah(data.lokasiterakhir))
         })
             .catch((error) => {
 
@@ -61,6 +63,7 @@ export const getKoordinatPublic = () => async dispatch => {
 }
 
 export const hitungJumlah = (data) => async dispatch => {
+
     var jumlah = {
         total: 0,
         meninggal: 0,

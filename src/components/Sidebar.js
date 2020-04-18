@@ -5,12 +5,113 @@ import { connect } from 'react-redux'
 export class Sidebar extends Component {
 
 
+    kecamatanMeninggal = () => {
+        if (!this.props.jumlah) {
+            return <div>Loading Data..</div>
+        }
+        const kecamatan = this.props.jumlah.kecamatan.meninggal
+        var count = {};
+        kecamatan.forEach(function (i) { count[i] = (count[i] || 0) + 1; });
+        let data = []
+        for (let [key, value] of Object.entries(count)) {
+            data.push(<div key={key}><p className="garis">  {key} <br className="garis" /><small className="text-danger garis">{value} Orang</small></p>  <hr className="garis" /> </div>);
+        }
+        return data
+    }
+    kecamatanPositif = () => {
+        if (!this.props.jumlah) {
+            return <div>Loading Data..</div>
+        }
+        const kecamatan = this.props.jumlah.kecamatan.positif
+        var count = {};
+        kecamatan.forEach(function (i) { count[i] = (count[i] || 0) + 1; });
+        let data = []
+        for (let [key, value] of Object.entries(count)) {
+            data.push(<div key={key}><p className="garis">  {key} <br className="garis" /><small className="text-danger garis">{value} Orang</small></p>  <hr className="garis" /> </div>);
+        }
+        return data
+    }
+    kecamatanOtg = () => {
+        if (!this.props.jumlah) {
+            return <div>Loading Data..</div>
+        }
+        const kecamatan = this.props.jumlah.kecamatan.otg
+        var count = {};
+        kecamatan.forEach(function (i) { count[i] = (count[i] || 0) + 1; });
+        let data = []
+        for (let [key, value] of Object.entries(count)) {
+            data.push(<div key={key}><p className="garis">  {key} <br className="garis" /><small className="text-danger garis">{value} Orang</small></p>  <hr className="garis" /> </div>);
+        }
+        return data
+    }
 
+    kecamatanPdp = () => {
+        if (!this.props.jumlah) {
+            return <div>Loading Data..</div>
+        }
+        const kecamatan = this.props.jumlah.kecamatan.pdp
+        var count = {};
+        kecamatan.forEach(function (i) { count[i] = (count[i] || 0) + 1; });
+        let data = []
+        for (let [key, value] of Object.entries(count)) {
+            data.push(<div key={key}><p className="garis">  {key} <br className="garis" /><small className="text-danger garis">{value} Orang</small></p>  <hr className="garis" /> </div>);
+        }
+        return data
+    }
+    kecamatanOdp = () => {
+        if (!this.props.jumlah) {
+            return <div>Loading Data..</div>
+        }
+        const kecamatan = this.props.jumlah.kecamatan.odp
+        var count = {};
+        kecamatan.forEach(function (i) { count[i] = (count[i] || 0) + 1; });
+        let data = []
+        for (let [key, value] of Object.entries(count)) {
+            data.push(<div key={key}><p className="garis">  {key} <br className="garis" /><small className="text-danger garis">{value} Orang</small></p>  <hr className="garis" /> </div>);
+        }
+        return data
+    }
+    kecamatanSembuh = () => {
+        if (!this.props.jumlah) {
+            return <div>Loading Data..</div>
+        }
+        const kecamatan = this.props.jumlah.kecamatan.sembuh
+        var count = {};
+        kecamatan.forEach(function (i) { count[i] = (count[i] || 0) + 1; });
+        let data = []
+        for (let [key, value] of Object.entries(count)) {
+            data.push(<div key={key}><p className="garis">  {key} <br className="garis" /><small className="text-danger garis">{value} Orang</small></p>  <hr className="garis" /> </div>);
+        }
+        return data
+    }
+    kecamatanNegatif = () => {
+        if (!this.props.jumlah) {
+            return <div>Loading Data..</div>
+        }
+        const kecamatan = this.props.jumlah.kecamatan.negatif
+        var count = {};
+        kecamatan.forEach(function (i) { count[i] = (count[i] || 0) + 1; });
+        let data = []
+        for (let [key, value] of Object.entries(count)) {
+            data.push(<div key={key}><p className="garis">  {key} <br className="garis" /><small className="text-danger garis">{value} Orang</small></p>  <hr className="garis" /> </div>);
+        }
+        return data
+    }
 
     render() {
 
+
         if (!this.props.jumlah) {
-            return <div>Loading Data..</div>
+            return <div className="text-center">
+                <div className="spinner-border spinner-border-sm" role="status">
+                    <span className="sr-only">Loading...</span>
+                </div>
+                <div className="spinner-grow spinner-grow-sm" role="status">
+                    <span className="sr-only">Loading...</span>
+                </div>
+                <br></br>
+                <br></br>
+            </div>
         }
 
         const jumlah = this.props.jumlah
@@ -31,7 +132,7 @@ export class Sidebar extends Component {
                             <hr className="garis" />
                             <div className="list-grup">
 
-
+                                {this.kecamatanMeninggal()}
 
 
                             </div>
@@ -46,17 +147,7 @@ export class Sidebar extends Component {
                             <small>KECAMATAN</small>
                             <hr className="garis" />
                             <div className="list-grup">
-                                <p className="garis">  Bintan Pesisir <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Bintan Timur <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Bintan Utara <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Gunung Kijang <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Mantang <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Seri Kuala Lobam <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Tambelan <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Teluk Sebong <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Teluk Bintan <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Toapaya <br className="garis" /><small className="text-danger garis">0 Orang</small></p>
-
+                                {this.kecamatanPositif()}
                             </div>
                         </div>
                     </div>
@@ -69,17 +160,7 @@ export class Sidebar extends Component {
                             <small>KECAMATAN</small>
                             <hr className="garis" />
                             <div className="list-grup">
-                                <p className="garis">  Bintan Pesisir <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Bintan Timur <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Bintan Utara <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Gunung Kijang <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Mantang <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Seri Kuala Lobam <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Tambelan <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Teluk Sebong <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Teluk Bintan <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Toapaya <br className="garis" /><small className="text-danger garis">0 Orang</small></p>
-
+                                {this.kecamatanOtg()}
                             </div>
                         </div>
                     </div>
@@ -91,19 +172,7 @@ export class Sidebar extends Component {
                         <div className="card card-body">
                             <small>KECAMATAN</small>
                             <hr className="garis" />
-                            <div className="list-grup">
-                                <p className="garis">  Bintan Pesisir <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Bintan Timur <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Bintan Utara <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Gunung Kijang <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Mantang <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Seri Kuala Lobam <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Tambelan <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Teluk Sebong <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Teluk Bintan <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Toapaya <br className="garis" /><small className="text-danger garis">0 Orang</small></p>
-
-                            </div>
+                            {this.kecamatanPdp()}
                         </div>
                     </div>
 
@@ -115,17 +184,7 @@ export class Sidebar extends Component {
                             <small>KECAMATAN</small>
                             <hr className="garis" />
                             <div className="list-grup">
-                                <p className="garis">  Bintan Pesisir <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Bintan Timur <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Bintan Utara <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Gunung Kijang <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Mantang <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Seri Kuala Lobam <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Tambelan <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Teluk Sebong <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Teluk Bintan <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Toapaya <br className="garis" /><small className="text-danger garis">0 Orang</small></p>
-
+                                {this.kecamatanOdp()}
                             </div>
                         </div>
                     </div>
@@ -138,17 +197,7 @@ export class Sidebar extends Component {
                             <small>KECAMATAN</small>
                             <hr className="garis" />
                             <div className="list-grup">
-                                <p className="garis">  Bintan Pesisir <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Bintan Timur <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Bintan Utara <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Gunung Kijang <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Mantang <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Seri Kuala Lobam <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Tambelan <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Teluk Sebong <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Teluk Bintan <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Toapaya <br className="garis" /><small className="text-danger garis">0 Orang</small></p>
-
+                                {this.kecamatanSembuh()}
                             </div>
                         </div>
                     </div>
@@ -161,17 +210,7 @@ export class Sidebar extends Component {
                             <small>KECAMATAN</small>
                             <hr className="garis" />
                             <div className="list-grup">
-                                <p className="garis">  Bintan Pesisir <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Bintan Timur <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Bintan Utara <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Gunung Kijang <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Mantang <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Seri Kuala Lobam <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Tambelan <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Teluk Sebong <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Teluk Bintan <br className="garis" /><small className="text-danger garis">0 Orang</small></p>  <hr className="garis" />
-                                <p className="garis">  Toapaya <br className="garis" /><small className="text-danger garis">0 Orang</small></p>
-
+                                {this.kecamatanNegatif()}
                             </div>
                         </div>
                     </div>
@@ -184,6 +223,7 @@ export class Sidebar extends Component {
 }
 
 const stateToProps = state => {
+
     return {
         jumlah: state.jumlah
 

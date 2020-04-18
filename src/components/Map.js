@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import GMap from './GMap';
 
-import cblue from '../assets/img/blue.gif';
+import cblue from '../assets/img/cir-blue.png';
 import cred from '../assets/img/red.gif';
 import cgreen from '../assets/img/cir-green.png';
 import cgrey from '../assets/img/cir-grey.png';
@@ -43,7 +43,7 @@ const App = ({ koordinat }) => {
             {!loadMap ? <div>LoadingMap...</div> : <GMap koordinat={koordinat} />}
             <div className="legenda">
                 <span className="legenda-title">Legenda</span>
-                <img src={cgrey} className="App-logo" alt="logo" width="20px" /> Meninggal
+                <img src={cred} className="App-logo" alt="logo" width="20px" /> Meninggal
                 <img src={cred} className="App-logo" alt="logo" width="20px" /> Positif
                 <img src={cred} className="App-logo" alt="logo" width="20px" /> OTG
                 <img src={cblue} className="App-logo" alt="logo" width="20px" /> PDP
