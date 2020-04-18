@@ -265,11 +265,11 @@ export class Master extends Component {
 
 
         return (
-            <body id="page-top">
+            <div id="page-top">
 
                 {this.renderContent()}
 
-            </body >
+            </div >
 
         )
     }

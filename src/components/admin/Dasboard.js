@@ -15,17 +15,17 @@ export class Dasboard extends Component {
 
 
     renderContent = () => {
-
+        var contentRenderNull = null
         if (this.props.koordinat) {
             if (this.props.koordinat.length === 0) {
                 return <Master contentRender={contentRenderNull} />
             }
 
         } else {
-            return <div>Masih undifind</div>
+            return <div>Loading</div>
         }
 
-        var contentRenderNull = (
+        contentRenderNull = (
             <div>
                 <Map koordinat={this.props.koordinat} />
             </div>
@@ -39,7 +39,6 @@ export class Dasboard extends Component {
             <Master contentRender={contentRender} />
         )
     }
-    // }
 
     render() {
 

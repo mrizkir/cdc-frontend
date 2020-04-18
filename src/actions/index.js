@@ -47,7 +47,7 @@ export const getKoordinatPublic = () => async dispatch => {
             })
         })
         .catch((error) => {
-            console.log(error)
+
             dispatch({
                 type: "GET_KOORDINAT",
                 data: []
@@ -92,7 +92,7 @@ export const getPasien = () => async dispatch => {
 
         })
             .catch((error) => {
-                console.log('error' + error);
+
             });
     }
 
@@ -117,7 +117,7 @@ export const getDetailPasien = (id) => async dispatch => {
             })
         })
             .catch((error) => {
-                console.log('error ini' + error);
+
             });
     }
 
@@ -139,7 +139,7 @@ export const getStatusPasien = (id) => async dispatch => {
             })
         })
             .catch((error) => {
-                console.log('error ini' + error);
+
             });
     }
 
@@ -183,7 +183,7 @@ export const login = (formValues) => async dispatch => {
 
 
 export const ubahPasien = (id, formValues) => async dispatch => {
-    console.log({ _method: 'PUT', ...formValues })
+
 
     const token = 'Bearer ' + localStorage.token;
 
@@ -194,7 +194,7 @@ export const ubahPasien = (id, formValues) => async dispatch => {
 
                 },
                 (error) => {
-                    console.log('error ini' + error);
+
                     dispatch({
                         type: "UBAH_PASIEN",
                         data: "Gagal"
@@ -219,7 +219,6 @@ export const ubahStatusPasien = (id, formValues) => async dispatch => {
 
                 },
                 (error) => {
-                    console.log('gagal update status pasien' + error);
 
                 }
             );

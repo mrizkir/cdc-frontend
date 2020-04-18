@@ -17,30 +17,32 @@ export class Home extends Component {
 
     renderContent = () => {
 
+        var contentRenderNull = null
 
+        if (this.props.koordinat) {
+            if (this.props.koordinat.length === 0) {
+                return <MasterHome contentRender={contentRenderNull} />
+            }
+
+        } else {
+            return <div>Loading</div>
+        }
+
+        contentRenderNull = (
+            <div>
+                <Map koordinat={this.props.koordinat} />
+            </div>
+        )
         var contentRender = (
             <div>
                 <Map koordinat={this.props.koordinat} />
             </div>
         )
-
-        if (this.props.koordinat) {
-
-            if (this.props.koordinat.length === 0) {
-
-                return <MasterHome contentRender={contentRender} />
-            }
-
-        } else {
-            console.log("tdk ada koor")
-            return <MasterHome contentRender={contentRender} />
-        }
-
         return (
             <MasterHome contentRender={contentRender} />
         )
     }
-    // }
+
 
     render() {
 

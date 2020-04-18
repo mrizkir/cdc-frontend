@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 // import Chart from './Chart'
 import Sidebar from './Sidebar'
 // import Runningtext from './Runningtext'
-import Content from './Contentslide'
-import Map from './Map'
-import { Link } from 'react-router-dom'
+// import Content from './Contentslide'
+// import Map from './Map'
+// import { Link } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 import { getKoordinatPublic, getUser } from '../actions'
@@ -32,7 +32,7 @@ export class MasterHome extends Component {
                 <Navbar />
                 <div className="row">
 
-                    <div className="col-md-2 col-sm-12" style={{ 'padding-right': '0' }}>
+                    <div className="col-md-2 col-sm-12" style={{ 'paddingRight': '0' }}>
                         <Sidebar />
                     </div>
 
@@ -68,11 +68,11 @@ export class MasterHome extends Component {
 
 
         return (
-            <body id="page-top">
+            <div id="page-top">
 
                 {this.renderContent()}
 
-            </body >
+            </div >
 
         )
     }

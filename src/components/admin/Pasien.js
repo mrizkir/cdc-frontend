@@ -17,24 +17,28 @@ export class Pasien extends Component {
     renderPasien() {
         if (!this.props.pasiens) {
 
-            return <div>Loading..</div>
+            return <tr>
+                <td colspan="6">Loading..</td>
+            </tr>
         }
         if (this.props.pasiens.length === 0) {
-            return <div>Tidak ada data pasien.</div>
+            return <tr>
+                <td colSpan="6">Tidak ada data pasien.</td>
+            </tr>
         }
 
 
         return this.props.pasiens.userspasien.map(pasien => {
             return (
-                <tr>
+                <tr key={pasien.id}>
                     <td>{pasien.username}</td>
                     <td>{pasien.name}</td>
                     <td>{pasien.nomor_hp}</td>
                     <td>{pasien.Nm_Kecamatan}</td>
                     <td>{pasien.nama_status}</td>
                     <td>
-                        <Link to={`/admin/ubahpasien/${pasien.id}`} class="btn btn-warning mr-2"><i class="fas fa-edit"></i></Link>
-                        <Link to={`/admin/detailpasien/${pasien.id}`} class="btn btn-info"><i class="far fa-eye"></i></Link>
+                        <Link to={`/admin/ubahpasien/${pasien.id}`} className="btn btn-warning mr-2"><i className="fas fa-edit"></i></Link>
+                        <Link to={`/admin/detailpasien/${pasien.id}`} className="btn btn-info"><i className="far fa-eye"></i></Link>
                     </td>
                 </tr>
             )
@@ -47,14 +51,14 @@ export class Pasien extends Component {
         const contentRender = (
             <div>
 
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Daftar Pasien</h6>
+                <div className="card shadow mb-4">
+                    <div className="card-header py-3">
+                        <h6 className="m-0 font-weight-bold text-primary">Daftar Pasien</h6>
 
                     </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <div className="card-body">
+                        <div className="table-responsive">
+                            <table className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
                                 <thead>
                                     <tr>
                                         <th>NIK</th>

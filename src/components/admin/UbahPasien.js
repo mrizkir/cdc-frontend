@@ -12,23 +12,6 @@ import ModalUbahPasien from './ModalUbahPasien'
 
 export class UbahPasien extends Component {
 
-    state = {
-        show: "modal fade"
-    }
-
-    // hideModal = (e) => {
-    //     e.stopPropagation()
-    // console.log("hideeen")
-    // document.getElementById('exampleModal').classList.remove('show');
-    // document.getElementById('exampleModal').style.display = "none";
-
-    // document.getElementById('exampleModal').setAttribute("aria-hidden", "true");
-    // document.getElementById('exampleModal').removeAttribute("aria-modal");
-    // document.getElementById('exampleModal').removeAttribute("style");
-
-    // document.getElementById('body').removeAttribute("class");
-    // document.getElementById('body').removeAttribute("style");
-    // }
 
     componentDidMount() {
         this.props.getDetailPasien(this.props.match.params.id)
@@ -147,7 +130,7 @@ export class UbahPasien extends Component {
                 </div>
 
 
-                <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     {/* <ModalUbahPasien pasien={pasien} hideModal={() => this.hideModal()} /> */}
                     <ModalUbahPasien pasien={pasien} />
                 </div>

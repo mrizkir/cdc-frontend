@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+
 
 
 import { ubahStatusPasien } from '../../actions'
@@ -37,13 +37,13 @@ export class ModalUbahPasien extends Component {
             return (
                 <div className="form-group">
 
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
+                    <div className="input-group">
+                        <div className="input-group-prepend">
+                            <div className="input-group-text">
                                 <input type="radio" aria-label={label} id={label}  {...input} value={avalue} />
                             </div>
                         </div>
-                        <label type="text" htmlFor={label} disabled class="form-control" aria-label={label}  >{label}</label>
+                        <label type="text" htmlFor={label} disabled className="form-control" aria-label={label}  >{label}</label>
                     </div>
 
                 </div>
@@ -56,13 +56,13 @@ export class ModalUbahPasien extends Component {
         return (
             <div className="form-group">
 
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text bg-danger">
+                <div className="input-group">
+                    <div className="input-group-prepend">
+                        <div className="input-group-text bg-danger">
                             <input type="radio" aria-label={label} id={label}  {...input} value={avalue} />
                         </div>
                     </div>
-                    <input type="text" disabled class="form-control" value={label} />
+                    <input type="text" disabled className="form-control" value={label} />
                 </div>
             </div>
 
@@ -74,7 +74,7 @@ export class ModalUbahPasien extends Component {
 
 
     render() {
-        const { id, status_pasien, nama_status, name } = this.props.pasien
+        const { status_pasien, name } = this.props.pasien
         return (
             <div className="modal-dialog" role="document">
 
@@ -115,16 +115,16 @@ export class ModalUbahPasien extends Component {
 
 
 
-const validate = (formValue) => {
-    const errors = {}
-    if (!formValue.status_pasien) {
-        errors.username = "Pilih Status Pasien Terlebih Dahulu."
-    }
+// const validate = (formValue) => {
+//     const errors = {}
+//     if (!formValue.status_pasien) {
+//         errors.username = "Pilih Status Pasien Terlebih Dahulu."
+//     }
 
 
-    return errors;
+//     return errors;
 
-}
+// }
 
 
 const stateToProps = (state, myprops) => {
