@@ -52,14 +52,14 @@ export class Master extends Component {
                         <hr className="sidebar-divider" />
 
 
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <Link className="nav-link" to="/admin/daftaruser">
                                 <i className="fas fa-fw fa-users"></i>
                                 <span>Users</span></Link>
-                        </li>
+                        </li> */}
 
 
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <Link className="nav-link collapsed" to="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                                 <i className="fas fa-fw fa-wrench"></i>
                                 <span>Utilities</span>
@@ -73,22 +73,22 @@ export class Master extends Component {
                                     <Link className="collapse-item" to="utilities-other.html">Other</Link>
                                 </div>
                             </div>
-                        </li>
+                        </li> */}
 
 
-                        <hr className="sidebar-divider" />
-
+                        {/* <hr className="sidebar-divider" /> */}
+                        {/* 
 
                         <div className="sidebar-heading">
                             Addons
-      </div>
+      </div> */}
                         <li className="nav-item">
                             <Link className="nav-link" to="/admin/pasien">
                                 <i className="fas fa-fw fa-users"></i>
                                 <span>Passien</span></Link>
                         </li>
 
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <Link className="nav-link collapsed" to="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                                 <i className="fas fa-fw fa-folder"></i>
                                 <span>Pages</span>
@@ -106,15 +106,15 @@ export class Master extends Component {
                                 </div>
                             </div>
                         </li>
+ */}
 
-
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <Link className="nav-link" to="charts.html">
                                 <i className="fas fa-fw fa-chart-area"></i>
                                 <span>Charts</span></Link>
-                        </li>
+                        </li> */}
 
-
+                        {/* 
                         <li className="nav-item">
                             <Link className="nav-link" to="tables.html">
                                 <i className="fas fa-fw fa-table"></i>
@@ -123,7 +123,7 @@ export class Master extends Component {
 
 
                         <hr className="sidebar-divider d-none d-md-block" />
-
+ */}
 
 
 

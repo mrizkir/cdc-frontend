@@ -8,9 +8,10 @@ import { ubahStatusPasien } from '../../actions'
 
 export class ModalUbahPasien extends Component {
 
-    onSubmit = (formValues) => {
+    onSubmit = async (formValues) => {
 
-        this.props.ubahStatusPasien(this.props.pasien.id, formValues)
+        await this.props.ubahStatusPasien(this.props.pasien.id, formValues)
+        window.location.reload();
 
     }
 
@@ -89,7 +90,7 @@ export class ModalUbahPasien extends Component {
 
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Batal</button>
-                            <button type="submit" className="btn btn-danger"  >Ubah</button>
+                            <button type="submit" className="btn btn-danger" aria-hidden="true" >Ubah</button>
                         </div>
                     </div>
                 </form>

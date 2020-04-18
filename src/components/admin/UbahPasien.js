@@ -16,17 +16,18 @@ export class UbahPasien extends Component {
         show: "modal fade"
     }
 
-    // hideModal = () => {
-    //     console.log("hideeen")
-    //     document.getElementById('exampleModal').classList.remove('show');
-    //     document.getElementById('exampleModal').style.display = "none";
+    // hideModal = (e) => {
+    //     e.stopPropagation()
+    // console.log("hideeen")
+    // document.getElementById('exampleModal').classList.remove('show');
+    // document.getElementById('exampleModal').style.display = "none";
 
-    //     document.getElementById('exampleModal').setAttribute("aria-hidden", "true");
-    //     document.getElementById('exampleModal').removeAttribute("aria-modal");
-    //     document.getElementById('exampleModal').removeAttribute("style");
+    // document.getElementById('exampleModal').setAttribute("aria-hidden", "true");
+    // document.getElementById('exampleModal').removeAttribute("aria-modal");
+    // document.getElementById('exampleModal').removeAttribute("style");
 
-    //     document.getElementById('body').removeAttribute("class");
-    //     document.getElementById('body').removeAttribute("style");
+    // document.getElementById('body').removeAttribute("class");
+    // document.getElementById('body').removeAttribute("style");
     // }
 
     componentDidMount() {
