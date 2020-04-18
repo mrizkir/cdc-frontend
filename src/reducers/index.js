@@ -51,6 +51,16 @@ const getDetailPasien = (state = null, action) => {
     return state
 }
 
+const hitung = (state = null, action) => {
+    if (action.type === "HITUNG") {
+
+        return action.data
+    }
+
+
+    return state
+}
+
 
 const loginReducer = (state = "Belum Login", action) => {
 
@@ -81,5 +91,6 @@ export default combineReducers({
     statusLogin: loginReducer,
     user: getUser,
     pasien: getPasien,
-    detailPasien: getDetailPasien
+    detailPasien: getDetailPasien,
+    jumlah: hitung
 })
