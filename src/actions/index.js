@@ -1,8 +1,7 @@
 import Api from '../axios/Api'
-import { Children } from 'react'
+
 
 export const getKoordinat = () => async dispatch => {
-
     const token = 'Bearer ' + localStorage.token;
 
     var data = null;
@@ -30,7 +29,30 @@ export const getKoordinat = () => async dispatch => {
             data: []
         })
     }
+}
+export const getKoordinatPublic = () => async dispatch => {
 
+
+    var data = null;
+
+    await Api.post('/pasien/lokasiterakhirpublik', { mode: 'all', id: 'all' })
+        .then(response => {
+
+            data = response.data;
+
+
+            dispatch({
+                type: "GET_KOORDINAT",
+                data: data.lokasiterakhir
+            })
+        })
+        .catch((error) => {
+            console.log(error)
+            dispatch({
+                type: "GET_KOORDINAT",
+                data: []
+            })
+        });
 
 
 }

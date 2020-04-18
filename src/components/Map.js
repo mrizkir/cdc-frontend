@@ -33,6 +33,7 @@ const App = ({ koordinat }) => {
         });
     }, []);
 
+
     if (!koordinat) return <div>Loading Map..</div>
 
     return (

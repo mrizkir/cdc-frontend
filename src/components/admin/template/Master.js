@@ -143,9 +143,9 @@ export class Master extends Component {
                             <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
 
-                                <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
+                                {/* <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
                                     <i className="fa fa-bars"></i>
-                                </button>
+                                </button> */}
 
 
                                 {/* <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -159,9 +159,14 @@ export class Master extends Component {
                                     </div>
                                 </form> */}
 
+                                <ul className="navbar-nav mr-auto">
+                                    <Link className="dropdown-item" to="/" >
+                                        <i className="fas fa-home fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Home
+                                    </Link>
+                                </ul>
 
                                 <ul className="navbar-nav ml-auto">
-
 
                                     <li className="nav-item dropdown no-arrow d-sm-none">
                                         <Link className="nav-link dropdown-toggle" to="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -187,11 +192,11 @@ export class Master extends Component {
                                     <li className="nav-item dropdown no-arrow">
                                         <Link className="nav-link dropdown-toggle" to="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <span className="mr-2 d-none d-lg-inline text-gray-600 small">{this.namaUser()}</span>
-                                            <img className="img-profile rounded-circle" src="https://upload.wikimedia.org/wikipedia/commons/d/d3/User_Circle.png" />
+                                            <img className="img-profile rounded-circle" src="https://upload.wikimedia.org/wikipedia/commons/d/d3/User_Circle.png" alt="user" />
                                         </Link>
 
                                         <div className="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                            <Link className="dropdown-item" to="#">
+                                            {/* <Link className="dropdown-item" to="#">
                                                 <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </Link>
@@ -203,7 +208,7 @@ export class Master extends Component {
                                                 <i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                   Activity Log
                 </Link>
-                                            <div className="dropdown-divider"></div>
+                                            <div className="dropdown-divider"></div> */}
                                             <Link className="dropdown-item" to="/logout" >
                                                 <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout

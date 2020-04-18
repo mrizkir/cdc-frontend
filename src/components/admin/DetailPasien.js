@@ -59,7 +59,7 @@ export class UbahPasien extends Component {
                                                 </div>
 
                                                 <div className="table-responsive">
-                                                    <table className="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                                    <table className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
 
                                                         <tbody>
                                                             <tr>
@@ -128,7 +128,7 @@ export class UbahPasien extends Component {
 }
 
 const stateToProps = state => {
-    console.log(state)
+
     return {
         pasien: state.detailPasien
     }

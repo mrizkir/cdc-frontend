@@ -18,14 +18,18 @@ export class Dasboard extends Component {
 
         if (this.props.koordinat) {
             if (this.props.koordinat.length === 0) {
-                return <Map koordinat={this.props.koordinat} />
+                return <Master contentRender={contentRenderNull} />
             }
 
         } else {
             return <div>Masih undifind</div>
         }
 
-
+        var contentRenderNull = (
+            <div>
+                <Map koordinat={this.props.koordinat} />
+            </div>
+        )
         var contentRender = (
             <div>
                 <Map koordinat={this.props.koordinat} />

@@ -93,7 +93,7 @@ export class Pasien extends Component {
 
 const stateToProps = state => {
 
-    console.log(state)
+
 
     return {
         pasiens: state.pasien

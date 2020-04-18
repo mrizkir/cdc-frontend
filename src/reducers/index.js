@@ -10,15 +10,15 @@ const getKoordinatReducers = (state = [], action) => {
     return state
 }
 
-const ubahPasien = (state = "", action) => {
+// const ubahPasien = (state = "", action) => {
 
-    if (action.type === "UBAH_PASIEN") {
+//     if (action.type === "UBAH_PASIEN") {
 
-        return action.data
-    }
+//         return action.data
+//     }
 
-    return state
-}
+//     return state
+// }
 
 
 
