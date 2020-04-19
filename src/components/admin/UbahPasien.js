@@ -8,14 +8,27 @@ import { connect } from 'react-redux'
 import { getDetailPasien, ubahPasien } from '../../actions'
 import noImage from '../../assets/img/no_photo.jpg'
 import ModalUbahPasien from './ModalUbahPasien'
+import ModalUploadFoto from './ModalUploadFoto'
 
 
 export class UbahPasien extends Component {
 
-
-    componentDidMount() {
-        this.props.getDetailPasien(this.props.match.params.id)
+    state = {
+        prosesLoad: 0
     }
+
+    async componentDidMount() {
+        await this.props.getDetailPasien(this.props.match.params.id)
+        this.setState({
+            prosesLoad: 1
+        })
+    }
+
+
+    // shouldComponentUpdate(nextProps, nextState) {
+
+    //     return nextProps.initialValues !== this.props.initialValues;
+    // }
 
     renderInput = ({ input, label, type, meta, dataToggle, dataTarget }) => {
         if (dataToggle) {
@@ -55,11 +68,22 @@ export class UbahPasien extends Component {
 
 
     render() {
-        if (this.props.initialValues === null) {
-            return <div>Loading...</div>
+
+        if (this.state.prosesLoad === 0) {
+            return (
+                <div className="spinner-border text-light text-center" style={{ 'width': '3rem', 'height': '3rem' }} role="status">
+                    <span className="sr-only">Loading...</span>
+                </div>
+            )
         }
 
-        const pasien = this.props.initialValues
+        if (this.props.initialValues === null) {
+            return <div><div className="spinner-border text-light" style={{ 'width': '3rem', 'height': '3rem' }} role="status">
+                <span className="sr-only">Loading...</span>
+            </div></div>
+        }
+
+        const pasien = this.props.pasien
         var foto = ''
         if (pasien.foto === "storage/images/users/no_photo.png") {
             foto = noImage
@@ -82,8 +106,9 @@ export class UbahPasien extends Component {
 
                                     <div className="row">
 
-                                        <div className="col-lg-5 d-none d-lg-block pr-0 " style={{ 'background': '#dddddd' }} >
+                                        <div className="col-lg-5   d-lg-block pr-0 text-center " style={{ 'background': '#dddddd' }} >
                                             <img alt="bg" src={foto} style={{ 'width': '100%' }} />
+                                            <button className="form-control form-control-user" type="button" autoComplete='off' data-toggle="modal" data-target="#exampleModal2" ><i className="fas fa-edit"></i> Ubah Foto</button>
                                         </div>
                                         <div className="col-lg-7">
                                             <div className="p-5">
@@ -131,8 +156,11 @@ export class UbahPasien extends Component {
 
 
                 <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    {/* <ModalUbahPasien pasien={pasien} hideModal={() => this.hideModal()} /> */}
+
                     <ModalUbahPasien pasien={pasien} />
+                </div>
+                <div className="modal fade" id="exampleModal2" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                    <ModalUploadFoto pasien={pasien} />
                 </div>
 
             </div >
@@ -164,13 +192,16 @@ const validate = (formValue) => {
 const stateToProps = state => {
 
     return {
-        initialValues: state.detailPasien
+        initialValues: state.detailPasien,
+        pasien: state.detailPasien
+
     }
 }
 
 
 const formWrap = reduxForm({
     form: 'formUbahPasien',
+    enableReinitialize: true,
     validate,
 
 })(UbahPasien)

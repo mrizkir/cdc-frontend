@@ -32,12 +32,12 @@ export class MasterHome extends Component {
                 <Navbar />
                 <div className="row">
 
-                    <div className="col-md-2 col-sm-12" style={{ 'paddingRight': '0' }}>
+                    <div className="col-md-2 col-sm-12 bg-dark" style={{ 'paddingRight': '0' }}>
                         <Sidebar />
                     </div>
 
-                    <div className="col-md-10 col-sm-12" style={{ 'padding': '0' }}>
-                        <div className="container-fluid" style={{ 'padding': '0' }}>
+                    <div className="col-md-10 col-sm-12 " style={{ 'padding': '0' }}>
+                        <div className="container-fluid " style={{ 'padding': '0' }}>
 
                             {this.props.contentRender}
 
@@ -82,7 +82,10 @@ export class MasterHome extends Component {
 
 const stateToProps = state => {
 
-    return { ListKoordinat: state.ListKoordinat }
+    return {
+        ListKoordinat: state.ListKoordinat,
+        enableReinitialize: true,
+    }
 }
 
 export default connect(stateToProps, { getKoordinatPublic, getUser })(MasterHome)

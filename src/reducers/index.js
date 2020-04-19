@@ -43,11 +43,20 @@ const getPasien = (state = [], action) => {
 }
 const getDetailPasien = (state = null, action) => {
     if (action.type === "GET_DETAIL_PASIEN") {
-
         return action.data.user
     }
-
-
+    return state
+}
+const getRiwayat = (state = null, action) => {
+    if (action.type === "GET_RIWAYAT") {
+        return action.data.history
+    }
+    return state
+}
+const getRiwayatLokasi = (state = null, action) => {
+    if (action.type === "GET_RIWAYAT_LOKASI") {
+        return action.data.lokasi
+    }
     return state
 }
 
@@ -92,5 +101,7 @@ export default combineReducers({
     user: getUser,
     pasien: getPasien,
     detailPasien: getDetailPasien,
+    riwayat: getRiwayat,
+    riwayatLokasi: getRiwayatLokasi,
     jumlah: hitung
 })

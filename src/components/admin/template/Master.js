@@ -22,26 +22,7 @@ export class Master extends Component {
 
     }
 
-    // sidebarRender = () => {
-    //     if (!this.props.sidebarRender) {
-    //         return (
-    //             <div className="text-center">
-    //                 <div className="spinner-border spinner-border-sm" role="status">
-    //                     <span className="sr-only">Loading...</span>
-    //                 </div>
-    //                 <div className="spinner-grow spinner-grow-sm" role="status">
-    //                     <span className="sr-only">Loading...</span>
-    //                 </div>
-    //                 <br></br>
-    //                 <br></br>
-    //             </div>
-    //         )
-    //     }
 
-
-
-    //     return <Sidebar />
-    // }
 
 
     renderContent = () => {

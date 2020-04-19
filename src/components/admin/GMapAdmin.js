@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import jsxToString from 'jsx-to-string';
+
 
 
 
@@ -37,7 +37,7 @@ const GMap = ({ koordinat }) => {
 
     for (var i = 0; i < koordinat.length; i++) {
         marker.push(
-            { lat: parseFloat(`${koordinat[i].lat}`), lng: parseFloat(`${koordinat[i].lng}`), icon: pilihIcon(koordinat[i].status_pasien), nama: koordinat[i].name, status: koordinat[i].nama_status, foto: koordinat[i].foto, usia: koordinat[i].umur, id: koordinat[i].id }
+            { nama: koordinat[i].name, status: koordinat[i].nama_status, foto: koordinat[i].foto, usia: koordinat[i].umur, id: koordinat[i].id, lat: parseFloat(`${koordinat[i].lat}`), lng: parseFloat(`${koordinat[i].lng}`), icon: pilihIcon(koordinat[i].status_pasien), }
         )
     }
     marker.push(
@@ -54,9 +54,8 @@ const GMap = ({ koordinat }) => {
         markerList.map(x => {
             const marker = createMarker(x);
             bounds.extend(marker.position);
-            marker.addListener('click', function () {
-                console.log(x)
-                // infowindow.setContent(renderInfo(x));
+            marker.addListener('click', () => {
+
                 var infowindow = new window.google.maps.InfoWindow({
                     content: `<div id="test" className="card mb-3 text-center" >
                                 <div className=" text-center"  >
@@ -86,7 +85,7 @@ const GMap = ({ koordinat }) => {
     const createMarker = (markerObj) => new window.google.maps.Marker({
         position: { lat: markerObj.lat, lng: markerObj.lng },
         map: googleMap,
-        title: 'Hello World!',
+        title: markerObj.status,
         icon: {
             url: markerObj.icon,
             // set marker width and height

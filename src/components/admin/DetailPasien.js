@@ -7,7 +7,7 @@ import { BASE_URL } from '../constant'
 import noImage from '../../assets/img/no_photo.jpg'
 
 
-import { getDetailPasien } from '../../actions'
+import { getDetailPasien, getRiwayat, getRiwayatLokasi } from '../../actions'
 
 // import { Link } from 'react-router-dom'
 
@@ -15,6 +15,8 @@ export class UbahPasien extends Component {
 
     componentDidMount() {
         this.props.getDetailPasien(this.props.match.params.id)
+        this.props.getRiwayat(this.props.match.params.id)
+        this.props.getRiwayatLokasi(this.props.match.params.id)
     }
 
     render() {
@@ -33,6 +35,45 @@ export class UbahPasien extends Component {
         }
 
 
+        const renderRiwayat = () => {
+
+            if (this.props.riwayat === null) {
+                return <div></div>
+            }
+
+            const riwayat = this.props.riwayat
+
+            return riwayat.map(riw => {
+
+                return (
+                    <tr>
+                        <td>{riw.created_at}</td>
+                        <td>{riw.Descr}</td>
+                        <td>{riw.nama_status}</td>
+                    </tr>
+                )
+            })
+        }
+        const renderRiwayatLokasi = () => {
+
+            if (this.props.riwayatLokasi === null) {
+                return <div></div>
+            }
+
+            const lokasi = this.props.riwayatLokasi
+
+            return lokasi.map(lok => {
+
+                return (
+                    <tr>
+                        <td>{lok.created_at}</td>
+                        <td>{lok.lng}</td>
+                        <td>{lok.lat}</td>
+                    </tr>
+                )
+            })
+        }
+
 
         const contentRender = (
             <div>
@@ -49,7 +90,7 @@ export class UbahPasien extends Component {
                                 <div className="card-body p-0">
 
                                     <div className="row">
-                                        <div className="col-lg-5 d-none d-lg-block pr-0 " style={{ 'background': '#dddddd' }} >
+                                        <div className="col-lg-5   d-lg-block pr-0 " style={{ 'background': '#dddddd' }} >
                                             <img alt="bg" src={foto} style={{ 'width': '100%' }} />
                                         </div>
                                         <div className="col-lg-7">
@@ -110,6 +151,57 @@ export class UbahPasien extends Component {
                                 </div>
                             </div>
 
+                            <div className="card shadow mb-4">
+                                <div className="card-header py-3">
+                                    <h6 className="m-0 font-weight-bold text-primary">Riwayat Pasien</h6>
+                                </div>
+                                <div className="card-body">
+
+                                    <div className="container">
+                                        <div className="table-responsive">
+                                            <table className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Tanggal</th>
+                                                        <th>Keterangan</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {renderRiwayat()}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div className="card shadow mb-4">
+                                <div className="card-header py-3">
+                                    <h6 className="m-0 font-weight-bold text-primary">Riwayat Lokasi Pasien</h6>
+                                </div>
+                                <div className="card-body">
+
+                                    <div className="container">
+                                        <div className="table-responsive">
+                                            <table className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Tanggal</th>
+                                                        <th>Long</th>
+                                                        <th>Lat</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {renderRiwayatLokasi()}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
                     </div>
@@ -130,8 +222,10 @@ export class UbahPasien extends Component {
 const stateToProps = state => {
 
     return {
-        pasien: state.detailPasien
+        pasien: state.detailPasien,
+        riwayat: state.riwayat,
+        riwayatLokasi: state.riwayatLokasi
     }
 }
 
-export default connect(stateToProps, { getDetailPasien })(UbahPasien)
+export default connect(stateToProps, { getDetailPasien, getRiwayat, getRiwayatLokasi })(UbahPasien)

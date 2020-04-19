@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 // import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import Master from './template/Master'
+import Monitor from './Monitor'
 
 import Map from './MapAdmin'
 import { getKoordinat } from '../../actions'
@@ -19,7 +19,7 @@ export class Dasboard extends Component {
         var contentRenderNull = null
         if (this.props.koordinat) {
             if (this.props.koordinat.length === 0) {
-                return <Master contentRender={contentRenderNull} />
+                return <Monitor contentRender={contentRenderNull} />
             }
 
         } else {
@@ -42,7 +42,7 @@ export class Dasboard extends Component {
             </div>
         )
         return (
-            <Master contentRender={contentRender} />
+            <Monitor contentRender={contentRender} />
         )
     }
 
@@ -60,7 +60,8 @@ export class Dasboard extends Component {
 const stateToProps = state => {
 
     return {
-        koordinat: state.ListKoordinat
+        koordinat: state.ListKoordinat,
+        enableReinitialize: true,
     }
 }
 

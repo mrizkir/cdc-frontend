@@ -174,25 +174,49 @@ export const getPasien = () => async dispatch => {
 }
 
 export const getDetailPasien = (id) => async dispatch => {
-
     const token = 'Bearer ' + localStorage.token;
-
     var data = null;
     if (token) {
-        await Api.get(`/setting/userspasien/${id}`, { headers: { Authorization: token } }).then(response => {
+        await Api.get(`/setting/userspasien/${id}`, { headers: { Authorization: token } }).then(async response => {
             data = response.data;
-            dispatch({
+            await dispatch({
                 type: "GET_DETAIL_PASIEN",
-                data: data
+                data: data,
+
             })
         })
-            .catch((error) => {
-
-            });
+            .catch((error) => { });
     }
+}
+export const getRiwayat = (id) => async dispatch => {
+    const token = 'Bearer ' + localStorage.token;
+    var data = null;
+    if (token) {
+        await Api.get(`/setting/userspasien/${id}`, { headers: { Authorization: token } }).then(async response => {
+            data = response.data;
+            await dispatch({
+                type: "GET_RIWAYAT",
+                data: data,
 
+            })
+        })
+            .catch((error) => { });
+    }
+}
+export const getRiwayatLokasi = (id) => async dispatch => {
+    const token = 'Bearer ' + localStorage.token;
+    var data = null;
+    if (token) {
+        await Api.get(`/setting/userspasien/${id}`, { headers: { Authorization: token } }).then(async response => {
+            data = response.data;
+            await dispatch({
+                type: "GET_RIWAYAT_LOKASI",
+                data: data,
 
-
+            })
+        })
+            .catch((error) => { });
+    }
 }
 
 export const getStatusPasien = (id) => async dispatch => {
@@ -284,6 +308,28 @@ export const ubahStatusPasien = (id, formValues) => async dispatch => {
 
     if (token) {
         await Api.post(`/setting/userspasien/updatestatus/${id}`, { _method: 'PUT', ...formValues }, { headers: { Authorization: token } })
+            .then(
+                (res) => {
+
+                },
+                (error) => {
+
+                }
+            );
+
+    }
+
+}
+
+export const uploadFoto = (id, formValues) => async dispatch => {
+
+    const formData = new FormData();
+    formData.append('foto', formValues.foto)
+
+    const token = 'Bearer ' + localStorage.token;
+
+    if (token) {
+        await Api.post(`/setting/users/uploadfoto/${id}`, formData, { headers: { Authorization: token, 'content-type': 'multipart/form-data' } })
             .then(
                 (res) => {
 

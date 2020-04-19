@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.d85db53c.chunk.css",
-    "main.js": "/static/js/main.29750aa4.chunk.js",
+    "main.css": "/static/css/main.bdae0757.chunk.css",
+    "main.js": "/static/js/main.14960a15.chunk.js",
     "runtime-main.js": "/static/js/runtime-main.c5ae66f2.js",
-    "static/js/2.6728f45d.chunk.js": "/static/js/2.6728f45d.chunk.js",
+    "static/js/2.4d069efa.chunk.js": "/static/js/2.4d069efa.chunk.js",
     "index.html": "/index.html",
-    "precache-manifest.5a89bf6b510e1bf003bb2b4f51f33d1c.js": "/precache-manifest.5a89bf6b510e1bf003bb2b4f51f33d1c.js",
+    "precache-manifest.44516db5d8f23f0303ebc7d692bc8e78.js": "/precache-manifest.44516db5d8f23f0303ebc7d692bc8e78.js",
     "service-worker.js": "/service-worker.js",
-    "static/js/2.6728f45d.chunk.js.LICENSE.txt": "/static/js/2.6728f45d.chunk.js.LICENSE.txt",
+    "static/js/2.4d069efa.chunk.js.LICENSE.txt": "/static/js/2.4d069efa.chunk.js.LICENSE.txt",
     "static/media/all.min.css": "/static/media/fa-solid-900.d6d8d5da.woff2",
     "static/media/no_photo.jpg": "/static/media/no_photo.f48a1025.jpg",
     "static/media/red.gif": "/static/media/red.f12ca1e0.gif"
   },
   "entrypoints": [
     "static/js/runtime-main.c5ae66f2.js",
-    "static/js/2.6728f45d.chunk.js",
-    "static/css/main.d85db53c.chunk.css",
-    "static/js/main.29750aa4.chunk.js"
+    "static/js/2.4d069efa.chunk.js",
+    "static/css/main.bdae0757.chunk.css",
+    "static/js/main.14960a15.chunk.js"
   ]
 }

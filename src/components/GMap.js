@@ -35,12 +35,12 @@ const GMap = ({ koordinat }) => {
 
     for (var i = 0; i < koordinat.length; i++) {
         marker.push(
-            { lat: parseFloat(`${koordinat[i].lat}`), lng: parseFloat(`${koordinat[i].lng}`), icon: pilihIcon(koordinat[i].status_pasien) }
+            { lat: parseFloat(`${koordinat[i].lat}`), lng: parseFloat(`${koordinat[i].lng}`), icon: pilihIcon(koordinat[i].status_pasien), status: koordinat[i].nama_status }
         )
     }
     marker.push(
-        { lat: 1.071355, lng: 104.216962, icon: cpin },
-        { lat: 1.052278, lng: 104.675537, icon: cpin }
+        { lat: 1.071355, lng: 104.216962, icon: cpin, status: "" },
+        { lat: 1.052278, lng: 104.675537, icon: cpin, status: "" }
     )
 
 
@@ -66,7 +66,8 @@ const GMap = ({ koordinat }) => {
             url: markerObj.icon,
             // set marker width and height
             scaledSize: new window.google.maps.Size(30, 30)
-        }
+        },
+        title: markerObj.status
     });
 
     // initialize the google map

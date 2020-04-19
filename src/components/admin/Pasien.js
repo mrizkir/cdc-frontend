@@ -8,8 +8,15 @@ import { getPasien } from '../../actions'
 export class Pasien extends Component {
 
 
-    componentDidMount = () => {
-        this.props.getPasien()
+    state = {
+        prosesLoad: 0
+    }
+
+    componentDidMount = async () => {
+        await this.props.getPasien()
+        this.setState({
+            prosesLoad: 1
+        })
     }
 
 
@@ -32,7 +39,7 @@ export class Pasien extends Component {
             return (
                 <tr key={pasien.id}>
                     <td>{pasien.username}</td>
-                    <td>{pasien.name}</td>
+                    <td> <Link to={`/admin/detailpasien/${pasien.id}`} className="link">{pasien.name}</Link></td>
                     <td>{pasien.nomor_hp}</td>
                     <td>{pasien.Nm_Kecamatan}</td>
                     <td>{pasien.nama_status}</td>
@@ -46,7 +53,13 @@ export class Pasien extends Component {
     }
 
     render() {
-
+        if (this.state.prosesLoad === 0) {
+            return (
+                <div class="spinner-border text-light text-center" style={{ 'width': '3rem', 'height': '3rem' }} role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            )
+        }
 
         const contentRender = (
             <div>
