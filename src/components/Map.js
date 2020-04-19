@@ -8,9 +8,9 @@ import cgrey from '../assets/img/cir-grey.png';
 
 
 
-
 // API key of the google map
-const GOOGLE_MAP_API_KEY = 'AIzaSyBOeHuAzdy0K8kaHyaoI8zRxIo6HAqp9Tk';
+// const GOOGLE_MAP_API_KEY = 'AIzaSyBOeHuAzdy0K8kaHyaoI8zRxIo6HAqp9Tk';
+const GOOGLE_MAP_API_KEY = 'AIzaSyBgVtBigvi_59RitK-_97CGlXeer7HHgHM';
 
 // load google map script
 const loadGoogleMapScript = (callback) => {
@@ -18,7 +18,7 @@ const loadGoogleMapScript = (callback) => {
         callback();
     } else {
         const googleMapScript = document.createElement("script");
-        googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAP_API_KEY}`;
+        googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAP_API_KEY}&callback=initMap&libraries=geometry,places`;
         window.document.body.appendChild(googleMapScript);
         googleMapScript.addEventListener("load", callback);
     }

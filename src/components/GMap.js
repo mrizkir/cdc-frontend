@@ -35,7 +35,7 @@ const GMap = ({ koordinat }) => {
 
     for (var i = 0; i < koordinat.length; i++) {
         marker.push(
-            { lat: parseInt(`${koordinat[i].lat}`), lng: parseInt(`${koordinat[i].lng}`), icon: pilihIcon(koordinat[i].status_pasien) }
+            { lat: parseFloat(`${koordinat[i].lat}`), lng: parseFloat(`${koordinat[i].lng}`), icon: pilihIcon(koordinat[i].status_pasien) }
         )
     }
     marker.push(
