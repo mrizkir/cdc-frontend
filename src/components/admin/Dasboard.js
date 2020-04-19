@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Master from './template/Master'
 
-import Map from '../Map'
+import Map from './MapAdmin'
 import { getKoordinat } from '../../actions'
 
 
