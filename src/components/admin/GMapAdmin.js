@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 
+import { BASE_URL } from '../../components/constant'
+
 
 
 
@@ -36,8 +38,9 @@ const GMap = ({ koordinat }) => {
 
 
     for (var i = 0; i < koordinat.length; i++) {
+
         marker.push(
-            { nama: koordinat[i].name, status: koordinat[i].nama_status, foto: koordinat[i].foto, usia: koordinat[i].umur, id: koordinat[i].id, lat: parseFloat(`${koordinat[i].lat}`), lng: parseFloat(`${koordinat[i].lng}`), icon: pilihIcon(koordinat[i].status_pasien), }
+            { nama: koordinat[i].name, status: koordinat[i].nama_status, foto: koordinat[i].foto, usia: koordinat[i].usia, id: koordinat[i].id, lat: parseFloat(`${koordinat[i].lat}`), lng: parseFloat(`${koordinat[i].lng}`), icon: pilihIcon(koordinat[i].status_pasien), }
         )
     }
     marker.push(
@@ -59,13 +62,13 @@ const GMap = ({ koordinat }) => {
                 var infowindow = new window.google.maps.InfoWindow({
                     content: `<div id="test" className="card mb-3 text-center" >
                                 <div className=" text-center"  >
-                                    <img src="${x.foto}" atl="" width="150px" />
+                                    <img src="${BASE_URL}/${x.foto}" atl="" width="150px" />
                                 </div>
                                 <br />
                                 <div className="card-body">
                                     <h5 className="card-title">${x.status}</h5>
                                    <p  style="margin:2px;font-weight:bold !important;text-transform:uppercase"> NAMA: ${x.nama} </p>
-                                    <p  style="margin:2px">Usia ${x.umur}</p>
+                                    <p  style="margin:2px">Usia ${x.usia} Tahun</p>
                                     <br/>
                                     <a class="btn btn-sm btn-info" href="detailpasien/${x.id}">Lihat Detail</a>
                                 </div>
