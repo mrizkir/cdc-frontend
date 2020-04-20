@@ -7,16 +7,17 @@ import Sidebar from '../Sidebar'
 import { Link, Redirect } from 'react-router-dom'
 
 import { connect } from 'react-redux'
-import { getKoordinatPublic, getUser } from '../../actions'
+import { getKoordinat, getUser } from '../../actions'
 import Navbar from '../Navbar'
 
 export class Monitor extends Component {
 
 
 
-    componentDidMount() {
+    async  componentDidMount() {
 
         this.props.getUser()
+        await this.props.getKoordinat()
 
     }
 
@@ -288,4 +289,4 @@ const stateToProps = state => {
     }
 }
 
-export default connect(stateToProps, { getKoordinatPublic, getUser })(Monitor)
+export default connect(stateToProps, { getKoordinat, getUser })(Monitor)

@@ -35,26 +35,30 @@ const GMap = ({ koordinat }) => {
 
 
 
+    if (koordinat.length > 0) {
 
+        for (var i = 0; i < koordinat.length; i++) {
 
-    for (var i = 0; i < koordinat.length; i++) {
-
+            marker.push(
+                { nama: koordinat[i].name, status: koordinat[i].nama_status, foto: koordinat[i].foto, usia: koordinat[i].usia, id: koordinat[i].id, lat: parseFloat(`${koordinat[i].lat}`), lng: parseFloat(`${koordinat[i].lng}`), icon: pilihIcon(koordinat[i].status_pasien), }
+            )
+        }
         marker.push(
-            { nama: koordinat[i].name, status: koordinat[i].nama_status, foto: koordinat[i].foto, usia: koordinat[i].usia, id: koordinat[i].id, lat: parseFloat(`${koordinat[i].lat}`), lng: parseFloat(`${koordinat[i].lng}`), icon: pilihIcon(koordinat[i].status_pasien), }
+            { lat: 1.071355, lng: 104.216962, icon: cpin, nama: '', status: "", foto: "", usia: "", id: "" },
+            { lat: 1.052278, lng: 104.675537, icon: cpin, nama: '', status: "", foto: "", usia: "", id: "" }
         )
+
     }
-    marker.push(
-        { lat: 1.071355, lng: 104.216962, icon: cpin, nama: '', status: "", foto: "", usia: "", id: "" },
-        { lat: 1.052278, lng: 104.675537, icon: cpin, nama: '', status: "", foto: "", usia: "", id: "" }
-    )
 
 
     const markerList = marker
+
 
     useEffect(() => {
         googleMap = initGoogleMap();
         var bounds = new window.google.maps.LatLngBounds();
         markerList.map(x => {
+
             const marker = createMarker(x);
             bounds.extend(marker.position);
             marker.addListener('click', () => {
@@ -113,6 +117,8 @@ const GMap = ({ koordinat }) => {
         ref={googleMapRef}
         style={{ width: '100%', height: 600 }}
     />
+
+
 }
 
 export default GMap;

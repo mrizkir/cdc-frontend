@@ -12,7 +12,7 @@ export const getKoordinat = () => async dispatch => {
 
 
             await dispatch({
-                type: "GET_KOORDINAT",
+                type: "GET_KOORDINAT_ADMIN",
                 data: data.lokasiterakhir
             })
 

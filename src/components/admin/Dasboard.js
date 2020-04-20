@@ -11,6 +11,7 @@ export class Dasboard extends Component {
 
     async componentDidMount() {
         await this.props.getKoordinat()
+
     }
 
 
@@ -60,7 +61,7 @@ export class Dasboard extends Component {
 const stateToProps = state => {
 
     return {
-        koordinat: state.ListKoordinat,
+        koordinat: state.ListKoordinatAdmin,
         enableReinitialize: true,
     }
 }

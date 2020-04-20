@@ -9,16 +9,14 @@ const getKoordinatReducers = (state = [], action) => {
 
     return state
 }
+const getKoordinatAdminReducers = (state = [], action) => {
 
-// const ubahPasien = (state = "", action) => {
+    if (action.type === "GET_KOORDINAT_ADMIN") {
+        return action.data
+    }
 
-//     if (action.type === "UBAH_PASIEN") {
-
-//         return action.data
-//     }
-
-//     return state
-// }
+    return state
+}
 
 
 
@@ -96,6 +94,7 @@ const loginReducer = (state = "Belum Login", action) => {
 
 export default combineReducers({
     ListKoordinat: getKoordinatReducers,
+    ListKoordinatAdmin: getKoordinatAdminReducers,
     form: formReducer,
     statusLogin: loginReducer,
     user: getUser,
