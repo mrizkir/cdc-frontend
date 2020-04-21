@@ -9,6 +9,7 @@ import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getKoordinat, getUser } from '../../actions'
 import Navbar from '../Navbar'
+import ChartTotal from './chart/ChartTotal'
 
 export class Monitor extends Component {
 
@@ -225,6 +226,8 @@ export class Monitor extends Component {
                             <div className="container-fluid">
 
                                 {this.props.contentRender}
+                                <br />
+                                <ChartTotal />
 
 
                             </div>

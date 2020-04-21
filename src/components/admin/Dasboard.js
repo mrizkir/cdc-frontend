@@ -7,6 +7,7 @@ import Map from './MapAdmin'
 import { getKoordinat } from '../../actions'
 
 
+
 export class Dasboard extends Component {
 
     async componentDidMount() {
@@ -43,7 +44,10 @@ export class Dasboard extends Component {
             </div>
         )
         return (
-            <Monitor contentRender={contentRender} />
+            <>
+                <Monitor contentRender={contentRender} />
+
+            </>
         )
     }
 
@@ -53,6 +57,7 @@ export class Dasboard extends Component {
         return (
             <>
                 {this.renderContent()}
+
             </>
         )
     }
