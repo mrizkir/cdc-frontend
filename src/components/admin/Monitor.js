@@ -6,6 +6,8 @@ import Sidebar from '../Sidebar'
 // import Map from './Map'
 import { Link, Redirect } from 'react-router-dom'
 
+import '../../assets/css/StyleAdmin.css'
+
 import { connect } from 'react-redux'
 import { getKoordinat, getUser } from '../../actions'
 import Navbar from '../Navbar'
@@ -44,9 +46,9 @@ export class Monitor extends Component {
         return (
             <div>
                 <h1 className="text-center"> Corona Data Center Kabupaten Bintan
-                                 <br />
+                                <br />
 
-                    <strong className="text-danger h4 text-center">Total Kasus : {this.props.jumlah.total}</strong></h1>
+                    <strong className="text-danger h4 text-center">Total Kasus Terkonfirmasi : {this.props.jumlah.total}</strong></h1>
                 <br />
                 <div className="row mr-3 ml-3 justify-content-center">
 
@@ -175,7 +177,7 @@ export class Monitor extends Component {
 
 
                                 <ul className="navbar-nav mr-auto">
-                                    <li>  Corona Data Center Kabupaten Bintan </li>
+                                    <li>  Corona Data Center Kabupaten Bintan<br></br> <small>Provinsi Kepulauan Riau</small> </li>
 
 
 

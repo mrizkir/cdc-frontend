@@ -5,6 +5,7 @@ import MasterHome from './MasterHome'
 
 import Map from './Map'
 import { getKoordinatPublic } from '../actions'
+import ModalDisclaimer from './ModalDisclaimer'
 
 export class Home extends Component {
 
@@ -36,6 +37,7 @@ export class Home extends Component {
         var contentRender = (
             <div>
                 <Map koordinat={this.props.koordinat} />
+
             </div>
         )
         return (
@@ -50,6 +52,9 @@ export class Home extends Component {
         return (
             <>
                 {this.renderContent()}
+
+
+                <ModalDisclaimer />
             </>
         )
     }

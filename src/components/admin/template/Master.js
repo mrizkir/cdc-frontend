@@ -272,6 +272,8 @@ export class Master extends Component {
 
                 {this.renderContent()}
 
+
+
             </div >
 
         )

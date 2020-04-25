@@ -17,9 +17,10 @@ export class Navbar extends Component {
 
     render() {
         return (
-            <nav className="navbar navbar-expand-lg navbar-dark bg-gradient-primary">
-                <Link className="navbar-brand" to="/">Corona Data Center Kabupaten Bintan
-</Link>
+            <nav className="navbar navbar-expand-lg navbar-dark bg-gradient-primary shadow">
+                <Link className="navbar-brand" to="/">Corona Data Center Kabupaten Bintan<br></br>
+                    <small>Provinsi Kepulauan Riau</small>
+                </Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>

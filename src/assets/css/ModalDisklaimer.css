@@ -1,0 +1,17 @@
+.ReactModal__Content {
+    position: absolute;
+   margin:100px 200px auto 200px;
+     padding:10px;
+    height: 420px;
+    border:none  !important;
+    background-color: #4e72df00 !important;
+  }
+
+  .Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rebeccapurple;
+  }
