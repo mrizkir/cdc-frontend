@@ -226,7 +226,6 @@ const stateToProps = state => {
 
     return {
         jumlah: state.jumlah
-
     }
 }
 

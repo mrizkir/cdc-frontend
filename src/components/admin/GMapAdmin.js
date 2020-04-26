@@ -1,10 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
 import { BASE_URL } from '../../components/constant'
-
-
-
-
 import cblue from '../../assets/img/cir-blue.png';
 import cred from '../../assets/img/red.gif';
 import cgreen from '../../assets/img/cir-green.png';
@@ -28,6 +24,7 @@ const GMap = ({ koordinat }) => {
             case 4: return cgreen
             case 5: return cgrey
             case 6: return cgrey
+            case 100: return cpin
 
         }
 

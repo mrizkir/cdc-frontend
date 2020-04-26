@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
-// import Chart from './Chart'
-import Sidebar from './Sidebar'
-// import Runningtext from './Runningtext'
-// import Content from './Contentslide'
-// import Map from './Map'
-// import { Link } from 'react-router-dom'
-
 import { connect } from 'react-redux'
+
+import Sidebar from './Sidebar'
 import { getKoordinatPublic, getUser } from '../actions'
 import Navbar from './Navbar'
+
+import '../assets/admin/css/sb-admin-2.min.css'
+import '../assets/admin/vendor/fontawesome-free/css/all.min.css'
+
 
 export class MasterHome extends Component {
 
@@ -43,18 +42,10 @@ export class MasterHome extends Component {
 
 
                         </div>
-                        {/* <Runningtext /> */}
-                        {/* <Chart /> */}
 
                     </div>
                 </div>
-                <footer className="sticky-footer bg-white">
-                    <div className="container my-auto">
-                        <div className="copyright text-center my-auto">
-                            <span>Copyright &copy; Corona Data Center Kabupaten Bintan</span>
-                        </div>
-                    </div>
-                </footer>
+
 
 
             </>

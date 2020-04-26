@@ -42,14 +42,19 @@ class ChartTotal extends Component {
         }
     }
 
+    renderDownloadButton = () => {
+        if (!this.props.statusLogin || this.props.statusLogin !== "Berhasil") return <div></div>
+        return <Link className="btn btn-success">Download</Link>
+    }
+
 
 
     render() {
         const { hoverData } = this.state;
 
         return (
-            <div className="card">
-                <div className="card-header">
+            <div className="card mt-5">
+                <div className="card-header bg-gradient-primary text-light">
                     <h3 className="text-center  ">GRAFIK</h3>
                 </div>
                 <div className="card-body">
@@ -64,8 +69,7 @@ class ChartTotal extends Component {
                             </select>
                         </div>
                         <div className="col-sm-8 text-right">
-                            <Link className="btn btn-success">Download</Link>
-                            {/* <h3>{hoverData}</h3> */}
+                            {this.renderDownloadButton()}
                         </div>
                     </div>
 
@@ -81,7 +85,8 @@ class ChartTotal extends Component {
 const stateToProps = state => {
 
     return {
-        dataChart: state.dataChart
+        dataChart: state.dataChart,
+        statusLogin: state.statusLogin
     }
 }
 

@@ -118,7 +118,7 @@ export class ChartAll extends Component {
         const { chartOptionDetail, chartOptionGlobal, hoverData } = this.state;
 
         return (
-            <div className="card">
+            <div  >
 
                 <div className="row">
                     <div className="col-md-4">

@@ -24,6 +24,7 @@ const GMap = ({ koordinat }) => {
             case 4: return cgreen
             case 5: return cgrey
             case 6: return cgrey
+            case 100: return cpin
 
         }
 
@@ -74,7 +75,8 @@ const GMap = ({ koordinat }) => {
     const initGoogleMap = () => {
         return new window.google.maps.Map(googleMapRef.current, {
             // center: { lat: 1.014682, lng: 104.469781 },
-            zoom: 10
+            zoom: 10,
+            maxZoom: 14
         });
     }
 

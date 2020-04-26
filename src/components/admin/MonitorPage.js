@@ -1,17 +1,14 @@
 import React, { Component } from 'react'
 // import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import MasterHome from './MasterHome'
+import Monitor from './Monitor'
 
-import Map from './Map'
-import { getKoordinatPublic } from '../actions'
-import ModalDisclaimer from './ModalDisclaimer'
-import ChartTotal from './admin/chart/ChartTotal'
-import FooterHome from './FooterHome'
+import Map from './MapAdmin'
+import { getKoordinat } from '../../actions'
 
 
-export class Home extends Component {
 
+export class Dasboard extends Component {
 
     state = {
         koordinat: [
@@ -21,43 +18,43 @@ export class Home extends Component {
     }
 
     async componentDidMount() {
-        await this.props.getKoordinatPublic()
+        await this.props.getKoordinat()
 
     }
 
 
-
     renderContent = () => {
-
         var contentRenderNull = (
             <div>
                 <Map koordinat={this.state.koordinat} />
             </div>
         )
-
         if (this.props.koordinat) {
             if (this.props.koordinat.length === 0) {
-
-                return <MasterHome contentRender={contentRenderNull} />
+                return <Monitor contentRender={contentRenderNull} />
             }
+
         } else {
-            return <div>Loading</div>
+            return <div><div class="spinner-border spinner-border-sm" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+                <div class="spinner-grow spinner-grow-sm" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div></div>
         }
 
 
-
         var contentRender = (
-
             <div>
                 <Map koordinat={this.props.koordinat} />
-
             </div>
         )
         return (
-            <MasterHome contentRender={contentRender} />
+            <>
+                <Monitor contentRender={contentRender} />
+            </>
         )
     }
-
 
     render() {
 
@@ -65,12 +62,6 @@ export class Home extends Component {
         return (
             <>
                 {this.renderContent()}
-                <div className="container">
-                    <ChartTotal />
-                </div>
-
-                <ModalDisclaimer />
-                <FooterHome />
             </>
         )
     }
@@ -79,8 +70,9 @@ export class Home extends Component {
 const stateToProps = state => {
 
     return {
-        koordinat: state.ListKoordinat
+        koordinat: state.ListKoordinatAdmin,
+        enableReinitialize: true,
     }
 }
 
-export default connect(stateToProps, { getKoordinatPublic })(Home)
+export default connect(stateToProps, { getKoordinat })(Dasboard)

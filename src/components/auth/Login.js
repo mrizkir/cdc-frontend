@@ -59,14 +59,14 @@ export class Login extends Component {
 
 
         if (this.props.statusLogin === "Berhasil") {
-            return <Redirect to='/admin/dasboard' />
+            return <Redirect to='/adm/monitor' />
         } else {
             return (
                 <form onSubmit={this.props.handleSubmit(this.onSubmit)} >
                     <div className="body" ></div>
                     <div className="grad"></div>
                     <div className="header">
-                        <div>CDC<span>Bintan</span></div>
+                        <div>Bintan<span>CDC</span></div>
                     </div>
                     <br />
                     <div className="login">

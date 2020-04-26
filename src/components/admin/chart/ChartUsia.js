@@ -8,12 +8,7 @@ export class ChartUsia extends Component {
         super(props);
 
         var dataChart = this.props.dataChart
-        var ttlLkPositif = dataChart.jk.lkpositifAktif + dataChart.jk.lkpositifSembuh + dataChart.jk.lkpositifMeninggal;
-        var ttlPrPositif = dataChart.jk.prpositifAktif + dataChart.jk.prpositifSembuh + dataChart.jk.prpositifMeninggal;
-        var ttlLkPdp = dataChart.jk.lkpdpAktif + dataChart.jk.lkpdpSembuh + dataChart.jk.lkpdpMeninggal;
-        var ttlPrPdp = dataChart.jk.prpdpAktif + dataChart.jk.prpdpSembuh + dataChart.jk.prpdpMeninggal;
-        var ttlLkOdp = dataChart.jk.lkodpAktif + dataChart.jk.lkodpSembuh + dataChart.jk.lkodpMeninggal;
-        var ttlPrOdp = dataChart.jk.prodpAktif + dataChart.jk.prodpSembuh + dataChart.jk.prodpMeninggal;
+
 
         var categories = [
             '0-4', '5-9', '10-14', '15-19',
@@ -227,7 +222,7 @@ export class ChartUsia extends Component {
         const { chartOptionDetail, chartOptionGlobal, hoverData } = this.state;
 
         return (
-            <div className="card">
+            <div  >
 
                 <div className="row">
                     <div className="col-md-4">
