@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import Master from './template/Master'
+
 import { connect } from 'react-redux'
 import { BASE_URL } from '../constant'
 
@@ -11,12 +11,12 @@ import { getDetailPasien, getRiwayat, getRiwayatLokasi } from '../../actions'
 
 // import { Link } from 'react-router-dom'
 
-export class UbahPasien extends Component {
+export class DetailPasien extends Component {
 
     componentDidMount() {
-        this.props.getDetailPasien(this.props.match.params.id)
-        this.props.getRiwayat(this.props.match.params.id)
-        this.props.getRiwayatLokasi(this.props.match.params.id)
+        this.props.getDetailPasien(this.props.id)
+        this.props.getRiwayat(this.props.id)
+        this.props.getRiwayatLokasi(this.props.id)
     }
 
     render() {
@@ -38,15 +38,19 @@ export class UbahPasien extends Component {
         const renderRiwayat = () => {
 
             if (this.props.riwayat === null) {
-                return <div></div>
+                return (
+                    <tr>
+                        <td colSpan="3"></td>
+                    </tr>
+                )
             }
 
             const riwayat = this.props.riwayat
 
-            return riwayat.map(riw => {
+            return riwayat.map((riw, index) => {
 
                 return (
-                    <tr>
+                    <tr key={index}>
                         <td>{riw.created_at}</td>
                         <td>{riw.Descr}</td>
                         <td>{riw.nama_status}</td>
@@ -57,7 +61,11 @@ export class UbahPasien extends Component {
         const renderRiwayatLokasi = () => {
 
             if (this.props.riwayatLokasi === null) {
-                return <div></div>
+                return (
+                    <tr>
+                        <td colSpan="3"></td>
+                    </tr>
+                )
             }
 
             const lokasi = this.props.riwayatLokasi
@@ -211,8 +219,9 @@ export class UbahPasien extends Component {
         )
 
         return (
-            <Master contentRender={contentRender} />
-
+            <div>
+                {contentRender}
+            </div>
         )
     }
 
@@ -228,4 +237,4 @@ const stateToProps = state => {
     }
 }
 
-export default connect(stateToProps, { getDetailPasien, getRiwayat, getRiwayatLokasi })(UbahPasien)
+export default connect(stateToProps, { getDetailPasien, getRiwayat, getRiwayatLokasi })(DetailPasien)

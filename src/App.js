@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 import { BrowserRouter, Route } from 'react-router-dom'
 
-import './assets/css/Style.css'
 
 import Login from './components/auth/Login'
 
@@ -38,7 +37,8 @@ export class App extends Component {
           <Route path="/login" component={Login} />
           <Route path="/logout" component={Logout} />
           <Route path="/adm/monitor" component={Monitor} />
-          <Route path="/admin/:menu" component={TemplateAdm} />
+          <Route path="/admin/:menu" exact component={TemplateAdm} />
+          <Route path="/admin/:menu/:id" component={TemplateAdm} />
           {/* <Route path="/admin/daftaruser" component={DaftarUser} />
           <Route path="/admin/adduser" component={AddUser} />
           <Route path="/admin/pasien" component={Pasien} />

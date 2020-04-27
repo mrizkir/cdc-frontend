@@ -5,6 +5,9 @@ import Sidebar from './Sidebar'
 import { getKoordinatPublic, getUser } from '../actions'
 import Navbar from './Navbar'
 
+
+import '../assets/css/Style.css'
+
 import '../assets/admin/css/sb-admin-2.min.css'
 import '../assets/admin/vendor/fontawesome-free/css/all.min.css'
 

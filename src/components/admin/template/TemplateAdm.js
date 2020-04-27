@@ -13,6 +13,12 @@ import NavbarAdmin from './NavbarAdmin'
 import GugusTugas from '../GugusTugas'
 import Petugas from '../Petugas'
 import ListPasien from '../ListPasien'
+import DetailPasien from '../DetailPasien'
+import UbahPasienx from '../UbahPasien'
+import TambahGugusTugas from '../TambahGugusTugas'
+import UbahGugusTugas from '../UbahGugusTugas'
+import TambahPetugas from '../TambahPetugas'
+import UbahPetugas from '../UbahPetugas'
 
 export class TemplateAdm extends Component {
 
@@ -24,11 +30,24 @@ export class TemplateAdm extends Component {
 
     pilihanMenu = () => {
 
-        switch (this.props.match.params.menu) {
-            case 'dasboard': return <Dasboard />
-            case 'gugustugas': return <GugusTugas />
-            case 'petugas': return <Petugas />
-            case 'pasien': return <ListPasien />
+        if (this.props.match.params.id) {
+            switch (this.props.match.params.menu) {
+                case 'detailpasien': return <DetailPasien id={this.props.match.params.id} />
+                case 'ubahpasien': return <UbahPasienx id={this.props.match.params.id} />
+                case 'ubahgugustugas': return <UbahGugusTugas id={this.props.match.params.id} />
+                case 'ubahpetugas': return <UbahPetugas id={this.props.match.params.id} />
+            }
+        } else {
+
+            switch (this.props.match.params.menu) {
+                case 'dasboard': return <Dasboard />
+                case 'gugustugas': return <GugusTugas />
+                case 'petugas': return <Petugas />
+                case 'pasien': return <ListPasien />
+                case 'tambahgugustugas': return <TambahGugusTugas />
+                case 'tambahpetugas': return <TambahPetugas />
+
+            }
         }
     }
 

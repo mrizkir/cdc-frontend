@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import Master from './template/Master'
+
 
 import { BASE_URL } from '../constant'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { getDetailPasien, ubahPasien } from '../../actions'
@@ -11,24 +11,19 @@ import ModalUbahPasien from './ModalUbahPasien'
 import ModalUploadFoto from './ModalUploadFoto'
 
 
-export class UbahPasien extends Component {
+export class UbahPasienx extends Component {
 
     state = {
         prosesLoad: 0
     }
 
     async componentDidMount() {
-        await this.props.getDetailPasien(this.props.match.params.id)
+        await this.props.getDetailPasien(this.props.id)
         this.setState({
             prosesLoad: 1
         })
     }
 
-
-    // shouldComponentUpdate(nextProps, nextState) {
-
-    //     return nextProps.initialValues !== this.props.initialValues;
-    // }
 
     renderInput = ({ input, label, type, meta, dataToggle, dataTarget }) => {
         if (dataToggle) {
@@ -61,8 +56,8 @@ export class UbahPasien extends Component {
 
     onSubmit = (formValues) => {
 
-        this.props.ubahPasien(this.props.match.params.id, formValues)
-        this.props.history.push('/admin/pasien')
+        this.props.ubahPasien(this.props.id, formValues)
+        // return <Redirect to='/admin/pasien' />
     }
 
 
@@ -156,7 +151,6 @@ export class UbahPasien extends Component {
 
 
                 <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
                     <ModalUbahPasien pasien={pasien} />
                 </div>
                 <div className="modal fade" id="exampleModal2" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
@@ -167,8 +161,9 @@ export class UbahPasien extends Component {
         )
 
         return (
-            <Master contentRender={contentRender} />
-
+            <>
+                {contentRender}
+            </>
         )
     }
 
@@ -204,8 +199,9 @@ const formWrap = reduxForm({
     enableReinitialize: true,
     validate,
 
-})(UbahPasien)
+})(UbahPasienx)
 
 export default connect(
     stateToProps,
     { getDetailPasien, ubahPasien })(formWrap)
+

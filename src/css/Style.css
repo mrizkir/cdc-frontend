@@ -293,7 +293,7 @@ a.icon-link:hover {
   text-decoration: none;
 }
 
-.btn {
+/* .btn {
   background: white;
   color: #363738;
   font-weight: bold;
@@ -306,7 +306,7 @@ a.icon-link:hover {
   display: inline-block;
   padding: 0;
   border: none;
-}
+} */
 .btn:focus {
   box-shadow: none;
 }
