@@ -1,7 +1,10 @@
 export const getGugusTugas = (state = [], action) => {
 
     if (action.type === "GET_GUGUS_TUGAS") {
-        return action.data.users
+        if (action.data) {
+            return action.data.usersgugustugas
+        }
+        return state
     }
 
     return state

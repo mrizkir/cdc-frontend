@@ -1,6 +1,7 @@
 .ReactModal__Content {
     position: absolute;
    margin:100px 200px auto 200px;
+   /* width: 300px; */
      padding:10px;
     height: 420px;
     border:none  !important;

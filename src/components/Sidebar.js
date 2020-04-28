@@ -118,12 +118,12 @@ export class Sidebar extends Component {
         return (
             <>
                 <div className="widget-box total">
-                    <h2 className="text-primary">Total Kasus Terdaftar</h2>
+                    <h2 className="text-danger">Total Kasus Terdaftar</h2>
                     <p className="text-dark">{jumlah.total}</p>
                 </div>
 
                 <div className="widget-box">
-                    <button className="btn btn-dark mb-1" style={{ 'width': '100%' }} type="button" data-toggle="collapse" data-target="#c1" aria-expanded="false" aria-controls="collapseExample">
+                    <button className="btn  mb-1" style={{ 'width': '100%', background: 'black', color: 'yellow' }} type="button" data-toggle="collapse" data-target="#c1" aria-expanded="false" aria-controls="collapseExample">
                         Meninggal ({jumlah.meninggal})
                     </button>
                     <div className="collapse mb-2" id="c1">
@@ -139,7 +139,7 @@ export class Sidebar extends Component {
                         </div>
                     </div>
 
-                    <button className="btn btn-dark mb-1" style={{ 'width': '100%' }} type="button" data-toggle="collapse" data-target="#c2" aria-expanded="false" aria-controls="collapseExample">
+                    <button className="btn  mb-1" style={{ 'width': '100%', background: 'black', color: 'yellow' }} type="button" data-toggle="collapse" data-target="#c2" aria-expanded="false" aria-controls="collapseExample">
                         Positif ({jumlah.positif})
                     </button>
                     <div className="collapse mb-2" id="c2">
@@ -152,7 +152,7 @@ export class Sidebar extends Component {
                         </div>
                     </div>
 
-                    <button className="btn btn-dark mb-1" style={{ 'width': '100%' }} type="button" data-toggle="collapse" data-target="#c3" aria-expanded="false" aria-controls="collapseExample">
+                    <button className="btn  mb-1" style={{ 'width': '100%', background: 'black', color: 'yellow' }} type="button" data-toggle="collapse" data-target="#c3" aria-expanded="false" aria-controls="collapseExample">
                         Orang Tanpa Gejala ({jumlah.otg})
                     </button>
                     <div className="collapse mb-2" id="c3">
@@ -165,7 +165,7 @@ export class Sidebar extends Component {
                         </div>
                     </div>
 
-                    <button className="btn btn-dark  mb-1" style={{ 'width': '100%' }} type="button" data-toggle="collapse" data-target="#c4" aria-expanded="false" aria-controls="collapseExample">
+                    <button className="btn   mb-1" style={{ 'width': '100%', background: 'black', color: 'yellow' }} type="button" data-toggle="collapse" data-target="#c4" aria-expanded="false" aria-controls="collapseExample">
                         Pasien Dalam Pemantauan ({jumlah.pdp})
                     </button>
                     <div className="collapse mb-2" id="c4">
@@ -176,7 +176,7 @@ export class Sidebar extends Component {
                         </div>
                     </div>
 
-                    <button className="btn btn-dark mb-1" style={{ 'width': '100%' }} type="button" data-toggle="collapse" data-target="#c5" aria-expanded="false" aria-controls="collapseExample">
+                    <button className="btn  mb-1" style={{ 'width': '100%', background: 'black', color: 'yellow' }} type="button" data-toggle="collapse" data-target="#c5" aria-expanded="false" aria-controls="collapseExample">
                         Orang Dalam Pemantauan ({jumlah.odp})
                     </button>
                     <div className="collapse mb-2" id="c5">
@@ -189,7 +189,7 @@ export class Sidebar extends Component {
                         </div>
                     </div>
 
-                    <button className="btn btn-dark mb-1" style={{ 'width': '100%' }} type="button" data-toggle="collapse" data-target="#c6" aria-expanded="false" aria-controls="collapseExample">
+                    <button className="btn  mb-1" style={{ 'width': '100%', background: 'black', color: 'yellow' }} type="button" data-toggle="collapse" data-target="#c6" aria-expanded="false" aria-controls="collapseExample">
                         Sembuh ({jumlah.sembuh})
                     </button>
                     <div className="collapse mb-2" id="c6">
@@ -202,7 +202,7 @@ export class Sidebar extends Component {
                         </div>
                     </div>
 
-                    <button className="btn btn-dark mb-1" style={{ 'width': '100%' }} type="button" data-toggle="collapse" data-target="#c7" aria-expanded="false" aria-controls="collapseExample">
+                    <button className="btn  mb-1" style={{ 'width': '100%', background: 'black', color: 'yellow' }} type="button" data-toggle="collapse" data-target="#c7" aria-expanded="false" aria-controls="collapseExample">
                         Negatif ({jumlah.negatif})
                     </button>
                     <div className="collapse mb-2" id="c7">

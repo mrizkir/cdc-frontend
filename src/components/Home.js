@@ -63,7 +63,7 @@ export class Home extends Component {
 
 
         return (
-            <>
+            <div style={{ background: 'black' }} >
                 {this.renderContent()}
                 <div className="container">
                     <ChartTotal />
@@ -71,7 +71,7 @@ export class Home extends Component {
 
                 <ModalDisclaimer />
                 <FooterHome />
-            </>
+            </div>
         )
     }
 }

@@ -7,19 +7,19 @@ export class Navbar extends Component {
     renderLinkLogin() {
         if (this.props.statusLogin === "Berhasil") {
 
-            return <Link className="nav-link  " to="/adm/monitor">Admin Dashboard</Link>
+            return <Link className="nav-link  btn btn-sm btn-primary" to="/adm/monitor">Admin Dashboard</Link>
 
         } else {
-            return <Link className="nav-link  " to="/login">Login</Link>
+            return <Link className="nav-link  btn btn-sm btn-primary" to="/login">Login</Link>
 
         }
     }
 
     render() {
         return (
-            <nav className="navbar navbar-expand-lg navbar-dark bg-gradient-primary shadow">
-                <Link className="navbar-brand" to="/"> Data Center  Covid-19 Kabupaten Bintan<br></br>
-                    <small>Provinsi Kepulauan Riau</small>
+            <nav className="navbar navbar-expand-lg  shadow  shadow-lg mb-1 " style={{ background: 'black' }}>
+                <Link className="navbar-brand text-warning" to="/"   > Data Center  Covid-19 Kabupaten Bintan
+                <p >  <small className="text-light">Provinsi Kepulauan Riau</small></p>
                 </Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>

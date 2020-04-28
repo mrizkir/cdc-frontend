@@ -30,14 +30,14 @@ export class UbahGugusTugas extends Component {
         if (dataToggle) {
             return <div className="form-group">
                 <label htmlFor={label}>{label}</label>
-                <input className="form-control form-control-user" id={label}  {...input} type={type} autoComplete='off' placeholder={label} data-toggle="modal" data-target="#exampleModal" />
+                <input className="form-control  " id={label}  {...input} type={type} autoComplete='off' placeholder={label} data-toggle="modal" data-target="#exampleModal" />
                 {this.renderError(meta)}
             </div>
         }
         return (
             <div className="form-group">
                 <label htmlFor={label}>{label}</label>
-                <input className="form-control form-control-user" id={label}  {...input} type={type} autoComplete='off' placeholder={label} />
+                <input className="form-control  " id={label}  {...input} type={type} autoComplete='off' placeholder={label} />
                 {this.renderError(meta)}
             </div>
         )
@@ -152,6 +152,9 @@ const validate = (formValue) => {
     // }
     if (!formValue.email) {
         errors.email = "Email Harus diisi"
+    }
+    if (!formValue.alamat) {
+        errors.alamat = "Alamat Harus diisi"
     }
 
     return errors;

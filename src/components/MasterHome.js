@@ -30,11 +30,11 @@ export class MasterHome extends Component {
 
         return (
 
-            <>
+            <div >
                 <Navbar />
                 <div className="row">
 
-                    <div className="col-md-2 col-sm-12 bg-dark" style={{ 'paddingRight': '0' }}>
+                    <div className="col-md-2 col-sm-12 " style={{ 'paddingRight': '0', background: '#9fd3ff' }}>
                         <Sidebar />
                     </div>
 
@@ -51,7 +51,7 @@ export class MasterHome extends Component {
 
 
 
-            </>
+            </div>
 
         )
 

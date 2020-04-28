@@ -54,8 +54,8 @@ class ChartTotal extends Component {
 
         return (
             <div className="card mt-5">
-                <div className="card-header bg-gradient-primary text-light">
-                    <h3 className="text-center  ">GRAFIK</h3>
+                <div className="card-header bg-warning ">
+                    <h3 className="text-center" style={{ color: 'black' }}>GRAFIK</h3>
                 </div>
                 <div className="card-body">
 

@@ -46,11 +46,19 @@ export class Sidebar extends Component {
 
                     <hr className="sidebar-divider"></hr>
 
+                    <div className="sidebar-heading">
+                        Pasien
+      </div>
 
                     <li className="nav-item">
                         <Link className="nav-link" to="/admin/pasien">
-                            <i className="fas fa-fw fa-users"></i>
-                            <span>Pasien</span></Link>
+                            <i className="fas fa-fw fa-procedures"></i>
+                            <span>Daftar Pasien</span></Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/admin/fasilitas">
+                            <i className="fas fa-fw fa-medkit"></i>
+                            <span>Fasilitas Karantina</span></Link>
                     </li>
                 </ul>
 
