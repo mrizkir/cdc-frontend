@@ -51,8 +51,10 @@ export class Petugas extends Component {
                         <tr>
                             <th>No</th>
                             <th>Nama</th>
-                            <th>Email</th>
                             <th>Username</th>
+                            <th>Kecamatan</th>
+                            <th>Desa</th>
+
                             <th width="300px" className="text-center">Aksi </th>
 
                         </tr>
@@ -63,10 +65,13 @@ export class Petugas extends Component {
                                 <tr key={index}>
                                     <td>{index + 1}</td>
                                     <td>{gugus.name}</td>
-                                    <td>{gugus.email}</td>
                                     <td>{gugus.username}</td>
+                                    <td>{gugus.Nm_Kecamatan}</td>
+                                    <td> {gugus.Nm_Desa}</td>
+
                                     <td className="text-center">
-                                        <Link className="btn btn-success mr-2">Set Permision</Link>
+                                        <Link className="btn btn-success mr-2"><i class="fas fa-key"></i></Link>
+                                        <Link to={`/admin/detailpetugas/${gugus.id}`} className="btn btn-info mr-2"><i className="far fa-eye"></i></Link>
                                         <Link className="btn btn-warning mr-2" to={`/admin/ubahpetugas/${gugus.id}`}><i className="fas fa-edit"></i></Link>
                                         <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#modalDelete" onClick={() => this.setKonfirmasiHapus(gugus)}><i className="fas fa-trash"></i></button>
                                     </td>

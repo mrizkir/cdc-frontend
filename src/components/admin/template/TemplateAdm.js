@@ -19,6 +19,10 @@ import TambahGugusTugas from '../TambahGugusTugas'
 import UbahGugusTugas from '../UbahGugusTugas'
 import TambahPetugas from '../TambahPetugas'
 import UbahPetugas from '../UbahPetugas'
+import Fasilitas from '../Fasilitas'
+import TambahFasilitas from '../TambahFasilitas'
+import UbahFasilitas from '../UbahFasilitas'
+import DetailPetugas from '../DetailPetugas'
 
 export class TemplateAdm extends Component {
 
@@ -36,6 +40,8 @@ export class TemplateAdm extends Component {
                 case 'ubahpasien': return <UbahPasienx id={this.props.match.params.id} />
                 case 'ubahgugustugas': return <UbahGugusTugas id={this.props.match.params.id} />
                 case 'ubahpetugas': return <UbahPetugas id={this.props.match.params.id} />
+                case 'detailpetugas': return <DetailPetugas id={this.props.match.params.id} />
+                case 'ubahfasilitas': return <UbahFasilitas id={this.props.match.params.id} />
             }
         } else {
 
@@ -46,6 +52,8 @@ export class TemplateAdm extends Component {
                 case 'pasien': return <ListPasien />
                 case 'tambahgugustugas': return <TambahGugusTugas />
                 case 'tambahpetugas': return <TambahPetugas />
+                case 'fasilitas': return <Fasilitas />
+                case 'tambahfasilitas': return <TambahFasilitas />
 
             }
         }

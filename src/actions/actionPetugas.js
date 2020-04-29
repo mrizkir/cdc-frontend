@@ -9,6 +9,10 @@ export const getPetugas = () => async dispatch => {
         await Api.get('/setting/userspetugas', { headers: { Authorization: token } }).then(response => {
             data = response.data;
 
+            dispatch({
+                type: "GET_PETUGAS",
+                data: data
+            })
         })
             .catch((error) => {
 
@@ -16,10 +20,6 @@ export const getPetugas = () => async dispatch => {
     }
 
 
-    dispatch({
-        type: "GET_PETUGAS",
-        data: data
-    })
 }
 
 

@@ -19,7 +19,7 @@ export class Sidebar extends Component {
                             <span>Dasboard</span></Link>
                     </li>
                     <hr className="sidebar-divider my-0" />
-                    <li className="nav-item active">
+                    <li className="nav-item  ">
                         <Link className="nav-link" to="/adm/monitor">
                             <i className="fas fa-tv  "></i>
                             <span>Monitor</span></Link>

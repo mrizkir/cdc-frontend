@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
+import { Field, reduxForm } from 'redux-form'
 import { Link, Redirect } from 'react-router-dom'
 
+import { getFasilitas, ubahFasilitas } from '../../actions/actionFasilitas'
 import bgGugus from '../../assets/img/bggugus.jpg'
-import { tambahPetugas } from '../../actions/actionPetugas'
 import { getKecamatan, getDesa } from '../../actions/actionSystem'
 
-export class TambahPetugas extends Component {
+export class UbahGugusTugas extends Component {
 
     state = {
         onSubmit: false,
@@ -22,9 +22,14 @@ export class TambahPetugas extends Component {
         }
     }
 
-    componentDidMount() {
+
+    componentDidMount = async () => {
+        await this.props.getFasilitas()
         this.props.getKecamatan()
+
+
     }
+
 
     renderListKecamatan = () => {
         if (!this.props.listKecamatan.kecamatan) return null
@@ -62,10 +67,7 @@ export class TambahPetugas extends Component {
     }
 
 
-
-
     renderInput = ({ input, label, type, meta, dataToggle, dataTarget }) => {
-
         if (label === 'Desa') {
 
             return (
@@ -93,11 +95,10 @@ export class TambahPetugas extends Component {
                 </div>
             )
         }
-
-        if (dataToggle) {
+        if (label === 'Alamat') {
             return <div className="form-group">
                 <label htmlFor={label}>{label}</label>
-                <input className="form-control  " id={label}  {...input} type={type} autoComplete='off' placeholder={label} data-toggle="modal" data-target="#exampleModal" />
+                <textarea className="form-control  " id={label}  {...input} placeholder={label}  > </textarea>
                 {this.renderError(meta)}
             </div>
         }
@@ -126,54 +127,58 @@ export class TambahPetugas extends Component {
             Nm_Kecamatan: this.state.namaKecamatan,
             Nm_Desa: this.state.namaDesa
         }
-
-        await this.props.tambahPetugas(formD)
+        await this.props.ubahFasilitas(this.props.id, formD)
         this.setState({ onSubmit: true })
     }
 
 
 
     contentRender = () => {
+
         return (
             <div className="card shadow mb-4">
                 <div className="card-header py-3">
-                    <h6 className="m-0 font-weight-bold text-primary">Tambah Petugas</h6>
+                    <h6 className="m-0 font-weight-bold text-primary">Ubah Fasilitas Karantina</h6>
                 </div>
                 <div className="card-body">
+
                     <div className="container">
+
                         <div className="card o-hidden border-0 shadow-lg my-5">
                             <div className="card-body p-0">
-                                <div className="row">
-                                    <div className="col-lg-5   d-lg-block pr-0 " style={this.styles.bg} >
-                                    </div>
+
+                                <div className="row justify-content-center">
+
                                     <div className="col-lg-7">
                                         <div className="p-5">
                                             <div className="text-center">
-                                                <h1 className="h4 text-gray-900 mb-4">Data Petugas </h1>
+                                                <h1 className="h4 text-gray-900 mb-4">Data Fasilitas Karantina</h1>
                                             </div>
+
                                             <div  >
                                                 <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="user" >
 
-                                                    <Field name="name" component={this.renderInput} label="Nama" type="text" />
-                                                    <Field name="email" component={this.renderInput} label="Email" type="email" />
-                                                    <Field name="username" component={this.renderInput} label="Username" type="text" />
-                                                    <Field name="password" component={this.renderInput} label="Password" type="password" />
-                                                    <Field name="nomor_hp" component={this.renderInput} label="Nomor HP" type="text" />
+                                                    <Field name="Nm_Fasilitas" component={this.renderInput} label="Nama" type="text" />
                                                     <Field name="alamat" component={this.renderInput} label="Alamat" type="text" />
                                                     <Field name="PmKecamatanID" component={this.renderInput} label="Kecamatan" />
                                                     <Field name="PmDesaID" component={this.renderInput} label="Desa" />
+
 
                                                     <hr />
 
                                                     <div className="row">
                                                         <div className="col-6">
-                                                            <button className="btn btn-primary" style={{ width: '100%' }}> OK</button>
+                                                            <button className="btn btn-primary" style={{ width: '100%' }} onClick={() => this.onSubmit}> Ubah</button>
+
                                                         </div>
                                                         <div className="col-6">
-                                                            <Link to='/admin/petugas' className="btn btn-secondary" style={{ width: '100%' }}> Batal</Link>
+                                                            <Link to='/admin/fasilitas' className="btn btn-secondary" style={{ width: '100%' }}> Batal</Link>
+
                                                         </div>
                                                     </div>
                                                 </form>
+
+
                                             </div>
                                         </div>
                                     </div>
@@ -191,7 +196,7 @@ export class TambahPetugas extends Component {
     render() {
 
         if (this.state.onSubmit) {
-            return <Redirect to='/admin/petugas' />
+            return <Redirect to='/admin/fasilitas' />
         }
 
         return (
@@ -205,23 +210,13 @@ export class TambahPetugas extends Component {
 }
 
 const validate = (formValue) => {
-
-
     const errors = {}
-    if (!formValue.username) {
-        errors.username = "Username Harus diisi"
+    if (!formValue.Nm_Fasilitas) {
+        errors.Nm_Fasilitas = "Nama Fasilitas Harus diisi"
     }
-    if (!formValue.name) {
-        errors.name = "Nama Harus diisi"
-    }
-    if (!formValue.password) {
-        errors.password = "Password Harus diisi"
-    }
-    if (!formValue.email) {
-        errors.email = "Email Harus diisi"
-    }
-    if (!formValue.PmKecamatanID || formValue.PmKecamatanID === "wow") {
-        errors.PmKecamatanID = "Kecamatan harus dipilih"
+
+    if (!formValue.alamat) {
+        errors.alamat = "Alamat Harus diisi"
     }
 
     return errors;
@@ -230,19 +225,27 @@ const validate = (formValue) => {
 
 
 const formWrap = reduxForm({
-    form: 'tambahPetugas',
+    form: 'UbahFasilitas',
     enableReinitialize: true,
     validate,
 
-})(TambahPetugas)
+})(UbahGugusTugas)
 
-const stateToProps = state => {
+
+const stateToProps = (state, myprops) => {
+
     return {
+        initialValues: state.listFasilitas.find(us => {
+            return us.FasilitasKarantinaID === myprops.id
+        }),
         listKecamatan: state.listKecamatan,
         listDesa: state.listDesa,
     }
 }
 
-export default connect(
-    stateToProps, { tambahPetugas, getKecamatan, getDesa })(formWrap)
+export default connect(stateToProps, { getFasilitas, ubahFasilitas, getKecamatan, getDesa })(formWrap)
+
+
+
+
 

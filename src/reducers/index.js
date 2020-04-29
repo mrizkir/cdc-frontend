@@ -3,6 +3,7 @@ import { reducer as formReducer } from 'redux-form'
 import { getGugusTugas, getPetugas } from './perugasReducers'
 import { getKecamatan, getDesa } from './systemReducer'
 import { dataChart } from './chartReducer'
+import { getFasilitas } from './fasilitasReducer'
 
 
 const getKoordinatReducers = (state = [], action) => {
@@ -114,5 +115,7 @@ export default combineReducers({
     listPetugas: getPetugas,
 
     listKecamatan: getKecamatan,
-    listDesa: getDesa
+    listDesa: getDesa,
+
+    listFasilitas: getFasilitas
 })

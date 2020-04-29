@@ -54,7 +54,7 @@ export class UbahGugusTugas extends Component {
     }
 
     onSubmit = async (formValues) => {
-        console.log(formValues)
+
         await this.props.ubahGugusTugas(this.props.id, formValues)
         this.setState({ onSubmit: true })
     }

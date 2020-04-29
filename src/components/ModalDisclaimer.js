@@ -53,7 +53,7 @@ export class ModalDisclaimer extends Component {
     }
 }
 
-const props = {};
+
 
 
 export default ModalDisclaimer

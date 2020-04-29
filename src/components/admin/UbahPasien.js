@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 
 import { BASE_URL } from '../constant'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { getDetailPasien, ubahPasien } from '../../actions'
