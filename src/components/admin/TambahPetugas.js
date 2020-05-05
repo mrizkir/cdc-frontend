@@ -162,7 +162,7 @@ export class TambahPetugas extends Component {
                                                     <Field name="alamat" component={this.renderInput} label="Alamat" type="text" />
                                                     <Field name="PmKecamatanID" component={this.renderInput} label="Kecamatan" />
                                                     <Field name="PmDesaID" component={this.renderInput} label="Desa" />
-
+ 
                                                     <hr />
 
                                                     <div className="row">
