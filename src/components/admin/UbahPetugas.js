@@ -67,7 +67,6 @@ export class UbahPetugas extends Component {
   }
 
   onSubmit = async (formValues) => {
-    console.log(formValues);
     await this.props.ubahPetugas(this.props.id, formValues);
     this.setState({ onSubmit: true });
   };

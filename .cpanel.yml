@@ -6,4 +6,4 @@ deployment:
     - /bin/rm -rf $DEPLOYPATH/*.js
     - /bin/cp -R build/* $DEPLOYPATH
     - /bin/cp public/.htaccess $DEPLOYPATH
-    - /usr/bin/git push origin master -u
+ 
