@@ -145,9 +145,7 @@ export class TambahPetugas extends Component {
       ...formValues,
       Nm_Kecamatan: this.state.namaKecamatan,
       Nm_Desa:
-        this.state.namaDesa === "--- Pilih Desa ---"
-          ? null
-          : this.state.namaDesa,
+        this.state.namaDesa === "--- Pilih Desa ---" ? "" : this.state.namaDesa,
     };
 
     await this.props.tambahPetugas(formD, () => {
