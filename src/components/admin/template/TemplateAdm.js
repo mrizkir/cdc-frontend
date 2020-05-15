@@ -8,7 +8,7 @@ import "../../../assets/css/StyleAdmin.css";
 
 import { getUser } from "../../../actions";
 import { Dasboard } from "../Dasboard";
-import { Sidebar } from "./Sidebar";
+import Sidebar from "./Sidebar";
 import NavbarAdmin from "./NavbarAdmin";
 import GugusTugas from "../GugusTugas";
 import Petugas from "../Petugas";
@@ -24,6 +24,8 @@ import TambahFasilitas from "../TambahFasilitas";
 import UbahFasilitas from "../UbahFasilitas";
 import DetailPetugas from "../DetailPetugas";
 import Laporan from "../Laporan";
+import Kecamatan from "../Kecamatan";
+import UbahKecamatan from "../UbahKecamatan";
 
 export class TemplateAdm extends Component {
   componentDidMount = () => {
@@ -45,6 +47,8 @@ export class TemplateAdm extends Component {
           return <DetailPetugas id={this.props.match.params.id} />;
         case "ubahfasilitas":
           return <UbahFasilitas id={this.props.match.params.id} />;
+        case "ubahkecamatan":
+          return <UbahKecamatan id={this.props.match.params.id} />;
       }
     } else {
       switch (this.props.match.params.menu) {
@@ -66,6 +70,8 @@ export class TemplateAdm extends Component {
           return <TambahFasilitas />;
         case "laporan":
           return <Laporan />;
+        case "kecamatan":
+          return <Kecamatan />;
       }
     }
   };

@@ -70,6 +70,12 @@ export class Sidebar extends Component {
           <hr className="sidebar-divider"></hr>
 
           <li className="nav-item">
+            <Link className="nav-link" to="/admin/kecamatan">
+              <i className="fas fa-fw fa-map-marked-alt"></i>
+              <span>Lokasi Kecamatan</span>
+            </Link>
+          </li>
+          <li className="nav-item">
             <Link className="nav-link" to="/admin/laporan">
               <i className="fas fa-fw fa-file-download"></i>
               <span>Laporan</span>
