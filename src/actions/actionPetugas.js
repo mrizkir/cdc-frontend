@@ -20,7 +20,7 @@ export const getPetugas = () => async (dispatch) => {
   }
 };
 
-export const tambahPetugas = (formValues) => async (dispatch) => {
+export const tambahPetugas = (formValues, callback) => async (dispatch) => {
   const token = "Bearer " + localStorage.token;
 
   if (token) {
@@ -34,6 +34,10 @@ export const tambahPetugas = (formValues) => async (dispatch) => {
         console.log(error);
       }
     );
+  }
+
+  if (callback) {
+    callback();
   }
 };
 

@@ -11,7 +11,7 @@ export class TambahPetugas extends Component {
   state = {
     onSubmit: false,
     namaKecamatan: "",
-    namaDesa: "",
+    namaDesa: null,
   };
 
   styles = {
@@ -70,7 +70,7 @@ export class TambahPetugas extends Component {
             type={type}
             onClick={this.onChangeDesa}
           >
-            <option value="wow">--- Pilih Desa ---</option>
+            <option value="">--- Pilih Desa ---</option>
             {this.renderListDesa()}
           </select>
           {this.renderError(meta)}
@@ -144,11 +144,15 @@ export class TambahPetugas extends Component {
     const formD = {
       ...formValues,
       Nm_Kecamatan: this.state.namaKecamatan,
-      Nm_Desa: this.state.namaDesa,
+      Nm_Desa:
+        this.state.namaDesa === "--- Pilih Desa ---"
+          ? null
+          : this.state.namaDesa,
     };
 
-    await this.props.tambahPetugas(formD);
-    this.setState({ onSubmit: true });
+    await this.props.tambahPetugas(formD, () => {
+      this.setState({ onSubmit: true });
+    });
   };
 
   contentRender = () => {
