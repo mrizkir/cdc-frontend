@@ -8,11 +8,20 @@ import { getDetailPasien, ubahPasien } from "../../actions";
 import noImage from "../../assets/img/no_photo.jpg";
 import ModalUbahPasien from "./ModalUbahPasien";
 import ModalUploadFoto from "./ModalUploadFoto";
+import { getKecamatan, getDesa } from "../../actions/actionSystem";
+import ModalKecamatan from "./ModalKecamatan";
+import ModalDesa from "./ModalDesa";
 
 export class UbahPasienx extends Component {
   state = {
     prosesLoad: 0,
     onOk: false,
+    submit: false,
+    Nm_Kecamatan: "",
+    PmKecamatanID: "",
+    PmDesaID: "",
+    Nm_Desa: "",
+    modalKecamatan: false,
   };
 
   async componentDidMount() {
@@ -20,8 +29,51 @@ export class UbahPasienx extends Component {
     this.setState({
       prosesLoad: 1,
     });
+    this.setState({
+      Nm_Kecamatan: this.props.initialValues.Nm_Kecamatan,
+      Nm_Desa: this.props.initialValues.Nm_Desa,
+      PmKecamatanID: this.props.initialValues.PmKecamatanID,
+      PmDesaID: this.props.initialValues.PmDesaID,
+    });
+    this.props.getDesa(this.state.PmKecamatanID);
   }
 
+  onChangeKecamatan = async (id, nama) => {
+    this.setState({
+      Nm_Kecamatan: nama,
+      PmKecamatanID: id,
+    });
+    this.props.getDesa(id);
+    this.setState({
+      Nm_Desa: "--",
+      PmDesaID: "--",
+    });
+  };
+  onChangeDesa = async (id, nama) => {
+    this.setState({
+      Nm_Desa: nama,
+      PmDesaID: id,
+    });
+  };
+  modalKecamatanClose = () =>
+    this.setState({
+      modalKecamatan: false,
+    });
+  modalDesaClose = () =>
+    this.setState({
+      modalDesa: false,
+    });
+
+  modalKecamatanOpen = () => {
+    this.setState({
+      modalKecamatan: true,
+    });
+  };
+  modalDesaOpen = () => {
+    this.setState({
+      modalDesa: true,
+    });
+  };
   renderInput = ({ input, label, type, meta, dataToggle, dataTarget }) => {
     if (dataToggle) {
       return (
@@ -67,7 +119,15 @@ export class UbahPasienx extends Component {
   }
 
   onSubmit = (formValues) => {
-    this.props.ubahPasien(this.props.id, formValues, () => {
+    this.setState({ submit: true });
+    if (this.state.Nm_Desa === "" || this.state.Nm_Desa === "--") return;
+
+    const formD = {
+      ...formValues,
+      ...this.state,
+    };
+
+    this.props.ubahPasien(this.props.id, formD, () => {
       this.setState({
         onOk: true,
       });
@@ -173,19 +233,50 @@ export class UbahPasienx extends Component {
                             label="Alamat"
                             type="text"
                           />
-                          <Field
-                            name="Nm_Desa"
-                            component={this.renderInput}
-                            label="Nama Desa"
-                            type="text"
-                          />
-                          <Field
-                            name="Nm_Kecamatan"
-                            component={this.renderInput}
-                            label="Nama Kecamatan"
-                            type="text"
-                          />
-                          {/* <Field name="nama_status" component={this.renderInput} label="Status Pasien" type="text" dataToggle="modal" dataTarget="#exampleModal" /> */}
+                          <div
+                            className="form-group"
+                            onClick={() => this.modalKecamatanOpen()}
+                          >
+                            <label htmlFor="Nm_Kecamatan">Kecamatan</label>
+                            <input
+                              id="Nm_Kecamatan"
+                              type="text"
+                              name="Nm_Kecamatan"
+                              value={
+                                this.state.Nm_Kecamatan === ""
+                                  ? this.props.initialValues.Nm_Kecamatan
+                                  : this.state.Nm_Kecamatan
+                              }
+                              disabled
+                              className="form-control"
+                            />
+                          </div>
+                          <div
+                            className="form-group"
+                            onClick={() => this.modalDesaOpen()}
+                          >
+                            <label htmlFor="Nm_Desa">Desa</label>
+                            <input
+                              id="Nm_Desa"
+                              type="text"
+                              name="Nm_Desa"
+                              value={
+                                this.state.Nm_Desa === ""
+                                  ? ""
+                                  : this.state.Nm_Desa
+                              }
+                              disabled
+                              className="form-control"
+                            />{" "}
+                            {this.state.Nm_Desa == "--" && this.state.submit ? (
+                              <small className="text-danger">
+                                Desa / Kelurahan Harus dipilih
+                              </small>
+                            ) : (
+                              ""
+                            )}
+                          </div>
+
                           <Field
                             name="tanggal_lahir"
                             component={this.renderInput}
@@ -253,7 +344,32 @@ export class UbahPasienx extends Component {
       </div>
     );
 
-    return <>{contentRender}</>;
+    return (
+      <>
+        {contentRender}
+        <ModalKecamatan
+          modalKecamatan={this.state.modalKecamatan}
+          modalKecamatanClose={this.modalKecamatanClose}
+          selected={
+            this.state.Nm_Kecamatan === ""
+              ? this.props.initialValues.Nm_Kecamatan
+              : this.state.Nm_Kecamatan
+          }
+          onChange={this.onChangeKecamatan}
+        />
+        <ModalDesa
+          modalDesa={this.state.modalDesa}
+          modalDesaClose={this.modalDesaClose}
+          selected={
+            this.state.Nm_Desa === ""
+              ? this.props.initialValues.Nm_Desa
+              : this.state.Nm_Desa
+          }
+          onChange={this.onChangeDesa}
+          labelDefault="--"
+        />
+      </>
+    );
   }
 }
 
@@ -282,4 +398,9 @@ const formWrap = reduxForm({
   validate,
 })(UbahPasienx);
 
-export default connect(stateToProps, { getDetailPasien, ubahPasien })(formWrap);
+export default connect(stateToProps, {
+  getDetailPasien,
+  ubahPasien,
+  getKecamatan,
+  getDesa,
+})(formWrap);

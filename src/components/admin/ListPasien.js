@@ -31,7 +31,7 @@ export class Pasien extends Component {
         <tr key={pasien.id}>
           <td>{index + 1}</td>
           <td>
-            <img alt="bg" src={foto} style={{ width: "100%" }} />
+            <img alt="bg" src={foto} style={{ width: "50px" }} />
           </td>
           <td>{pasien.username}</td>
 

@@ -249,10 +249,15 @@ export const login = (formValues) => async (dispatch) => {
 export const ubahPasien = (id, formValues, callback) => async (dispatch) => {
   const token = "Bearer " + localStorage.token;
 
+  var data = { ...formValues };
+
+  if (formValues.PmDesaID === "" || formValues.PmDesaID === "--") {
+    data = { ...formValues, PmDesaID: null, Nm_Desa: null };
+  }
   if (token) {
     await Api.post(
       `/setting/userspasien/${id}`,
-      { _method: "PUT", ...formValues },
+      { _method: "PUT", ...data },
       { headers: { Authorization: token } }
     ).then(
       (res) => {},
