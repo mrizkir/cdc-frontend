@@ -23,10 +23,16 @@ export const getPetugas = () => async (dispatch) => {
 export const tambahPetugas = (formValues, callback) => async (dispatch) => {
   const token = "Bearer " + localStorage.token;
 
+  var data = { ...formValues };
+
+  if (formValues.PmDesaID === "" || formValues.PmDesaID === "--") {
+    data = { ...formValues, PmDesaID: null, Nm_Desa: null };
+  }
+
   if (token) {
     await Api.post(
       `/setting/userspetugas/store`,
-      { ...formValues },
+      { ...data },
       { headers: { Authorization: token } }
     ).then(
       (res) => {},
@@ -59,14 +65,22 @@ export const hapusPetugas = (id) => async (dispatch) => {
 };
 
 export const ubahPetugas = (id, formValues) => async (dispatch) => {
-  console.log(formValues);
+  var data = { ...formValues };
 
+  if (
+    formValues.PmDesaID === "" ||
+    formValues.PmDesaID === "--" ||
+    formValues.PmDesaID === "Semua Desa"
+  ) {
+    data = { ...formValues, PmDesaID: null, Nm_Desa: null };
+  }
+  console.log(data);
   const token = "Bearer " + localStorage.token;
 
   if (token) {
     await Api.post(
       `/setting/userspetugas/${id}`,
-      { _method: "PUT", ...formValues },
+      { _method: "PUT", ...data },
       { headers: { Authorization: token } }
     ).then(
       (res) => {},

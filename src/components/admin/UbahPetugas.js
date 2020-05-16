@@ -6,9 +6,20 @@ import { Link, Redirect } from "react-router-dom";
 import { getPetugas, ubahPetugas } from "../../actions/actionPetugas";
 import bgGugus from "../../assets/img/bggugus.jpg";
 
+import { getKecamatan, getDesa } from "../../actions/actionSystem";
+
+import ModalKecamatan from "./ModalKecamatan";
+import ModalDesa from "./ModalDesa";
+
 export class UbahPetugas extends Component {
   state = {
     onSubmit: false,
+    submit: false,
+    Nm_Kecamatan: "",
+    PmKecamatanID: "",
+    PmDesaID: "",
+    Nm_Desa: "",
+    modalKecamatan: false,
   };
 
   styles = {
@@ -20,6 +31,51 @@ export class UbahPetugas extends Component {
 
   componentDidMount = async () => {
     await this.props.getPetugas();
+    this.setState({
+      Nm_Kecamatan: this.props.initialValues.Nm_Kecamatan,
+      Nm_Desa: this.props.initialValues.Nm_Desa,
+      PmKecamatanID: this.props.initialValues.PmKecamatanID,
+      PmDesaID: this.props.initialValues.PmDesaID,
+    });
+    this.props.getDesa(this.state.PmKecamatanID);
+  };
+
+  modalKecamatanClose = () =>
+    this.setState({
+      modalKecamatan: false,
+    });
+  modalDesaClose = () =>
+    this.setState({
+      modalDesa: false,
+    });
+
+  modalKecamatanOpen = () => {
+    this.setState({
+      modalKecamatan: true,
+    });
+  };
+  modalDesaOpen = () => {
+    this.setState({
+      modalDesa: true,
+    });
+  };
+
+  onChangeKecamatan = async (id, nama) => {
+    this.setState({
+      Nm_Kecamatan: nama,
+      PmKecamatanID: id,
+    });
+    this.props.getDesa(id);
+    this.setState({
+      Nm_Desa: "Semua Desa",
+      PmDesaID: "Semua Desa",
+    });
+  };
+  onChangeDesa = async (id, nama) => {
+    this.setState({
+      Nm_Desa: nama,
+      PmDesaID: id,
+    });
   };
 
   renderInput = ({ input, label, type, meta, dataToggle, dataTarget }) => {
@@ -67,7 +123,16 @@ export class UbahPetugas extends Component {
   }
 
   onSubmit = async (formValues) => {
-    await this.props.ubahPetugas(this.props.id, formValues);
+    this.setState({ submit: true });
+
+    if (this.state.Nm_Kecamatan === "") return;
+
+    const formD = {
+      ...formValues,
+      ...this.state,
+    };
+
+    await this.props.ubahPetugas(this.props.id, formD);
     this.setState({ onSubmit: true });
   };
 
@@ -124,6 +189,50 @@ export class UbahPetugas extends Component {
                             label="Alamat"
                             type="text"
                           />
+                          <div
+                            className="form-group"
+                            onClick={() => this.modalKecamatanOpen()}
+                          >
+                            <label htmlFor="Nm_Kecamatan">Kecamatan</label>
+                            <input
+                              id="Nm_Kecamatan"
+                              type="text"
+                              name="Nm_Kecamatan"
+                              value={
+                                this.state.Nm_Kecamatan === ""
+                                  ? ""
+                                  : this.state.Nm_Kecamatan
+                              }
+                              disabled
+                              className="form-control"
+                            />
+                            {this.state.Nm_Kecamatan == "" &&
+                            this.state.submit ? (
+                              <small className="text-danger">
+                                Kecamatan Harus dipilih
+                              </small>
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                          <div
+                            className="form-group"
+                            onClick={() => this.modalDesaOpen()}
+                          >
+                            <label htmlFor="Nm_Desa">Desa</label>
+                            <input
+                              id="Nm_Desa"
+                              type="text"
+                              name="Nm_Desa"
+                              value={
+                                this.state.Nm_Desa === ""
+                                  ? ""
+                                  : this.state.Nm_Desa
+                              }
+                              disabled
+                              className="form-control"
+                            />
+                          </div>
                           <hr />
 
                           <div className="row">
@@ -166,7 +275,26 @@ export class UbahPetugas extends Component {
       return <Redirect to="/admin/petugas" />;
     }
 
-    return <div>{this.contentRender()}</div>;
+    return (
+      <>
+        <div>{this.contentRender()}</div>
+        <ModalKecamatan
+          modalKecamatan={this.state.modalKecamatan}
+          modalKecamatanClose={this.modalKecamatanClose}
+          selected={
+            this.state.Nm_Kecamatan === "" ? "" : this.state.Nm_Kecamatan
+          }
+          onChange={this.onChangeKecamatan}
+        />
+        <ModalDesa
+          modalDesa={this.state.modalDesa}
+          modalDesaClose={this.modalDesaClose}
+          selected={this.state.Nm_Desa === "" ? "" : this.state.Nm_Desa}
+          onChange={this.onChangeDesa}
+          labelDefault="Semua Desa"
+        />
+      </>
+    );
   }
 }
 
@@ -202,4 +330,9 @@ const stateToProps = (state, myprops) => {
   };
 };
 
-export default connect(stateToProps, { getPetugas, ubahPetugas })(formWrap);
+export default connect(stateToProps, {
+  getPetugas,
+  ubahPetugas,
+  getKecamatan,
+  getDesa,
+})(formWrap);

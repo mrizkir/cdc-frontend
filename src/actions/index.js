@@ -246,7 +246,7 @@ export const login = (formValues) => async (dispatch) => {
   );
 };
 
-export const ubahPasien = (id, formValues) => async (dispatch) => {
+export const ubahPasien = (id, formValues, callback) => async (dispatch) => {
   const token = "Bearer " + localStorage.token;
 
   if (token) {
@@ -263,6 +263,9 @@ export const ubahPasien = (id, formValues) => async (dispatch) => {
         });
       }
     );
+  }
+  if (callback) {
+    callback();
   }
 };
 

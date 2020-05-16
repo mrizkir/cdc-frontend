@@ -1,6 +1,6 @@
 import Api from "../axios/Api";
 
-export const getKecamatan = () => async (dispatch) => {
+export const getKecamatan = (callback) => async (dispatch) => {
   var data = [];
 
   await Api.get("/dmaster/kecamatan")
@@ -15,8 +15,12 @@ export const getKecamatan = () => async (dispatch) => {
     type: "GET_KECAMATAN",
     data: data,
   });
+
+  if (callback) {
+    callback();
+  }
 };
-export const getDesa = (id) => async (dispatch) => {
+export const getDesa = (id, callback) => async (dispatch) => {
   var data = [];
 
   await Api.get(`/dmaster/kecamatan/${id}/desa`)
@@ -31,6 +35,10 @@ export const getDesa = (id) => async (dispatch) => {
     type: "GET_DESA",
     data: data,
   });
+
+  if (callback) {
+    callback();
+  }
 };
 
 export const ubahKecamatan = (id, formValues) => async (dispatch) => {

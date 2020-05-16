@@ -62,7 +62,7 @@ export class Petugas extends Component {
                   <td>{gugus.name}</td>
                   <td>{gugus.username}</td>
                   <td>{gugus.Nm_Kecamatan}</td>
-                  <td> {gugus.Nm_Desa}</td>
+                  <td> {gugus.Nm_Desa ? gugus.Nm_Desa : "Semua Desa"}</td>
 
                   <td className="text-center">
                     {/* <Link className="btn btn-success mr-2"><i class="fas fa-key"></i></Link> */}

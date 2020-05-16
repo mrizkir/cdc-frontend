@@ -7,11 +7,19 @@ import bgGugus from "../../assets/img/bggugus.jpg";
 import { tambahPetugas } from "../../actions/actionPetugas";
 import { getKecamatan, getDesa } from "../../actions/actionSystem";
 
+import ModalKecamatan from "./ModalKecamatan";
+import ModalDesa from "./ModalDesa";
+
 export class TambahPetugas extends Component {
   state = {
     onSubmit: false,
-    namaKecamatan: "",
-    namaDesa: null,
+
+    submit: false,
+    Nm_Kecamatan: "",
+    PmKecamatanID: "",
+    PmDesaID: "",
+    Nm_Desa: "",
+    modalKecamatan: false,
   };
 
   styles = {
@@ -25,36 +33,41 @@ export class TambahPetugas extends Component {
     this.props.getKecamatan();
   }
 
-  renderListKecamatan = () => {
-    if (!this.props.listKecamatan.kecamatan) return null;
-    return this.props.listKecamatan.kecamatan.map((kec, index) => {
-      return (
-        <option key={index} value={kec.PmKecamatanID}>
-          {kec.Nm_Kecamatan}
-        </option>
-      );
+  modalKecamatanClose = () =>
+    this.setState({
+      modalKecamatan: false,
+    });
+  modalDesaClose = () =>
+    this.setState({
+      modalDesa: false,
+    });
+
+  modalKecamatanOpen = () => {
+    this.setState({
+      modalKecamatan: true,
+    });
+  };
+  modalDesaOpen = () => {
+    this.setState({
+      modalDesa: true,
     });
   };
 
-  onChangeKecamatan = async (e) => {
-    var index = e.nativeEvent.target.selectedIndex;
-    this.setState({ namaKecamatan: e.nativeEvent.target[index].text });
-    await this.props.getDesa(e.target.value);
+  onChangeKecamatan = async (id, nama) => {
+    this.setState({
+      Nm_Kecamatan: nama,
+      PmKecamatanID: id,
+    });
+    this.props.getDesa(id);
+    this.setState({
+      Nm_Desa: "--",
+      PmDesaID: "--",
+    });
   };
-  onChangeDesa = async (e) => {
-    var index = e.nativeEvent.target.selectedIndex;
-    await this.setState({ namaDesa: e.nativeEvent.target[index].text });
-  };
-
-  renderListDesa = () => {
-    if (!this.props.listDesa.desa) return null;
-
-    return this.props.listDesa.desa.map((desa, index) => {
-      return (
-        <option key={index} value={desa.PmDesaID}>
-          {desa.Nm_Desa}
-        </option>
-      );
+  onChangeDesa = async (id, nama) => {
+    this.setState({
+      Nm_Desa: nama,
+      PmDesaID: id,
     });
   };
 
@@ -141,11 +154,13 @@ export class TambahPetugas extends Component {
   }
 
   onSubmit = async (formValues) => {
+    this.setState({ submit: true });
+
+    if (this.state.Nm_Kecamatan === "") return;
+
     const formD = {
       ...formValues,
-      Nm_Kecamatan: this.state.namaKecamatan,
-      Nm_Desa:
-        this.state.namaDesa === "--- Pilih Desa ---" ? "" : this.state.namaDesa,
+      ...this.state,
     };
 
     await this.props.tambahPetugas(formD, () => {
@@ -202,7 +217,7 @@ export class TambahPetugas extends Component {
                             name="nomor_hp"
                             component={this.renderInput}
                             label="Nomor HP"
-                            type="text"
+                            type="number"
                           />
                           <Field
                             name="alamat"
@@ -210,16 +225,50 @@ export class TambahPetugas extends Component {
                             label="Alamat"
                             type="text"
                           />
-                          <Field
-                            name="PmKecamatanID"
-                            component={this.renderInput}
-                            label="Kecamatan"
-                          />
-                          <Field
-                            name="PmDesaID"
-                            component={this.renderInput}
-                            label="Desa"
-                          />
+                          <div
+                            className="form-group"
+                            onClick={() => this.modalKecamatanOpen()}
+                          >
+                            <label htmlFor="Nm_Kecamatan">Kecamatan</label>
+                            <input
+                              id="Nm_Kecamatan"
+                              type="text"
+                              name="Nm_Kecamatan"
+                              value={
+                                this.state.Nm_Kecamatan === ""
+                                  ? ""
+                                  : this.state.Nm_Kecamatan
+                              }
+                              disabled
+                              className="form-control"
+                            />
+                            {this.state.Nm_Kecamatan == "" &&
+                            this.state.submit ? (
+                              <small className="text-danger">
+                                Kecamatan Harus dipilih
+                              </small>
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                          <div
+                            className="form-group"
+                            onClick={() => this.modalDesaOpen()}
+                          >
+                            <label htmlFor="Nm_Desa">Desa</label>
+                            <input
+                              id="Nm_Desa"
+                              type="text"
+                              name="Nm_Desa"
+                              value={
+                                this.state.Nm_Desa === ""
+                                  ? ""
+                                  : this.state.Nm_Desa
+                              }
+                              disabled
+                              className="form-control"
+                            />
+                          </div>
 
                           <hr />
 
@@ -262,7 +311,27 @@ export class TambahPetugas extends Component {
       return <Redirect to="/admin/petugas" />;
     }
 
-    return <div>{this.contentRender()}</div>;
+    return (
+      <>
+        {" "}
+        <div>{this.contentRender()}</div>
+        <ModalKecamatan
+          modalKecamatan={this.state.modalKecamatan}
+          modalKecamatanClose={this.modalKecamatanClose}
+          selected={
+            this.state.Nm_Kecamatan === "" ? "" : this.state.Nm_Kecamatan
+          }
+          onChange={this.onChangeKecamatan}
+        />
+        <ModalDesa
+          modalDesa={this.state.modalDesa}
+          modalDesaClose={this.modalDesaClose}
+          selected={this.state.Nm_Desa === "" ? "" : this.state.Nm_Desa}
+          onChange={this.onChangeDesa}
+          labelDefault="--"
+        />
+      </>
+    );
   }
 }
 
@@ -280,8 +349,8 @@ const validate = (formValue) => {
   if (!formValue.email) {
     errors.email = "Email Harus diisi";
   }
-  if (!formValue.PmKecamatanID || formValue.PmKecamatanID === "wow") {
-    errors.PmKecamatanID = "Kecamatan harus dipilih";
+  if (!formValue.nomor_hp) {
+    errors.nomor_hp = "Nomor Handphone Harus diisi";
   }
 
   return errors;

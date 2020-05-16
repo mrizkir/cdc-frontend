@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import { BASE_URL } from "../constant";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { getDetailPasien, ubahPasien } from "../../actions";
@@ -12,6 +12,7 @@ import ModalUploadFoto from "./ModalUploadFoto";
 export class UbahPasienx extends Component {
   state = {
     prosesLoad: 0,
+    onOk: false,
   };
 
   async componentDidMount() {
@@ -44,7 +45,7 @@ export class UbahPasienx extends Component {
       <div className="form-group">
         <label htmlFor={label}>{label}</label>
         <input
-          className="form-control form-control-user"
+          className="form-control "
           id={label}
           {...input}
           type={type}
@@ -66,11 +67,18 @@ export class UbahPasienx extends Component {
   }
 
   onSubmit = (formValues) => {
-    this.props.ubahPasien(this.props.id, formValues);
-    // return <Redirect to='/admin/pasien' />
+    this.props.ubahPasien(this.props.id, formValues, () => {
+      this.setState({
+        onOk: true,
+      });
+    });
   };
 
   render() {
+    if (this.state.onOk) {
+      return <Redirect to="/admin/pasien" />;
+    }
+
     if (this.state.prosesLoad === 0) {
       return (
         <div

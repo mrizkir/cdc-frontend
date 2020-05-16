@@ -23,6 +23,7 @@ import Fasilitas from "../Fasilitas";
 import TambahFasilitas from "../TambahFasilitas";
 import UbahFasilitas from "../UbahFasilitas";
 import DetailPetugas from "../DetailPetugas";
+import DetailGugusTugas from "../DetailGugusTugas";
 import Laporan from "../Laporan";
 import Kecamatan from "../Kecamatan";
 import UbahKecamatan from "../UbahKecamatan";
@@ -37,6 +38,8 @@ export class TemplateAdm extends Component {
       switch (this.props.match.params.menu) {
         case "detailpasien":
           return <DetailPasien id={this.props.match.params.id} />;
+        case "detailgugustugas":
+          return <DetailGugusTugas id={this.props.match.params.id} />;
         case "ubahpasien":
           return <UbahPasienx id={this.props.match.params.id} />;
         case "ubahgugustugas":

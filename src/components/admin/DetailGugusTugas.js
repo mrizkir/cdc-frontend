@@ -3,21 +3,23 @@ import { connect } from "react-redux";
 
 import { Link } from "react-router-dom";
 
-import { getPetugas } from "../../actions/actionPetugas";
+import { getGugusTugas } from "../../actions/actionGugusTugas";
 
-export class DetailPetugas extends Component {
+export class DetailGugusTugas extends Component {
   componentDidMount = async () => {
-    await this.props.getPetugas();
+    await this.props.getGugusTugas();
   };
 
   contentRender = () => {
-    if (!this.props.petugas) return null;
+    if (!this.props.gugusTugas) return null;
 
-    const petugas = this.props.petugas;
+    const GugusTugas = this.props.gugusTugas;
     return (
       <div className="card shadow mb-4">
         <div className="card-header py-3">
-          <h6 className="m-0 font-weight-bold text-primary">Detail Petugas</h6>
+          <h6 className="m-0 font-weight-bold text-primary">
+            Detail Gugus Tugas
+          </h6>
         </div>
         <div className="card-body">
           <div className="container">
@@ -28,7 +30,7 @@ export class DetailPetugas extends Component {
                     <div className="p-5">
                       <div className="text-center">
                         <h1 className="h4 text-gray-900 mb-4">
-                          Data Detail Petugas{" "}
+                          Data Detail GugusTugas{" "}
                         </h1>
                       </div>
 
@@ -42,30 +44,30 @@ export class DetailPetugas extends Component {
                           <tbody>
                             <tr>
                               <td>Nama</td>
-                              <td> {petugas.name}</td>
+                              <td> {GugusTugas.name}</td>
                             </tr>
                             <tr>
                               <td>Username </td>
-                              <td>{petugas.username}</td>
+                              <td>{GugusTugas.username}</td>
                             </tr>
                             <tr>
                               <td>Nomor HP</td>
-                              <td>{petugas.nomor_hp}</td>
+                              <td>{GugusTugas.nomor_hp}</td>
                             </tr>
 
                             <tr>
                               <td>Alamat</td>
-                              <td>{petugas.alamat}</td>
+                              <td>{GugusTugas.alamat}</td>
                             </tr>
 
-                            <tr>
+                            {/* <tr>
                               <td>Kecamatan</td>
-                              <td>{petugas.Nm_Kecamatan}</td>
+                              <td>{GugusTugas.Nm_Kecamatan}</td>
                             </tr>
                             <tr>
                               <td>Desa</td>
-                              <td>{petugas.Nm_Desa}</td>
-                            </tr>
+                              <td>{GugusTugas.Nm_Desa}</td>
+                            </tr> */}
                           </tbody>
                         </table>
                       </div>
@@ -74,7 +76,7 @@ export class DetailPetugas extends Component {
                       <div className="row">
                         <div className="col-6">
                           <Link
-                            to="/admin/petugas"
+                            to="/admin/gugustugas"
                             className="btn btn-secondary"
                             style={{ width: "100%" }}
                           >
@@ -85,7 +87,7 @@ export class DetailPetugas extends Component {
                         <div class="col-6">
                           <Link
                             className="btn btn-warning mr-2"
-                            to={`/admin/ubahpetugas/${petugas.id}`}
+                            to={`/admin/ubahgugustugas/${GugusTugas.id}`}
                             style={{ width: "100%", color: "black" }}
                           >
                             <i className="fas fa-edit"></i> Ubah
@@ -110,10 +112,10 @@ export class DetailPetugas extends Component {
 
 const stateToProps = (state, myprops) => {
   return {
-    petugas: state.listPetugas.find((us) => {
+    gugusTugas: state.listGugusTugas.find((us) => {
       return parseInt(us.id) === parseInt(myprops.id);
     }),
   };
 };
 
-export default connect(stateToProps, { getPetugas })(DetailPetugas);
+export default connect(stateToProps, { getGugusTugas })(DetailGugusTugas);

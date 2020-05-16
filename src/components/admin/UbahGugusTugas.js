@@ -120,7 +120,7 @@ export class UbahGugusTugas extends Component {
                             name="nomor_hp"
                             component={this.renderInput}
                             label="Nomor HP"
-                            type="text"
+                            type="number"
                           />
                           <Field
                             name="alamat"
