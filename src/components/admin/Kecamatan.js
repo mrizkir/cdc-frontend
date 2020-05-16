@@ -62,7 +62,7 @@ export class Kecamatan extends Component {
                 cellSpacing="0"
               >
                 <thead>
-                  <tr>
+                  <tr className="text-light bg-primary">
                     <th className="text-center">No</th>
                     <th className="text-center">Kecamatan</th>
                     <th className="text-center">Latitude 1</th>

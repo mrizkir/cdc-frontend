@@ -99,7 +99,7 @@ export class Fasilitas extends Component {
             cellSpacing="0"
           >
             <thead>
-              <tr>
+              <tr className="text-light bg-primary">
                 <th style={{ width: "50px" }}>No</th>
                 <th>Nama Fasilitas</th>
                 <th>Alamat </th>

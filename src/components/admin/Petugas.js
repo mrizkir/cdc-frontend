@@ -42,7 +42,7 @@ export class Petugas extends Component {
           cellSpacing="0"
         >
           <thead>
-            <tr>
+            <tr className="text-light bg-primary">
               <th>No</th>
               <th>Nama</th>
               <th>Username</th>

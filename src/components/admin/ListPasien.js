@@ -29,7 +29,7 @@ export class Pasien extends Component {
       }
       return (
         <tr key={pasien.id}>
-          <td>{index + 1}</td>
+          <td className="text-center">{index + 1}</td>
           <td>
             <img alt="bg" src={foto} style={{ width: "50px" }} />
           </td>
@@ -41,10 +41,12 @@ export class Pasien extends Component {
               {pasien.name}
             </Link>
           </td>
-          <td>{pasien.nomor_hp}</td>
+
           <td>{pasien.Nm_Kecamatan}</td>
-          <td>{pasien.nama_status}</td>
-          <td>
+          <td className="text-center" style={{ textTransform: "capitalize" }}>
+            {pasien.nama_status}
+          </td>
+          <td width="130px" className="text-center">
             <Link
               to={`/admin/ubahpasien/${pasien.id}`}
               className="btn btn-warning mr-2"
@@ -107,15 +109,17 @@ export class Pasien extends Component {
                 cellSpacing="0"
               >
                 <thead>
-                  <tr>
-                    <th>No</th>
-                    <th>Foto</th>
+                  <tr className="bg-primary text-light">
+                    <th className="text-center">No</th>
+                    <th className="text-center">Foto</th>
                     <th>NIK</th>
                     <th>Nama</th>
-                    <th>No Hp</th>
+
                     <th>Kecamatan</th>
-                    <th>Status Pasien</th>
-                    <th>Aksi</th>
+                    <th width="200px" className="text-center">
+                      Status Pasien
+                    </th>
+                    <th className="text-center">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>{this.renderPasien()}</tbody>
