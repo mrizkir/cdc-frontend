@@ -27,16 +27,6 @@ export class Pasien extends Component {
       } else {
         foto = `${BASE_URL}/${pasien.foto}`;
       }
-
-      if (this.props.user) {
-        if (
-          this.props.user.role[0] === "petugas" &&
-          this.props.user.PmKecamatanID !== pasien.PmKecamatanID
-        ) {
-          return;
-        }
-      }
-
       return (
         <tr key={pasien.id}>
           <td className="text-center">{index + 1}</td>
@@ -161,7 +151,6 @@ export class Pasien extends Component {
 const stateToProps = (state) => {
   return {
     pasiens: state.pasien,
-    user: state.user,
   };
 };
 

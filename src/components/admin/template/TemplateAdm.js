@@ -27,6 +27,8 @@ import DetailGugusTugas from "../DetailGugusTugas";
 import Laporan from "../Laporan";
 import Kecamatan from "../Kecamatan";
 import UbahKecamatan from "../UbahKecamatan";
+import UbahPassword from "../UbahPassword";
+import Profil from "../Profil";
 
 export class TemplateAdm extends Component {
   componentDidMount = () => {
@@ -75,6 +77,10 @@ export class TemplateAdm extends Component {
           return <Laporan />;
         case "kecamatan":
           return <Kecamatan />;
+        case "ubahpassword":
+          return <UbahPassword />;
+        case "profil":
+          return <Profil />;
       }
     }
   };
