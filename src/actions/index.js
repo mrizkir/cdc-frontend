@@ -223,6 +223,25 @@ export const getStatusPasien = (id) => async (dispatch) => {
   }
 };
 
+export const ubahPassword = (id, formData) => async (dispatch) => {
+  const token = "Bearer " + localStorage.token;
+
+  var data = null;
+  if (token) {
+    await Api.post(
+      `/setting/userspetugas/${id}`,
+      { ...formData, _method: "PUT" },
+      {
+        headers: { Authorization: token },
+      }
+    )
+      .then((response) => {
+        data = response.data;
+      })
+      .catch((error) => {});
+  }
+};
+
 export const login = (formValues) => async (dispatch) => {
   await Api.post("/auth/login", formValues).then(
     (res) => {

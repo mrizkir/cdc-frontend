@@ -81,7 +81,7 @@ export class NavbarAdmin extends Component {
 
                 <Link className="dropdown-item" to="/admin/ubahpassword">
                   <i className="fas fa-lock fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Ubah Profil
+                  Ubah Password
                 </Link>
 
                 <Link className="dropdown-item" to="/logout">

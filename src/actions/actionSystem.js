@@ -40,6 +40,41 @@ export const getDesa = (id, callback) => async (dispatch) => {
     callback();
   }
 };
+export const getStatus = () => async (dispatch) => {
+  var data = [];
+
+  await Api.get(`/dmaster/statuspasien`)
+    .then((response) => {
+      data = response.data.statuspasien;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+  dispatch({
+    type: "GET_STATUS",
+    data: data,
+  });
+};
+export const getTotalKasus = () => async (dispatch) => {
+  var data = [];
+
+  await Api.get(`/dashboard/front`)
+    .then((response) => {
+      data = {
+        ringkasan: response.data.ringkasan,
+        total: response.data.totalkasus,
+      };
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+  dispatch({
+    type: "GET_TOTAL_KASUS",
+    data: data,
+  });
+};
 
 export const ubahKecamatan = (id, formValues) => async (dispatch) => {
   const token = "Bearer " + localStorage.token;

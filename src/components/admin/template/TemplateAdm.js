@@ -78,7 +78,7 @@ export class TemplateAdm extends Component {
         case "kecamatan":
           return <Kecamatan />;
         case "ubahpassword":
-          return <UbahPassword />;
+          return <UbahPassword user={this.props.user} />;
         case "profil":
           return <Profil />;
       }

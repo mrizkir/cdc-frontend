@@ -7,7 +7,7 @@ import cgreen from "../assets/img/cir-green.png";
 import cgrey from "../assets/img/cir-grey.png";
 
 // API key of the google map
-const GOOGLE_MAP_API_KEY = "AIzaSyBOeHuAzdy0K8kaHyaoI8zRxIo6HAqp9Tk";
+const GOOGLE_MAP_API_KEY = "AIzaSyBJIWERg2ZcMIjM9KDtFVdeEjcx4IKOlBs";
 // const GOOGLE_MAP_API_KEY = 'AIzaSyBgVtBigvi_59RitK-_97CGlXeer7HHgHM';
 
 // load google map script

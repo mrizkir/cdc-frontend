@@ -1,25 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { ubahPassword } from "../../actions";
 
 class UbahPassword extends Component {
   state = {
-    name: "",
-    username: "",
-    nomor_hp: "",
-    alamat: "",
     password: "",
-    passwordbc: "",
-    passwordbaru: "",
+    passwordKonfirm: "",
+    passwordError: "",
+    complete: false,
   };
 
   componentDidMount = () => {
-    // this.setState({
-    //   name: this.props.user.name,
-    //   username: this.props.user.username,
-    //   nomor_hp: this.props.user.nomor_ho,
-    //   alamat: this.props.user.alamat,
-    //   passwordbc: this.props.user.password,
-    // });
+    this.setState({
+      username: this.props.user ? this.props.user.username : "",
+    });
   };
 
   onchangeText = (e) => {
@@ -28,19 +23,33 @@ class UbahPassword extends Component {
     });
   };
 
-  onSubmit = () => {
+  onSubmit = async () => {
     console.log(this.state);
+    if (this.state.password !== this.state.passwordKonfirm) {
+      this.setState({ passwordError: "Password tidak sama." });
+    } else {
+      this.setState({ passwordError: "" });
+      const formData = { ...this.props.user, password: this.state.password };
+      await this.props.ubahPassword(this.props.user.id, formData);
+      this.setState({ complete: true });
+      console.log(this.state);
+    }
   };
 
   render() {
     if (!this.props.user) return null;
 
-    const user = this.props.user;
+    if (this.state.complete) {
+      return <div className="alert alert-success">Berhasil Ubah Password</div>;
+    }
+
     return (
-      <>
+      <div className="col-lg-7">
         <div className="card shadow mb-4">
           <div className="card-header py-3 ">
-            <h6 className="m-0 font-weight-bold text-primary">Ubah Profil</h6>
+            <h6 className="m-0 font-weight-bold text-primary">
+              Ubah Password {this.props.user.username}
+            </h6>
           </div>
           <div className="card-body">
             <div className="table-responsive">
@@ -53,120 +62,63 @@ class UbahPassword extends Component {
                 <tbody>
                   <tr>
                     <th>
-                      <label htmlFor="name">Nama</label>
-                    </th>
-                    <td>
-                      <div className="form-group">
-                        <input
-                          className="form-control"
-                          type="text"
-                          name="name"
-                          id="nama"
-                          onChange={this.onchangeText}
-                          value={this.state.name}
-                        />
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>
-                      <label htmlFor="username">Username</label>
-                    </th>
-                    <td>
-                      <div className="form-group">
-                        <input
-                          className="form-control"
-                          type="text"
-                          name="username"
-                          id="username"
-                          onChange={this.onchangeText}
-                          value={this.state.username}
-                        />
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>
-                      <label htmlFor="nomor_hp">Nomor Hp</label>
-                    </th>
-                    <td>
-                      <div className="form-group">
-                        <input
-                          className="form-control"
-                          type="text"
-                          name="nomor_hp"
-                          id="nomor_hp"
-                          onChange={this.onchangeText}
-                          value={this.state.nomor_hp}
-                        />
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>
-                      <label htmlFor="alamat">Alamat</label>
-                    </th>
-                    <td>
-                      <div className="form-group">
-                        <input
-                          className="form-control"
-                          type="text"
-                          name="alamat"
-                          id="alamat"
-                          onChange={this.onchangeText}
-                          value={this.state.alamat}
-                        />
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>
-                      <label htmlFor="password">Password Lama</label>
-                    </th>
-                    <td>
-                      <div className="form-group">
-                        <input
-                          className="form-control"
-                          type="text"
-                          name="password"
-                          id="password"
-                          onChange={this.onchangeText}
-                          value={this.state.password}
-                        />
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>
                       <label htmlFor="passwordbaru">Password Baru</label>
                     </th>
                     <td>
                       <div className="form-group">
                         <input
                           className="form-control"
-                          type="text"
-                          name="passwordbaru"
-                          id="passwordbaru"
+                          type="password"
+                          name="password"
+                          id="password"
                           onChange={this.onchangeText}
                           value={this.state.passwordbaru}
                         />
                       </div>
                     </td>
                   </tr>
+                  <tr>
+                    <th>
+                      <label htmlFor="passwordKonfirm">
+                        Ulang Ketik Password Baru
+                      </label>
+                    </th>
+                    <td>
+                      <div className="form-group">
+                        <input
+                          className="form-control"
+                          type="password"
+                          name="passwordKonfirm"
+                          id="passwordKonfirm"
+                          onChange={this.onchangeText}
+                          value={this.state.passwordKonfirm}
+                        />
+                        {this.state.passwordError === "" ? null : (
+                          <div className="text-danger">
+                            {this.state.passwordError}
+                          </div>
+                        )}
+                      </div>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
+              <button className="btn btn-primary mr-2" onClick={this.onSubmit}>
+                Ubah
+              </button>
+              <Link to="/admin/dasboard" className="btn btn-secondary">
+                Batal
+              </Link>
             </div>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }
 
 const stateToProps = (state) => {
-  return {
-    user: state.user,
-  };
+  return {};
 };
 
-export default connect(stateToProps)(UbahPassword);
+export default connect(stateToProps, { ubahPassword })(UbahPassword);

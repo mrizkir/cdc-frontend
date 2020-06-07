@@ -6,21 +6,37 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { getPasien } from "../../actions";
+import { getKecamatan } from "../../actions/actionSystem";
 
 export class Pasien extends Component {
   state = {
     prosesLoad: 0,
+    filterKecamatan: "",
   };
 
   componentDidMount = async () => {
     await this.props.getPasien();
+    await this.props.getKecamatan();
     this.setState({
       prosesLoad: 1,
     });
   };
 
+  onChangeKecamatan = (x) => {
+    this.setState({
+      filterKecamatan: x.target.value,
+    });
+  };
+
   renderPasien() {
-    return this.props.pasiens.userspasien.map((pasien, index) => {
+    const dataPasien =
+      this.state.filterKecamatan === ""
+        ? this.props.pasiens.userspasien
+        : this.props.pasiens.userspasien.filter((pas) => {
+            return pas.Nm_Kecamatan === this.state.filterKecamatan;
+          });
+
+    return dataPasien.map((pasien, index) => {
       var foto = "";
       if (pasien.foto === "storage/images/users/no_photo.png") {
         foto = noImage;
@@ -75,6 +91,14 @@ export class Pasien extends Component {
     });
   }
 
+  renderKecamatan = () => {
+    if (this.props.listKecamatan) {
+      return this.props.listKecamatan.kecamatan.map((kec) => {
+        return <option value={kec.Nm_Kecamatan}>{kec.Nm_Kecamatan}</option>;
+      });
+    }
+  };
+
   renderContent = () => {
     if (!this.props.pasiens) {
       return (
@@ -108,7 +132,24 @@ export class Pasien extends Component {
       <div>
         <div className="card shadow mb-4">
           <div className="card-header py-3">
-            <h6 className="m-0 font-weight-bold text-primary">Daftar Pasien</h6>
+            <div className="row">
+              <div className="col-lg-6">
+                <h6 className="m-0 font-weight-bold text-primary">
+                  Daftar Pasien
+                </h6>
+              </div>
+              <div className="col-lg-6 text-right">
+                <select
+                  className="form-control"
+                  onChange={(x) => {
+                    this.onChangeKecamatan(x);
+                  }}
+                >
+                  <option>--Filter Kecamatan --</option>
+                  {this.renderKecamatan()}
+                </select>
+              </div>
+            </div>
           </div>
           <div className="card-body">
             <div className="table-responsive">
@@ -162,7 +203,8 @@ const stateToProps = (state) => {
   return {
     pasiens: state.pasien,
     user: state.user,
+    listKecamatan: state.listKecamatan,
   };
 };
 
-export default connect(stateToProps, { getPasien })(Pasien);
+export default connect(stateToProps, { getPasien, getKecamatan })(Pasien);

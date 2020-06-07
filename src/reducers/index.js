@@ -1,7 +1,12 @@
 import { combineReducers } from "redux";
 import { reducer as formReducer } from "redux-form";
 import { getGugusTugas, getPetugas } from "./perugasReducers";
-import { getKecamatan, getDesa } from "./systemReducer";
+import {
+  getKecamatan,
+  getDesa,
+  getStatus,
+  getTotalKasus,
+} from "./systemReducer";
 import { dataChart } from "./chartReducer";
 import { getFasilitas } from "./fasilitasReducer";
 
@@ -106,6 +111,8 @@ export default combineReducers({
 
   listKecamatan: getKecamatan,
   listDesa: getDesa,
+  listStatus: getStatus,
+  listTotalKasus: getTotalKasus,
 
   listFasilitas: getFasilitas,
 
