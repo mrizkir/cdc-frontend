@@ -47,7 +47,7 @@ export class Monitor extends Component {
               <div className="container-fluid">
                 {this.props.contentRender}
 
-                <ChartTotal />
+                {/* <ChartTotal /> */}
                 <FooterHome />
               </div>
             </div>

@@ -29,12 +29,6 @@ export class Sidebar extends Component {
             <span>Monitor</span>
           </Link>
         </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/admin/laporan">
-            <i className="fas fa-fw fa-file-download"></i>
-            <span>Laporan</span>
-          </Link>
-        </li>
 
         <hr className="sidebar-divider"></hr>
 
@@ -85,6 +79,39 @@ export class Sidebar extends Component {
           <Link className="nav-link" to="/admin/kecamatan">
             <i className="fas fa-fw fa-map-marked-alt"></i>
             <span>Lokasi Kecamatan</span>
+          </Link>
+        </li>
+        <hr className="sidebar-divider" />
+        {/* <li className="nav-item">
+          <Link className="nav-link" to="/admin/laporan">
+            <i className="fas fa-fw fa-file-download"></i>
+            <span>Laporan</span>
+          </Link>
+        </li> */}
+        <div className="sidebar-heading">LAPORAN</div>
+        <li className="nav-item">
+          <Link className="nav-link" to="/admin/laporan">
+            <i className="fas fa-fw fa-procedures"></i>
+            <span>Pasien</span>
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/admin/laporan">
+            <i className="fas fa-fw fa-map-marked-alt"></i>
+            <span>Sebaran Wilayah</span>
+          </Link>
+        </li>
+
+        <li className="nav-item">
+          <Link className="nav-link" to="/admin/laporan">
+            <i className="fa-fw fab fa-pagelines"></i>
+            <span>Umur</span>
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/admin/laporan">
+            <i className="fas fa-fw fa-tint"></i>
+            <span>Golongan Darah</span>
           </Link>
         </li>
       </>
